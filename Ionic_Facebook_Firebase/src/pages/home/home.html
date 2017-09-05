@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start left>
+    <button>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-title>
+      List Products
+    </ion-title>
+    
+    <ion-buttons right>
+      <button (click)="logout()" clear ion-button>
+        Logout
+      </button>      
+      <button ion-button>
+        <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
+          <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
+        </ion-icon>
+      </button>       
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+  
+  <ion-list>
+    <ion-item-sliding *ngFor='let task of menu | async'>
+      <ion-item class="item-thumbnail-left">        
+        <!-- <img src="{{&apos;/assets/img/fk/&apos;+ task.image +&apos;.jpg&apos;}}"> -->
+        <img src="{{task.image}}">
+        <h2>{{task.name}}</h2>
+        <h3>S/.{{task.price}}</h3>                                  
+      </ion-item>       
+    </ion-item-sliding>
+  </ion-list> 
+</ion-content>
