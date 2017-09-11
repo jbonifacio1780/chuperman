@@ -1,0 +1,26 @@
+<ion-header>
+        <ion-navbar>
+                <ion-buttons start left>
+                        <button ion-button menuToggle>
+                          <ion-icon name="menu"></ion-icon>
+                        </button>
+                      </ion-buttons>
+                        <ion-title>
+                          My Orders
+                        </ion-title>
+                        
+                        <ion-buttons right>
+                         <!--  <button (click)="logout()" clear ion-button>
+                            Logout
+                          </button>  -->     
+                          <button ion-button>
+                            <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
+                              <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
+                            </ion-icon>
+                          </button>       
+                        </ion-buttons>
+        </ion-navbar>
+    </ion-header>
+    <ion-content padding> 
+        <p>Mi historial ordenes</p>
+    </ion-content>

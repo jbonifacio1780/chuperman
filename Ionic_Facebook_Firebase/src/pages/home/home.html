@@ -1,18 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start left>
-    <button>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
   </ion-buttons>
     <ion-title>
-      Productos.......
+      Products
     </ion-title>
     
     <ion-buttons right>
-      <button (click)="logout()" clear ion-button>
+     <!--  <button (click)="logout()" clear ion-button>
         Logout
-      </button>      
+      </button>  -->     
       <button ion-button>
         <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
           <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
@@ -24,15 +24,138 @@
 </ion-header>
 
 <ion-content padding> 
+<p>
+    <ion-slides autoplay="1000" loop="true" speed="1000">
+        <ion-slide >
+          <img src="../../assets/img/fk/slide_1.jpg">
+        </ion-slide>
+        <ion-slide >
+          <img src="../../assets/img/fk/slide_2.jpg">
+        </ion-slide>
+        <ion-slide >
+          <img src="../../assets/img/fk/slide_3.jpg">
+        </ion-slide>
+      </ion-slides>
+</p>
+<!--     <ion-list class="accordion-list">
+        
+        <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding>
+          
+          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+            <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
+            <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
+              {{ item.name }}
+          </button>
+     
+          <ion-list *ngIf="item.children && item.open" no-lines>
+            
+            <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
+              
+              <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>
+                <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
+                <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
+                {{ child.name }}
+              </button>
+     
+              
+              <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
+                <h2>{{ child.name }}</h2>
+                <p text-lowercase>{{ child.information }}</p>
+                <button ion-button outline item-end (click)="buyItem(child)">{{ child.price }}</button>
+              </ion-item>
+     
+              <ion-list *ngIf="child.children && child.open">
+                
+                <ion-item *ngFor="let item of child.children; let k = index" detail-none class="child-item" text-wrap>
+                  <h2>{{ item.name }}</h2>
+                  <p text-lowercase>{{ item.information }}</p>
+                  
+                  <button ion-button outline item-end (click)="buyItem(item)">{{ item.price }}</button>
+                </ion-item>
+              </ion-list>
+     
+            </ion-list-header>
+          </ion-list>
+          
+        </ion-list-header>
+      </ion-list>
+ -->
+
+       <ion-list class="accordion-list">
+        
+        <ion-list-header *ngFor="let item of listado; let i = index" no-lines no-padding>
+          
+          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
+            <ion-icon item-right name="ios-remove-circle-outline" *ngIf="item.open"></ion-icon>
+              {{ item.categoria }}
+          </button>
+     
+          <ion-list *ngIf="item.children && item.open" no-lines>
+            
+            <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
+              
+            <!--  <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>
+                <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
+                <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
+                {{ child.nombre }}
+              </button> -->
+     
+              
+              <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
+                <img src="{{child.image}}" (click)="navigate()" />    
+                <h2>{{ child.nombre }}</h2>
+                <p text-lowercase>{{ child.descripcion }}</p>
+                <button ion-button outline item-end (click)="buyItem(child)">{{ child.precio }}</button>
+              </ion-item>
+     
+<!--              <ion-list *ngIf="child.children && child.open">
+                
+                <ion-item *ngFor="let item of child.children; let k = index" detail-none class="child-item" text-wrap>
+                    <img src="{{ item.imagen }}" (click)="navigate()">        
+                  <h2>{{ item.nombre }}</h2>
+                  <p text-lowercase>{{ item.descripcion }}</p>
+                  
+                  <button ion-button outline item-end (click)="buyItem(item)">{{ item.precio }}</button>
+                </ion-item>
+              </ion-list> -->
+     
+            </ion-list-header>
+          </ion-list>
+          
+        </ion-list-header>
+      </ion-list>
   
-  <ion-list>
-    <ion-item-sliding *ngFor='let task of menu | async'>
-      <ion-item class="item-thumbnail-left">        
-        <!-- <img src="{{&apos;/assets/img/fk/&apos;+ task.image +&apos;.jpg&apos;}}"> -->
-        <img src="{{task.image}}">
-        <h2>{{task.name}}</h2>
-        <h3>S/.{{task.price}}</h3>                                  
-      </ion-item>       
-    </ion-item-sliding>
-  </ion-list> 
+      
+<!--   <ion-item-group *ngFor="let cate of category | async" >
+      <ion-item-divider sticky *ngIf='cate.name.length > 0'>{{cate.name}}</ion-item-divider>
+      <ion-item *ngFor="let task of menu.idcategory | async " >
+        {{ task.name }}
+      </ion-item>
+  </ion-item-group>
+
+    
+        <ion-item-group *ngFor="let task of menu | async">
+          <ion-item-divider color="secondary">{{task.category}}</ion-item-divider>
+          <ion-item ion-item>
+            <h2>{{task.name}}</h2>
+            <h3>{{task.price}}</h3>
+          </ion-item>          
+        </ion-item-group> -->
+
+
+
+
+ <!--   <ion-list>
+    <ion-item *ngFor="let task of menu | async; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <h3>
+        {{task.category}}
+        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'" right></ion-icon>
+      </h3>
+      <img src="{{task.image}}" *ngIf="isGroupShown(i)" (click)="navigate()">
+      <div *ngIf="isGroupShown(i)">{{task.name}}</div>
+      <div *ngIf="isGroupShown(i)">S/.{{task.price}}</div>
+    </ion-item>
+  </ion-list> -->
+
 </ion-content>

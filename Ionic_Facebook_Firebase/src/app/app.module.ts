@@ -1,9 +1,19 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { DetailsPage } from '../pages/details/details';
+
+import { CartPage } from '../pages/cart/cart';
+import { OrdersPage } from '../pages/orders/orders';
+import { SettingsPage } from '../pages/settings/settings';
+import { SupportPage } from '../pages/support/support';
+
+
+
 import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,7 +40,12 @@ var config = {
     MyApp,
     HomePage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    DetailsPage,
+    CartPage,
+    OrdersPage,
+    SettingsPage,
+    SupportPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +60,12 @@ var config = {
     MyApp,
     HomePage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    DetailsPage,
+    CartPage,
+    OrdersPage,
+    SettingsPage,
+    SupportPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

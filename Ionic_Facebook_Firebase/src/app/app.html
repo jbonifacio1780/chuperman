@@ -1,1 +1,26 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+        <ion-item>
+        <ion-avatar item-start>
+        <img src="{{imagen}}">        
+        </ion-avatar>
+        <h4>{{usuario}}</h4>
+        </ion-item>
+        
+      </ion-toolbar>
+    </ion-header>
+   
+    <ion-content>
+      <ion-list>
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+        <button menu-close ion-item (click)="logout()">Logout</button>
+      </ion-list>
+    </ion-content>
+   
+  </ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
