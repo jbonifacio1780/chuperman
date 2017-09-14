@@ -33,8 +33,8 @@ export class MyApp {
         this.rootPage = LoginPage;
       else
         this.rootPage = HomePage;
-        this.imagen = auth.photoURL;
-        this.usuario = auth.displayName
+        //this.imagen = auth.photoURL;
+        //this.usuario = auth.displayName
     });
     platform.ready().then(() => {
       statusBar.styleDefault();

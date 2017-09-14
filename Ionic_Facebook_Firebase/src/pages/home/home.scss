@@ -1,25 +1,29 @@
 page-home {
     .accordion-list {
         background: color($colors, light);
-        height: 100%;
+        //background: white;
+        height: auto;
     }
+    .list .ion-list-header.ng-hide {
+        line-height: 0px;
+      }
     .section {
-        background: #e8e7e6;
-        color: #000;
+        //background: darkgrey;
+        color: black;
         margin-bottom: 4px;
     }
     .section-active {
-        background: #e8e7e6;
-        color: #000;
+        background: #004F9E;
+        color: white;
     }
  
     .child {
         background: #e8e7e6;
-        color: #000;
+        color: #FFFFFF;
         margin-bottom: 4px;
     }
     .child-item {
-        background: #f3f2f1;
+        background: #FFFFFF;
         padding: 10px;
     }
     .label {
@@ -28,4 +32,24 @@ page-home {
     .list {
         margin-bottom: 4px;
     }
+    .image{
+        height: auto; 
+        width: auto; 
+        //border: 1px solid #004F9E;
+        //border-radius: 50%;
+        //box-shadow: 0 0 2px gray;
+    }
+    
+   
+
+    h2 {  
+        color: #111; 
+        font-weight: 500!important; 
+    }
+
+    p{
+        color:#968F8F;
+    }
+    
+    
 }

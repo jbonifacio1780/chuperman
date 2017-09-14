@@ -5,16 +5,14 @@
       <ion-icon name="menu"></ion-icon>
     </button>
   </ion-buttons>
-    <ion-title>
-      Products
-    </ion-title>
+   
     
     <ion-buttons right>
      <!--  <button (click)="logout()" clear ion-button>
         Logout
       </button>  -->     
       <button ion-button>
-        <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
+        <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">
           <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
         </ion-icon>
       </button>       
@@ -24,104 +22,75 @@
 </ion-header>
 
 <ion-content padding> 
-<p>
+<!--<p>
     <ion-slides autoplay="1000" loop="true" speed="1000">
         <ion-slide >
-          <img src="../../assets/img/fk/slide_1.jpg">
+          <img src="assets/img/fk/slide_1.jpg">
         </ion-slide>
         <ion-slide >
-          <img src="../../assets/img/fk/slide_2.jpg">
+          <img src="assets/img/fk/slide_2.jpg">
         </ion-slide>
         <ion-slide >
-          <img src="../../assets/img/fk/slide_3.jpg">
+          <img src="assets/img/fk/slide_3.jpg">
         </ion-slide>
       </ion-slides>
-</p>
-<!--     <ion-list class="accordion-list">
-        
-        <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding>
-          
-          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-            <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
-            <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
-              {{ item.name }}
-          </button>
-     
-          <ion-list *ngIf="item.children && item.open" no-lines>
-            
-            <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
-              
-              <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>
-                <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
-                <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
-                {{ child.name }}
-              </button>
-     
-              
-              <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
-                <h2>{{ child.name }}</h2>
-                <p text-lowercase>{{ child.information }}</p>
-                <button ion-button outline item-end (click)="buyItem(child)">{{ child.price }}</button>
-              </ion-item>
-     
-              <ion-list *ngIf="child.children && child.open">
-                
-                <ion-item *ngFor="let item of child.children; let k = index" detail-none class="child-item" text-wrap>
-                  <h2>{{ item.name }}</h2>
-                  <p text-lowercase>{{ item.information }}</p>
-                  
-                  <button ion-button outline item-end (click)="buyItem(item)">{{ item.price }}</button>
-                </ion-item>
-              </ion-list>
-     
-            </ion-list-header>
-          </ion-list>
-          
-        </ion-list-header>
-      </ion-list>
- -->
+</p>-->
+
 
        <ion-list class="accordion-list">
         
         <ion-list-header *ngFor="let item of listado; let i = index" no-lines no-padding>
           
-          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
-            <ion-icon item-right name="ios-remove-circle-outline" *ngIf="item.open"></ion-icon>
+          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
+          <ion-icon item-right name="ios-remove-circle-outline" *ngIf="item.open"></ion-icon>
               {{ item.categoria }}
           </button>
-     
+
+     <!--
           <ion-list *ngIf="item.children && item.open" no-lines>
-            
             <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
-              
-            <!--  <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>
-                <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
-                <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
-                {{ child.nombre }}
-              </button> -->
-     
-              
               <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
-                <img src="{{child.image}}" (click)="navigate()" />    
+                <img src="{{child.image}}" (click)="navigate()" class="image" />    
                 <h2>{{ child.nombre }}</h2>
                 <p text-lowercase>{{ child.descripcion }}</p>
-                <button ion-button outline item-end (click)="buyItem(child)">{{ child.precio }}</button>
+                 <button ion-button outline item-end (click)="navigate()">S/. {{ child.precio }}</button>
               </ion-item>
-     
-<!--              <ion-list *ngIf="child.children && child.open">
-                
-                <ion-item *ngFor="let item of child.children; let k = index" detail-none class="child-item" text-wrap>
-                    <img src="{{ item.imagen }}" (click)="navigate()">        
-                  <h2>{{ item.nombre }}</h2>
-                  <p text-lowercase>{{ item.descripcion }}</p>
-                  
-                  <button ion-button outline item-end (click)="buyItem(item)">{{ item.precio }}</button>
-                </ion-item>
-              </ion-list> -->
-     
             </ion-list-header>
-          </ion-list>
+          </ion-list>-->
+
+
+         <ion-grid *ngIf="item.children && item.open" no-lines>
+            <ion-row *ngFor="let child of item.children; let j = index" no-padding justify-content-between>
+              <ion-col *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
+
+
+                  <img src="{{child.image}}" (click)="navigate()" class="image" onerror="this.src='assets/img/champagne.png'" />    
+                  
+                  <button ion-button outline item-end (click)="navigate()">S/. {{ child.precio }}</button>
+
+               </ion-col>   
+              <ion-col ion-item detail-none class="child-item" text-wrap col-6>
+                  <h2>{{ child.nombre }}</h2>
+                  <p>{{ child.descripcion }}</p>
+
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+
+
+        <!--  <ion-grid *ngIf="item.children && item.open" no-lines>
+              <ion-row *ngFor="let row of grid" no-padding>
+                <ion-col *ngFor="let file_uri of row" ion-item detail-none class="child-item" text-wrap>
+                    <img src="file_uri" (click)="navigate()" class="image" />    
+                    <h2>{{ child.nombre }}</h2>
+                    <p text-lowercase>{{ child.descripcion }}</p>
+                    <button ion-button outline item-end (click)="navigate()">S/. {{ child.precio }}</button>
+          </ion-col>
+  
+               
+              </ion-row>
+            </ion-grid>-->
           
         </ion-list-header>
       </ion-list>
