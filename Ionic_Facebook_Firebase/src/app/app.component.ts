@@ -44,7 +44,7 @@ export class MyApp {
       catch(e){}
     });
     platform.ready().then(() => {
-      //statusBar.styleDefault();
+      statusBar.styleDefault();
       splashscreen.hide();
     });
 
