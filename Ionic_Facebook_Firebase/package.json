@@ -65,7 +65,7 @@
             "locator": "ios"
         }
     ],
-    "description": "IGWorkshops: An Ionic project",
+    "description": "@Chuperman Delivery de tragos",
     "cordova": {
         "plugins": {
             "cordova-plugin-facebook4": {

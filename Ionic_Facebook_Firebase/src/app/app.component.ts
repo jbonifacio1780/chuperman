@@ -29,25 +29,32 @@ export class MyApp {
 
   constructor(platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, private splashscreen: SplashScreen, public afd: AngularFireDatabase ) {
     this.afAuth.authState.subscribe(auth => {
+      //this.imagen = "";
+      //this.usuario="";
+
+      try
+      {
       if (!auth)
         this.rootPage = LoginPage;
       else
         this.rootPage = HomePage;
-        //this.imagen = auth.photoURL;
-        //this.usuario = auth.displayName
+        this.imagen = auth.photoURL;
+        this.usuario = auth.displayName;
+      }
+      catch(e){}
     });
     platform.ready().then(() => {
-      statusBar.styleDefault();
+      //statusBar.styleDefault();
       splashscreen.hide();
     });
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Product', component: HomePage },
-      { title: 'My Carts', component: CartPage  },      
-      { title: 'My Orders', component: OrdersPage },
-      { title: 'Settings', component: SettingsPage },
-      { title: 'Support', component: SupportPage }      
+      { title: 'Productos', component: HomePage },
+      { title: 'Carrito', component: CartPage  },      
+      { title: 'Mis Pedidos', component: OrdersPage },
+      { title: 'Configuración', component: SettingsPage },
+      { title: 'Soporte', component: SupportPage }      
     ];
   }
   openPage(page) {
