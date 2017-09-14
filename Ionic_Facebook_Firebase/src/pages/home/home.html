@@ -41,8 +41,7 @@
         
         <ion-list-header *ngFor="let item of listado; let i = index" no-lines no-padding>
           
-          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
+          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
           <ion-icon item-right name="ios-remove-circle-outline" *ngIf="item.open"></ion-icon>
               {{ item.categoria }}
           </button>
@@ -50,20 +49,11 @@
      <!--
           <ion-list *ngIf="item.children && item.open" no-lines>
             <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
-              
-            <!--  <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>
-                <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
-                <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
-                {{ child.nombre }}
-              </button> 
-     
-              
-              <ion-item *ngIf="!child.children" ion-item detail-none class="child-item"  text-wrap>
-                <p>
-                <img src="{{child.image}}" (click)="navigate()" />    
+              <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
+                <img src="{{child.image}}" (click)="navigate()" class="image" />    
                 <h2>{{ child.nombre }}</h2>
                 <p text-lowercase>{{ child.descripcion }}</p>
-                <button ion-button outline item-end (click)="addToCart(child)">{{ child.precio }}</button>
+                 <button ion-button outline item-end (click)="navigate()">S/. {{ child.precio }}</button>
               </ion-item>
             </ion-list-header>
           </ion-list>-->
@@ -74,7 +64,7 @@
               <ion-col *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
 
 
-                  <img src="{{child.image}}" (click)="navigate()" class="image" onerror="this.src='assets/img/champagne.png'" />    
+                  <img src="{{child.image}}" (click)="addToCart(child)" class="image" onerror="this.src='assets/img/champagne.png'" />    
                   
                   <button ion-button outline item-end (click)="addToCart(child)">S/. {{ child.precio }}</button>
 

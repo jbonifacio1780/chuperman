@@ -13,10 +13,9 @@ export class LoginPage {
   loginData = {
     email: '',
     password: ''
-  }  
-
-  constructor(
-    private navCtrl: NavController,
+  }
+  constructor (
+    public navCtrl: NavController,
     private afAuth: AngularFireAuth,
     private toastCtrl: ToastController,
     private facebook: Facebook,

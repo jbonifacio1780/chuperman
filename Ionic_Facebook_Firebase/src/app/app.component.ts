@@ -38,9 +38,8 @@ export class MyApp {
         this.rootPage = LoginPage;        
       else
         this.rootPage = HomePage;
-/*         this.imagen = firebase.auth().currentUser.photoURL;
-        this.usuario = firebase.auth().currentUser.displayName; */
-        
+        this.imagen = auth.photoURL;
+        this.usuario = auth.displayName;
       }
       catch(e){}
     });
