@@ -9,10 +9,7 @@
                       My Carts
                     </ion-title>
                     
-                    <ion-buttons right>
-                     <!--  <button (click)="logout()" clear ion-button>
-                        Logout
-                      </button>  -->     
+                    <ion-buttons right>                        
                       <button ion-button>
                         <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
                           <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
@@ -21,6 +18,35 @@
                     </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content padding> 
-    <p>Mi carrito de compras</p>
+<ion-content padding>       
+    <ion-list>
+      <ion-item *ngFor="let cart of cart | async">        
+        <img src="{{cart.item_image}}">
+        <p>{{cart.item_name}}</p>      
+        <ion-buttons>      
+            <ion-row>
+                <ion-col width-50 style="text-align: left">
+                    <button ion-button (click)="inc(item.$id)">
+                        <ion-icon name="md-add"></ion-icon>
+                      </button>
+               </ion-col>
+                <ion-col width-50 style="text-align: left">
+                    <button ion-button>{{cart.item_qty}}</button>
+                </ion-col>
+                <ion-col width-50 style="text-align: left">
+                    <button ion-button (click)="dec(item.$id)" >
+                        <ion-icon name="md-remove"></ion-icon>
+                      </button>
+                   </ion-col>
+                   <ion-col width-50 style="text-align: left">
+                      <button ion-button (click)="removeFromCart(item.$id)" ion-button color="danger">
+                          <ion-icon name="md-trash"></ion-icon>
+                        </button>
+                     </ion-col>                    
+              </ion-row>
+         
+        </ion-buttons>
+          
+      </ion-item>
+    </ion-list>  
 </ion-content>

@@ -1,3 +1,79 @@
 page-login {
+	.background {
+        //background-image: url('../../assets/bg-login.jpg');
+        background-color: black;
+	}
+
+	.scroll-content {
+		align-content: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	ion-card.card {
+		box-shadow: none;
+        //background: rgba(99, 94, 94, 0.5);
+        background: #000000;
+        border-radius: 5px;
+        
+	}
+
+	a, p,
+	ion-card-header.card-header {
+		color: #fff!important;
+	}
+
+	.list > .item-block:first-child {
+		border: medium none;
+	}
+
+	.item {
+		margin-bottom: 10px;
+		//background: rgba(255, 255, 255, 0.32);
+        border: medium none;
+        //border: 1px solid #004F9E;
+        //border-radius: 20%;
+        //box-shadow: 0 0 2px gray;
+        display: inline-block;
+        //margin-left: auto;
+        //margin-right: auto;
+
+		.text-input, {
+			color: black;
+		}
+
+
+		*::-webkit-input-placeholder  {
+			color: #8A8787;
+		}
+
+	}
+
+	.icon {
+		padding-right: 10px;
+	}
+
+	.bottom {
+		position: absolute;
+		bottom: 0;
+    }
+    
+    .image {
+        height:auto; 
+        width: 200px; 
+        //border: 1px solid #004F9E;
+        //border-radius: 50%;
+        //box-shadow: 0 0 2px gray;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+   }
+
+
+
+
+
 
 }

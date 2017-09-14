@@ -13,7 +13,8 @@ export class LoginPage {
   loginData = {
     email: '',
     password: ''
-  }
+  }  
+
   constructor(
     private navCtrl: NavController,
     private afAuth: AngularFireAuth,
@@ -44,8 +45,8 @@ export class LoginPage {
   loginFacebook() {
     if (this.platform.is('cordova')) {
       return this.facebook.login(['email', 'public_profile']).then(res => {
-        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-        return firebase.auth().signInWithCredential(facebookCredential);
+        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);        
+        return firebase.auth().signInWithCredential(facebookCredential);        
       })
     }
     else {
