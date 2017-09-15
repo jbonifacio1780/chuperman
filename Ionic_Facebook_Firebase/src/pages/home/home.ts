@@ -5,15 +5,10 @@ import { CartPage } from '../cart/cart'
 import { NavController , NavParams } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-<<<<<<< HEAD
 /* import { Http } from '@angular/http'; */
 
-=======
-
-import 'rxjs/add/operator/map';
->>>>>>> 45b239ae1e6b2119aeeda4c0cd10f8ac0ee46892
 import { DetailsPage } from '../details/details';
-import { CartPage } from '../cart/cart';
+
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -38,17 +33,9 @@ public currentUser:AngularFireAuth;
   constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth) {     
     this.fabButtonOpened=false;
 
-<<<<<<< HEAD
     this.cart = this.afd.list('/cart/');
     this.productos = this.afd.list('/productos');     
         
-=======
-constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuthx: AngularFireAuth ) {
-  //let userid= firebase.auth().currentUser.uid;
-
-    //this.cart = this.afd.list('/cart/'+'1dVZxv7jSTW4hsRVU6grNXY2iXX2'+'/');
-    this.productos = this.afd.list('/productos');     
->>>>>>> 45b239ae1e6b2119aeeda4c0cd10f8ac0ee46892
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
       console.log(queriedItems); 
