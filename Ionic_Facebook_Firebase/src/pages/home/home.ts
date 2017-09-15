@@ -4,10 +4,13 @@ import { LoginPage } from '../login/login'
 import { NavController , NavParams } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Http } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 import { DetailsPage } from '../details/details';
+import { CartPage } from '../cart/cart';
+
 import { AngularFireAuth } from 'angularfire2/auth';
+
 
 
 @Component({
@@ -25,16 +28,11 @@ public cart: FirebaseListObservable<any>;
 public listado : any[];
 
 
-  constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, private http: Http,public navParams: NavParams, public afAuth: AngularFireAuth) {
- /*    let localData = http.get('assets/information.json').map(res => res.json().items);
-    localData.subscribe(data => {
-      this.information = data;
-    })
-    this.category = this.afd.list('/category');   
-    this.menu = this.afd.list('/menu'); */       
-    let userid= afAuth.auth.currentUser.uid;
+constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuthx: AngularFireAuth ) {
+  //let userid= firebase.auth().currentUser.uid;
+
+    //this.cart = this.afd.list('/cart/'+'1dVZxv7jSTW4hsRVU6grNXY2iXX2'+'/');
     this.productos = this.afd.list('/productos');     
-    this.cart = this.afd.list('/cart/'+userid+'/');     
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
       console.log(queriedItems); 
@@ -68,17 +66,14 @@ public listado : any[];
   }
 
     
-    navigate(){
-      this.navCtrl.push(DetailsPage,{
-        firstPassed: "1",
-        SecondPassed: "2",
+    navigateCart(){
+      this.navCtrl.push(CartPage,{
+
       })
     }
 
     addToCart(item){
       //let num= this.cart.$ref.ref.key.indexOf.length;
-     
-      
       this.afd.database.ref('/cart').child(firebase.auth().currentUser.uid).push({    // set
         item_name: item.nombre,
         item_image: item.image,
