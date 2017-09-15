@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login'
+import { CartPage } from '../cart/cart'
 import { NavController , NavParams } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+/* import { Http } from '@angular/http'; */
+
 import { DetailsPage } from '../details/details';
 import { AngularFireAuth } from 'angularfire2/auth';
+
+import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -15,26 +18,21 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  fabButtonOpened: Boolean;
 
-  isLogged: boolean;
-/* menu: FirebaseListObservable<any>;
-category: FirebaseListObservable<any>; */
 public productos: FirebaseListObservable<any>;
 public image_x="";
 public cart: FirebaseListObservable<any>;
 public listado : any[];
+public currentUser:AngularFireAuth;
 
 
-  constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, private http: Http,public navParams: NavParams, public afAuth: AngularFireAuth) {
- /*    let localData = http.get('assets/information.json').map(res => res.json().items);
-    localData.subscribe(data => {
-      this.information = data;
-    })
-    this.category = this.afd.list('/category');   
-    this.menu = this.afd.list('/menu'); */       
-    let userid= afAuth.auth.currentUser.uid;
+  constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth) {     
+    this.fabButtonOpened=false;
+
+    this.cart = this.afd.list('/cart/');
     this.productos = this.afd.list('/productos');     
-    this.cart = this.afd.list('/cart/'+userid+'/');     
+        
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
       console.log(queriedItems); 
@@ -42,26 +40,6 @@ public listado : any[];
    }); 
 
   }
-
-  
-
-
-/* 
-  ionViewLoaded() {
-    let rowNum = 0; //counter to iterate over the rows in the grid
-    for (let i = 0; i < this.listado.length; i+=2) { //iterate images
-      this.grid[rowNum] = Array(2); //declare two elements per row
-      if (this.images[i]) { //check file URI exists
-        this.grid[rowNum][0] = this.images[i] //insert image
-      }
-      if (this.images[i+1]) { //repeat for the second image
-        this.grid[rowNum][1] = this.images[i+1]
-      }
-      rowNum++; //go on to the next row
-    }
-  }*/
-
-
 
   toggleSection(i) {         
      this.listado[i].open = !this.listado[i].open;
@@ -75,15 +53,25 @@ public listado : any[];
       })
     }
 
-    addToCart(item){
-      //let num= this.cart.$ref.ref.key.indexOf.length;
-     
-      
+    goCart(){
+      this.navCtrl.push(CartPage,{});
+    }
+
+    addToCart(item, id){            
       this.afd.database.ref('/cart').child(firebase.auth().currentUser.uid).push({    // set
+        item_description: item.descripcion,
         item_name: item.nombre,
         item_image: item.image,
         item_price: item.precio,
         item_qty: 1
       });
+    }
+    
+    openFabButton(){
+      if(this.fabButtonOpened==false){
+          this.fabButtonOpened=true;
+      }else{
+          this.fabButtonOpened=false;
+      }
     };
 }
