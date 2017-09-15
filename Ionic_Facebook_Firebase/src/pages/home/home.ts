@@ -75,6 +75,7 @@ constructor(private facebook: Facebook ,public navCtrl: NavController, public af
     addToCart(item){
       //let num= this.cart.$ref.ref.key.indexOf.length;
       this.afd.database.ref('/cart').child(firebase.auth().currentUser.uid).push({    // set
+        item_description: item.descripcion,
         item_name: item.nombre,
         item_image: item.image,
         item_price: item.precio,

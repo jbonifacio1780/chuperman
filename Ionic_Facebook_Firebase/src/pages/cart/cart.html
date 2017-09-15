@@ -15,71 +15,33 @@
                     </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content padding>     
+<ion-content class="content">     
   
   
 
     
     <button ng-click="checkout()" class="button button-positive button-block ">Check Out</button>
+                            <ion-list>                  
+                            <ion-item *ngFor="let cart of cart | async">
 
+                                    <ion-thumbnail item-start>
+                                            <img src="{{cart.item_image}}" onerror="this.src='assets/img/champagne.png'">
+                                           <button ion-button clear item-end>Eliminar</button>
+                                    </ion-thumbnail>
+                                    
+                                    <h2 text-wrap>{{cart.item_name}}</h2>
+                                    <p>{{cart.item_description}}</p>
+                                    <p></p>
+                                        <h3>Subtotal:</h3> 
+                                        S/. 10.90
 
+                                    <button ion-button clear item-end><h1>{{cart.item_qty}}</h1></button>
+           
+                            </ion-item>
+                        </ion-list>
+                
 
-
-    <ion-list >
-        <ion-row *ngFor="let cart of cart | async">
-          <ion-col col-4>
-              <img src="{{cart.item_image}}">
-              <p>Quitar</p>
-
-           </ion-col>   
-          <ion-col col-5>
-              <h2>{{cart.item_name}}</h2>
-              <p>Subtotal</p>
-              <p>S/.10.99</p>
-
-          </ion-col>
-          <ion-col col-1>
-              <h1>{{cart.item_qty}}</h1>
-          </ion-col>
-          <ion-col col-1>
-              <ion-buttons right> 
-                  <ion-icon name="ios-arrow-dropright" style="position: relative; font-weight: bold; font-size: 2em;" color="black"> </ion-icon>
-              </ion-buttons>
-          </ion-col>
-
-        </ion-row>
-      </ion-list>
     
-    <!--
-    <ion-list>
-      <ion-item *ngFor="let cart of cart | async">        
-        <img src="{{cart.item_image}}">
-        <p>{{cart.item_name}}</p>      
-        <ion-buttons>      
-            <ion-row>
-                <ion-col width-50 style="text-align: left">
-                    <button ion-button (click)="inc(item.$id)">
-                        <ion-icon name="md-add"></ion-icon>
-                      </button>
-               </ion-col>
-                <ion-col width-50 style="text-align: left">
-                    <button ion-button>{{cart.item_qty}}</button>
-                </ion-col>
-                <ion-col width-50 style="text-align: left">
-                    <button ion-button (click)="dec(item.$id)" >
-                        <ion-icon name="md-remove"></ion-icon>
-                      </button>
-                   </ion-col>
-                   <ion-col width-50 style="text-align: left">
-                      <button ion-button (click)="removeFromCart(item.$id)" ion-button color="danger">
-                          <ion-icon name="md-trash"></ion-icon>
-                        </button>
-                     </ion-col>                    
-              </ion-row>
-         
-        </ion-buttons>
-          
-      </ion-item>
-    </ion-list>-->
+    
   
 </ion-content>

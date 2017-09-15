@@ -1,7 +1,11 @@
 page-home {
+    
     .accordion-list {
         background: color($colors, light);
         //background: white;
+        margin: 0px 0px;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
         height: auto;
     }
     .list .ion-list-header.ng-hide {
@@ -13,22 +17,32 @@ page-home {
         margin-bottom: 4px;
         font-weight: bold!important;
         font-size: 2.1rem!important;
+        margin: 0px 0px;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
     }
     .section-active {
         background: #004F9E;
         color: white;
         font-weight: bold!important;
         font-size: 2.1rem!important;
+        margin: 0px 0px;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
     }
  
     .child {
         background: #e8e7e6;
         color: #FFFFFF;
-        margin-bottom: 4px;
+
+        padding-top:0px !important;
+        padding-bottom:0px !important;
     }
     .child-item {
-        background: #FFFFFF;
-        padding: 10px;
+        background: #FFFFFF;;
+        margin: 0px 0px;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
     }
     .label {
         margin: 0px;
@@ -44,7 +58,14 @@ page-home {
         //box-shadow: 0 0 2px gray;
     }
     
-   
+    .image_header{
+        height: 100%; 
+        width: 100%; 
+        //border: 1px solid #004F9E;
+        //border-radius: 50%;
+        //box-shadow: 0 0 2px gray;
+    }
+    
 
     h2 {  
         color: #111; 
@@ -54,6 +75,7 @@ page-home {
     p{
         color:#968F8F;
     }
-    
+
+
     
 }
