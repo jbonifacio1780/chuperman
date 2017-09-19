@@ -24,7 +24,7 @@ import { Facebook } from '@ionic-native/facebook';
 
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-
+import { Vibration } from '@ionic-native/vibration';
 
 var config = {
       apiKey: "AIzaSyDvrNV62q0xw3s10ugSzHxJ5rF3FMxRnZQ",
@@ -71,6 +71,7 @@ var config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StatusBar,
     SplashScreen,
+    Vibration,
     Facebook    
     ],
 })
