@@ -31,6 +31,7 @@ total_qty : any;
 public carrito: FirebaseListObservable<any>;
 
   constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth) {     
+    try{
     this.afAuth.authState.subscribe(auth => {
     this.fabButtonOpened=false;
     this.cart = this.afd.list('/cart/');
@@ -47,7 +48,8 @@ public carrito: FirebaseListObservable<any>;
      }
     });
   })    
-  }
+  }catch (e){}
+}
 
   toggleSection(i) {         
      this.listado[i].open = !this.listado[i].open;

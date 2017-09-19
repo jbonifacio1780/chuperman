@@ -3,11 +3,8 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
-<<<<<<< HEAD
-=======
 import { LoadingController } from 'ionic-angular';
 
->>>>>>> b179a2336600c43c24e50230f44d64913f6fd82b
 import { CartPage } from '../pages/cart/cart';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -26,7 +23,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   
-  rootPage: any = HomePage;
+  rootPage: any;
   
   pages: Array<{title: string, component: any}>;
   imagen : any;
@@ -96,7 +93,7 @@ export class MyApp {
   async logout(){
     firebase.auth().signOut();
     this.nav.push(LoginPage);
-    window.location.reload();
+    //window.location.reload();
   };
   /* goCart(){
     this.nav.push(CartPage);

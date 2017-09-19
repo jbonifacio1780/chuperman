@@ -25,7 +25,7 @@ export class SignupPage {
     if(this.signupData.password !== this.signupData.passwordRetyped) {
       let alert = this.alertCtrl.create({
         title: 'Error',
-        message: 'Your password and your re-entered password does not match each other.',
+        message: 'Las claves no coinciden',
         buttons: ['OK']
       });
       alert.present();

@@ -19,17 +19,49 @@
 </ion-content>-->
 
 <ion-content class="background">
-  <hr>
+
+    <div padding id="cloud-layer">
+        
+           <ion-row>
+             <ion-col>
+                <img src="assets/img/Logo3-sin-fondo.png" class = "image"/>
+             </ion-col>
+           </ion-row>
+        
+           <ion-row>
+             <ion-col>
+        
+                 <ion-item>
+                    <ion-input type="text" placeholder="Usuario"></ion-input>
+                 </ion-item>
+        
+                 <ion-item>
+                    <ion-input type="password" placeholder="Clave"></ion-input>
+                 </ion-item>
+  
+             </ion-col>
+           </ion-row>
+        
+           <ion-row>
+              <ion-col>
+                  <button ion-button block outline color="light" (click)="login()" >Login</button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <button ion-button block color="facebook" (click)="facebookLogin()">
+                  <ion-icon name="logo-facebook"></ion-icon> Login con facebook
+                </button>
+              </ion-col>
+            </ion-row>
+            
+         </div>
+         <button class="bottom" ion-button clear full color="light" (click)="signup()">¿Aún no tienes una cuenta? ¡Registrate!</button>
+  <!--<hr>
     <img src="assets/img/Logo3-sin-fondo.png" class = "image"/>
   <hr>
         
-	<ion-card>
-      
-       
-		<ion-card-header>
-
-		</ion-card-header>
-		<ion-card-content>
+    <div>
 			<ion-list no-line>
 				<ion-item>
 					<ion-input type="text" placeholder="Usuario"></ion-input>
@@ -37,7 +69,7 @@
 				<ion-item>
 					<ion-input type="password" placeholder="Clave"></ion-input>
 				</ion-item>
-				<!--<a>Forgot your login detail? <b>Get help signing in</b></a>-->
+
 				<button ion-button block outline color="light">Login</button>
 				
 				<button ion-button block color="facebook" (click)="loginFacebook()">
@@ -47,7 +79,8 @@
 
 
 			</ion-list>
-		</ion-card-content>
-	</ion-card>
-	<button class="bottom" ion-button clear full color="light">¿Aún no tienes una cuenta? ¡Registrate!</button>
+
+    </div>	-->
 </ion-content>
+
+
