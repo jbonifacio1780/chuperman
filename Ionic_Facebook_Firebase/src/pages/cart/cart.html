@@ -20,8 +20,8 @@
 
     
     <button ng-click="checkout()" class="button button-positive button-block ">Check Out</button>
-    <ion-list>
-    <!--<ion-item-sliding>  -->          
+    <!--<ion-list>
+    <ion-item-sliding>       
       <ion-item *ngFor="let cart of cart | async">
 
               <ion-thumbnail item-start>
@@ -38,39 +38,50 @@
               <button ion-button clear item-end><h1>{{cart.item_qty}}</h1></button>
       </ion-item>
 
-       <!-- 
-        <ion-item-options side="right">
-          <button ion-button color="danger">
-            <ion-icon name="remove"></ion-icon>
-            Email
-          </button>
-        </ion-item-options>
-    </ion-item-sliding>-->
-
       
-    </ion-list>
+    </ion-list> -->    
 
-    
-  
-    
-                        
+
+        <ion-list>                  
+        <ion-item *ngFor="let cart of carts | async">
+
+                <ion-thumbnail item-start>
+                        <img src="{{cart.item_image}}" onerror="this.src='assets/img/champagne.png'">
+                        <button ion-button clear item-end (click)="presentActionSheet(cart)">
+                          <ion-icon name="ios-trash-outline" style="font-size:25px"></ion-icon> 
+                          &nbsp;Eliminar</button>
+                </ion-thumbnail>
+                
+                <h2 text-wrap>{{cart.item_name}}</h2>
+                <p>{{cart.item_description}}</p>
+                <p></p>
+                    <h3>Subtotal:</h3> 
+                    S/. {{cart.item_price}}      
+                    <p>
+                <button ion-button clear item-end style="font-size:26px;" (click)="incrementQty(cart)"><ion-icon name="add-circle" ></ion-icon></button>
+                <button ion-button clear item-end><h1>{{cart.item_qty}}</h1></button>
+                <button ion-button clear item-end style="font-size:26px;" (click)="decrementQty(cart)"><ion-icon name="remove-circle" ></ion-icon></button>
+              </p>                                  
+
+        </ion-item>
+    </ion-list>
 </ion-content>
 
 <ion-footer class="pieCart">
-
-        <ion-item class="resumen">
-          <ion-row>
-            <ion-col >Costo por Delivery:</ion-col>
-            <ion-col>S/. 0.00</ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col >Costo total:</ion-col>
-            <ion-col>S/. 500.00</ion-col>
-          </ion-row>
-          <ion-row>
-            <p></p>
-              <button ion-button full class="confirmar">CONFIRMAR</button>
-          </ion-row>
-        </ion-item>
-
-</ion-footer>
+    
+            <ion-item class="resumen">
+              <ion-row>
+                <ion-col >Costo por Delivery:</ion-col>
+                <ion-col>S/. 0.00</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col >Costo total:</ion-col>
+                <ion-col>S/. 500.00</ion-col>
+              </ion-row>
+              <ion-row>
+                <p></p>
+                  <button ion-button full class="confirmar">CONFIRMAR</button>
+              </ion-row>
+            </ion-item>
+    
+    </ion-footer>
