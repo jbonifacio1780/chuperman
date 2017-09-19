@@ -3,8 +3,11 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
+<<<<<<< HEAD
+=======
 import { LoadingController } from 'ionic-angular';
 
+>>>>>>> b179a2336600c43c24e50230f44d64913f6fd82b
 import { CartPage } from '../pages/cart/cart';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -28,8 +31,8 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
   imagen : any;
   usuario: any;
-  total_qty : any;
-  public carrito: FirebaseListObservable<any>;
+/*   total_qty : any;
+  public carrito: FirebaseListObservable<any>; */
 
   constructor(/*private vibration: Vibration,*/public loadingCtrl: LoadingController,platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, 
     private splashscreen: SplashScreen, public afd: AngularFireDatabase ) {
@@ -46,13 +49,13 @@ export class MyApp {
         this.rootPage = HomePage;
         this.imagen = auth.photoURL;
         this.usuario = auth.displayName;
-        this.carrito = this.afd.list('/cart/'+auth.uid);
+        /* this.carrito = this.afd.list('/cart/'+auth.uid);
         this.carrito.subscribe(carrrr =>{
           this.total_qty=0;
           for (var i = 0; i < carrrr.length; i++) {
             this.total_qty += carrrr[i].item_qty;            
           }                    
-        });        
+        });  */       
       }
       catch(e){}
       
@@ -95,7 +98,7 @@ export class MyApp {
     this.nav.push(LoginPage);
     window.location.reload();
   };
-  goCart(){
-    this.nav.push(CartPage,{});
-  };
+  /* goCart(){
+    this.nav.push(CartPage);
+  }; */
 }

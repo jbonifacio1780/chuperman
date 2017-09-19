@@ -4,18 +4,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-  </ion-buttons>
-   
-    
-    <!-- <ion-buttons right>
-        
-      <button ion-button (click)="navigateCart()">
+  </ion-buttons>       
+    <ion-buttons right>        
+      <button ion-button (click)="goCart()">
         <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">
-          <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
+          <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:10px;" color="danger">{{total_qty}}</ion-badge> 
         </ion-icon>
       </button>       
-    </ion-buttons> -->
-
+    </ion-buttons> 
   </ion-navbar>
 </ion-header>
 
