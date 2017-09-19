@@ -3,11 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
-<<<<<<< HEAD
-=======
 import { LoadingController } from 'ionic-angular';
-
->>>>>>> b179a2336600c43c24e50230f44d64913f6fd82b
 import { CartPage } from '../pages/cart/cart';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
