@@ -109,9 +109,12 @@ page-home {
         position: absolute;
         top: 36%;
         font-size: 1.8em;
-        width: 100%;
+        width:100%;
         font-weight: bold;
         color: #fff;
+        padding-left:20px!important;
+   
+        
       }
     
       .card-subtitle {
@@ -120,6 +123,9 @@ page-home {
         top: 52%;
         width: 100%;
         color: #fff;
+      }
+      ion-label{
+        white-space: normal!important;
       }
     
 

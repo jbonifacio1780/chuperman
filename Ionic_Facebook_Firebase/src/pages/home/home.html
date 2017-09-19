@@ -59,7 +59,7 @@
                       <img src="{{child.image}}" (click)="cartadd(child, i,j)" class="image" onerror="this.src='assets/img/champagne.png'" />   
               </ion-thumbnail>
                  
-                <h2>{{ child.nombre }}</h2>
+                <h2 text-wrap>{{ child.nombre }}</h2>
                 <p text-lowercase>{{ child.descripcion }}</p>
                  <button ion-button outline item-end (click)="cartadd(child, i,j)">S/. {{ child.precio }}</button>
               </ion-item>
