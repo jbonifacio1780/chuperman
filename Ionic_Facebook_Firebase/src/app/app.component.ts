@@ -12,7 +12,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
 
 import * as firebase from 'firebase/app';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,8 +26,10 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
   imagen : any;
   usuario: any;
+  total_qty : any;
+  public carrito: FirebaseListObservable<any>;
 
-  constructor(platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, private splashscreen: SplashScreen, public afd: AngularFireDatabase ) {
+  constructor(platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, private splashscreen: SplashScreen, public afd: AngularFireDatabase ) {            
     this.afAuth.authState.subscribe(auth => {
       //this.imagen = "";
       //this.usuario="";
@@ -40,6 +42,13 @@ export class MyApp {
         this.rootPage = HomePage;
         this.imagen = auth.photoURL;
         this.usuario = auth.displayName;
+        this.carrito = this.afd.list('/cart/'+auth.uid);
+        this.carrito.subscribe(carrrr =>{
+          this.total_qty=0;
+          for (var i = 0; i < carrrr.length; i++) {
+            this.total_qty += carrrr[i].item_qty;            
+          }                    
+        });        
       }
       catch(e){}
     });
@@ -67,5 +76,8 @@ export class MyApp {
     firebase.auth().signOut();
     this.nav.push(LoginPage);
     window.location.reload();
-  }
+  };
+  goCart(){
+    this.nav.push(CartPage,{});
+  };
 }

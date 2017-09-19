@@ -7,16 +7,14 @@
   </ion-buttons>
    
     
-    <ion-buttons right>
-     <!--  <button (click)="logout()" clear ion-button>
-        Logout
-      </button>  -->     
+    <!-- <ion-buttons right>
+        
       <button ion-button (click)="navigateCart()">
         <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">
           <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
         </ion-icon>
       </button>       
-    </ion-buttons>
+    </ion-buttons> -->
 
   </ion-navbar>
 </ion-header>
@@ -61,7 +59,7 @@
                  
                 <h2>{{ child.nombre }}</h2>
                 <p text-lowercase>{{ child.descripcion }}</p>
-                 <button ion-button outline item-end (click)="addToCart(child)">S/. {{ child.precio }}</button>
+                 <button ion-button outline item-end (click)="cartadd(child, i,j)">S/. {{ child.precio }}</button>
               </ion-item>
             </ion-list-header>
           </ion-list>
@@ -92,8 +90,8 @@
   
   <div id="ListBackdrop" *ngIf="fabButtonOpened==true" ></div>
 </ion-content>
-<ion-fab left bottom #fab>
-    <button ion-fab (click)="openFabButton()">
+ <!--<ion-fab top right #fab>
+    <button ion-fab (click)="goCart()">
         <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">
             <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
         </ion-icon>
@@ -108,4 +106,4 @@
       </button>
       <ion-label class="fablabelfamily">Family</ion-label>
     </ion-fab-list>
-  </ion-fab>
+  </ion-fab> -->
