@@ -39,15 +39,29 @@ cart-home {
 
     }
 
-    .card{
-        padding-top:0px !important;
-        padding-bottom:0px !important;
-    }
     .content{
         padding-top:0px !important;
         padding-bottom:0px !important;
     }
-    .ion-header{
-        background-color: #111;
+
+    .card-header-ios{
+        color: white!important;
     }
+
+
+    .item.resumen {
+        color: white!important;
+        background-color: #004F9E!important;
+    }
+    .button.confirmar {
+        background-color:#1789F3!important;
+    }
+
+    .pieCart{
+        background-color: #004F9E!important;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        
+    }
+
 }

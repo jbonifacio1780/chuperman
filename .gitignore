@@ -2,3 +2,4 @@
 *.ts
 Ionic_Facebook_Firebase/src/app/app.component.ts
 Ionic_Facebook_Firebase/package.json
+Ionic_Facebook_Firebase/.sourcemaps/main.js.map

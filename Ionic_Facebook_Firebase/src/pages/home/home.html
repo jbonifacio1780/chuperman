@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="dark">
+  <ion-navbar >
     <ion-buttons start left>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -33,58 +33,40 @@
 
        <ion-list class="accordion-list">
         
-        <ion-list-header  *ngFor="let item of listado; let i = index" no-lines no-padding>
+        <ion-list  *ngFor="let item of listado; let i = index" no-lines no-padding>
                 
-          <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">            
-          <!--  <ion-content style="background-image:url('{{item.image_cat}}')" ></ion-content>-->
+          <!--<button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">            
            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
             <ion-icon item-right name="ios-remove-circle-outline" *ngIf="item.open"></ion-icon>
-          {{ item.categoria }}
+          </button>-->
 
-            
 
-          </button>
+          <ion-card ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+              <img src="{{item.image_cat}}"/>
+              <div class="card-title">{{ item.categoria }}</div>
+          </ion-card>
 
-     
+
+        <!--Lista Hijos-->
           <ion-list *ngIf="item.children && item.open" no-lines>
-            <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
+            <ion-list *ngFor="let child of item.children; let j = index" no-padding>
               <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
                   <ion-thumbnail item-start>
-                      <img src="{{child.image}}" (click)="addToCart(child)" class="image" onerror="this.src='assets/img/champagne.png'" />   
+                      <img src="{{child.image}}" (click)="cartadd(child, i,j)" class="image" onerror="this.src='assets/img/champagne.png'" />   
               </ion-thumbnail>
                  
                 <h2>{{ child.nombre }}</h2>
                 <p text-lowercase>{{ child.descripcion }}</p>
                  <button ion-button outline item-end (click)="cartadd(child, i,j)">S/. {{ child.precio }}</button>
               </ion-item>
-            </ion-list-header>
+            </ion-list>
           </ion-list>
-
-<!--
-         <ion-grid *ngIf="item.children && item.open" no-lines>
-            <ion-row *ngFor="let child of item.children; let j = index" no-padding justify-content-between>
-              
-              <ion-col *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
-
-
-                  <img src="{{child.image}}" (click)="navigate()" class="image" onerror="this.src='assets/img/champagne.png'" />    
-                  
-                  <button ion-button outline item-end (click)="addToCart(child,j+1)">S/. {{ child.precio }}</button>
-
-               </ion-col>   
-              <ion-col ion-item detail-none class="child-item" text-wrap col-6>
-                  <h2>{{ child.nombre }}</h2>
-                  <p>{{ child.descripcion }}</p>
-
-              </ion-col>
-               
-            </ion-row>
-          </ion-grid> -->
-
-        </ion-list-header>
+        <!--Lista Hijos-->
+            
+        </ion-list>
       </ion-list>
   
-  <div id="ListBackdrop" *ngIf="fabButtonOpened==true" ></div>
+<div id="ListBackdrop" *ngIf="fabButtonOpened==true" ></div>
 </ion-content>
  <!--<ion-fab top right #fab>
     <button ion-fab (click)="goCart()">
