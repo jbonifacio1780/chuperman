@@ -27,17 +27,26 @@ public productos: FirebaseListObservable<any>;
 public image_x="";
 public cart: FirebaseListObservable<any>;
 public listado : any[];
-
+total_qty : any;
+public carrito: FirebaseListObservable<any>;
 
   constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth) {     
+    this.afAuth.authState.subscribe(auth => {
     this.fabButtonOpened=false;
-
     this.cart = this.afd.list('/cart/');
     this.productos = this.afd.list('/productos');             
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
       console.log(queriedItems);       
-   });    
+   });
+   this.carrito = this.afd.list('/cart/'+auth.uid);
+   this.carrito.subscribe(carrrr =>{
+     this.total_qty=0;
+     for (var i = 0; i < carrrr.length; i++) {
+       this.total_qty += carrrr[i].item_qty;            
+     }
+    });
+  })    
   }
 
   toggleSection(i) {         
