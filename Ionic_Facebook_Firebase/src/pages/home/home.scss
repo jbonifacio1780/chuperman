@@ -3,14 +3,13 @@ page-home {
     .accordion-list {
         background: color($colors, light);
         //background: white;
-        margin: 0px 0px;
         padding-top:0px !important;
         padding-bottom:0px !important;
-        height: auto;
+        padding-right:0px !important;
+        padding-left:0px !important;
     }
-    .list .ion-list-header.ng-hide {
-        line-height: 0px;
-      }
+
+     /* 
     .section {
         //background: darkgrey;
         color: black;
@@ -29,26 +28,47 @@ page-home {
         margin: 0px 0px;
         padding-top:0px !important;
         padding-bottom:0px !important;
-    }
+    }*/
  
+    .scroll-content{
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+    }
+    .item-md.item-block .item-inner
+    {
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+    }
+    element.style{
+        padding-top:20px !important;
+    }
+
     .child {
         background: #e8e7e6;
         color: #FFFFFF;
 
         padding-top:0px !important;
         padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
     }
     .child-item {
         background: #FFFFFF;;
-        margin: 0px 0px;
         padding-top:0px !important;
         padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
     }
+    
     .label {
         margin: 0px;
     }
     .list {
-        margin-bottom: 4px;
+        margin-bottom: 0px;
     }
     .image{
         height: auto; 
@@ -75,6 +95,33 @@ page-home {
     p{
         color:#968F8F;
     }
+
+    ion-card {
+        position: absolute;
+        text-align: center;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+      }
+    
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 1.8em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+      }
+    
+      .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 52%;
+        width: 100%;
+        color: #fff;
+      }
+    
 
     
     

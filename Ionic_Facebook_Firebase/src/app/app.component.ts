@@ -3,6 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { LoadingController } from 'ionic-angular';
 
 import { CartPage } from '../pages/cart/cart';
 import { HomePage } from '../pages/home/home';
@@ -10,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { OrdersPage } from '../pages/orders/orders';
 import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
+//import { Vibration } from '@ionic-native/vibration';
 
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -27,11 +29,13 @@ export class MyApp {
   imagen : any;
   usuario: any;
 
-  constructor(platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, private splashscreen: SplashScreen, public afd: AngularFireDatabase ) {
+  constructor(/*private vibration: Vibration,*/public loadingCtrl: LoadingController,platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, 
+    private splashscreen: SplashScreen, public afd: AngularFireDatabase ) {
     this.afAuth.authState.subscribe(auth => {
       //this.imagen = "";
       //this.usuario="";
-
+      
+      this.presentLoading();
       try
       {
       if (!auth)
@@ -42,21 +46,35 @@ export class MyApp {
         this.usuario = auth.displayName;
       }
       catch(e){}
+      
+      
+     //this.vibration.vibrate(1000);
+
     });
     platform.ready().then(() => {
-      //statusBar.styleDefault();
       splashscreen.hide();
     });
+
+    
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Productos', component: HomePage },
-      { title: 'Carrito', component: CartPage  },      
+      //{ title: 'Carrito', component: CartPage  },      
       { title: 'Mis Pedidos', component: OrdersPage },
       { title: 'Configuración', component: SettingsPage },
       { title: 'Soporte', component: SupportPage }      
     ];
   }
+
+  presentLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "¡Espere por favor!",
+      duration: 500
+    });
+    loader.present();
+  }
+
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
