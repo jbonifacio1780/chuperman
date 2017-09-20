@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, ActionSheetController, Platf
 
 import { Facebook } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login'
+import {CheckOutPage} from '../checkout/checkout'
 
 /* import * as firebase from 'firebase/app'; */
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -24,6 +25,7 @@ import 'rxjs/add/operator/map';
     public userid:any;
     carrito: any;
     key: any;
+    currentPrice: any;
 
     constructor
     (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public actionSheetCtrl: ActionSheetController,public platform: Platform, ) {
@@ -31,6 +33,10 @@ import 'rxjs/add/operator/map';
       this.carts = this.afd.list('/cart/'+this.userid+'/');
       this.carts.subscribe(nuevo =>{
         console.log(nuevo);
+        this.currentPrice=0;
+        for (var i = 0; i < nuevo.length; i++) {
+          this.currentPrice += nuevo[i].item_price;            
+        }
       });
     }
 
@@ -139,4 +145,8 @@ import 'rxjs/add/operator/map';
       });
       prompt.present();
     };
+
+    gotoCheckOut(){
+      this.navCtrl.push(CheckOutPage,{});
+    }; 
   }
