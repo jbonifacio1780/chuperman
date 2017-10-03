@@ -43,12 +43,12 @@
                 <ion-col>Free</ion-col>
               </ion-row>
               <ion-row>
-                <ion-col> Costo total:</ion-col>
-                <ion-col> S/. 500.00</ion-col>
+                <ion-col >Costo total:</ion-col>
+                <ion-col>{{ currentPrice | currency:'PEN':true:'1.2-2'}}</ion-col>
               </ion-row>
               <ion-row>
                 <p></p>
-                  <button ion-button full class="confirmar">CONFIRMAR</button>
+                  <button ion-button full class="confirmar" (click)="gotoCheckOut()">CONFIRMAR</button>
               </ion-row>
             </ion-item>
     

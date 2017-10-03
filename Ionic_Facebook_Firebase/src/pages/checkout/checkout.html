@@ -12,7 +12,35 @@
 
 </ion-header>
 
-
+ 
 <ion-content padding>
+
+    <!-- Address -->
+    <ion-list radio-group [(ngModel)]="dir">
+      <ion-list-header>
+        Direcciones
+      </ion-list-header>      
+      <ion-item *ngFor="let direc of direcciones | async">
+        <ion-label>{{direc.address}}<br>
+        
+        {{direc.reference}}</ion-label>
+        <ion-radio value="{{direc.$key}}"></ion-radio>
+      </ion-item>              
+    </ion-list>    
+
+    <!-- Payment Options -->
+    <ion-list radio-group [(ngModel)]="pago">
+        <ion-list-header>
+          Payments
+        </ion-list-header>      
+        <ion-item *ngFor="let item of payments">
+          <ion-label>{{item.name}}</ion-label>
+          <ion-radio value="{{item.id}}"></ion-radio>
+        </ion-item>              
+      </ion-list>
+
+    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,dir)">
+      PAGAR
+    </button>
 
 </ion-content>
