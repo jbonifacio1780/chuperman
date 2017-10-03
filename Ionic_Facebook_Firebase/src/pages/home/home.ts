@@ -33,7 +33,7 @@ total_qty : any;
 public carrito: FirebaseListObservable<any>;
 
 
-  constructor(public vibration: Vibration,private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth) 
+  constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth) 
   {     
     try{
     this.afAuth.authState.subscribe(auth => {
@@ -51,6 +51,14 @@ public carrito: FirebaseListObservable<any>;
        this.total_qty += carrrr[i].item_qty;            
      }
     });
+
+    this.afd.database.ref('/users/').once("value", function(snapshot) {    
+      if( snapshot.hasChild(firebase.auth().currentUser.uid) == true){          
+      }
+      else{
+        snapshot.child(firebase.auth().currentUser.uid).ref.set({email:"", telephone:"", nombres:"", apellidos:"", pin:""})
+      }
+    })
   })    
   }catch (e){}
   //this.vibration.vibrate(1000);
@@ -81,10 +89,6 @@ public carrito: FirebaseListObservable<any>;
       }
     }
 
-    vibratex()
-    {
-      this.vibration.vibrate(1000);
-    }
         //Add to Cart
         cartadd(item, nivel1, nivel2) {          
           this.afd.database.ref('/cart').child(firebase.auth().currentUser.uid).once("value", function(snapshot) {    

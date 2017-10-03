@@ -18,29 +18,29 @@ import * as firebase from 'firebase/app';
     email:any;
     imagen:any;
     Usuario:any;
+    nombre:any;
+    apellido:any;
+    pin:any;
 
     constructor(public navCtrl: NavController, public NavParams: NavParams,  public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController ) {
-      this.userid= afAuth.auth.currentUser.uid;
-      this.afd.database.ref('/users/').once("value", function(snapshot) {    
-        if( snapshot.hasChild(firebase.auth().currentUser.uid) == true){
-        }
-        else{
-          snapshot.child(firebase.auth().currentUser.uid).ref.set({email:firebase.auth().currentUser.email,telephone:""})
-        }
-      })
-      
-      this.address = this.afd.list('/users/'+firebase.auth().currentUser.uid+'/address'); 
+      try{
+      this.afAuth.authState.subscribe(auth => {      
+      this.address = this.afd.list('/users/'+firebase.auth().currentUser.uid+'/xaddress/'); 
       this.address.subscribe(lista =>{
         console.log(lista);
-      });
-      
-      this.users = this.afd.list('/users/'+firebase.auth().currentUser.uid); 
-      this.users.subscribe(lista =>{
-        this.telephone = lista[1].$value
-        this.email = lista[2].$value;       
+      });      
+      this.users = this.afd.list('/users/'+firebase.auth().currentUser.uid);     
+      this.users.subscribe(lista =>{       
+        this.apellido = lista[0].$value;
+        this.email = lista[1].$value;
+        this.nombre = lista[2].$value;
+        this.pin = lista[3].$value;
+        this.telephone = lista[4].$value;
       });        
       this.imagen = afAuth.auth.currentUser.photoURL;
       this.Usuario= afAuth.auth.currentUser.displayName;    
+    })    
+  }catch (e){}
     }
     
     Nuevo() {
@@ -54,18 +54,8 @@ import * as firebase from 'firebase/app';
             
           },
           {
-            name: 'nickname',
-            placeholder: 'NickName'
-            
-          },
-          {
-            name: 'phone',
-            placeholder: 'phone'
-           
-          },
-          {
-            name: 'pin',
-            placeholder: 'pin'
+            name: 'reference',
+            placeholder: 'reference'
             
           }
         ],
@@ -100,19 +90,9 @@ import * as firebase from 'firebase/app';
             value: address.address
           },
           {
-            name: 'nickname',
-            placeholder: 'NickName',
-            value: address.nickname
-          },
-          {
-            name: 'phone',
-            placeholder: 'phone',
-            value: address.phone
-          },
-          {
-            name: 'pin',
-            placeholder: 'pin',
-            value: address.pin
+            name: 'reference',
+            placeholder: 'reference',
+            value: address.reference
           }
         ],
         buttons: [
@@ -147,7 +127,7 @@ import * as firebase from 'firebase/app';
             }
           },
           {
-            text: 'Save',
+            text: 'Eliminar',
             handler: () => {
               this.DeleteRecord(address);
               //console.log(data);
@@ -161,9 +141,7 @@ import * as firebase from 'firebase/app';
     SaveEditar(data,address){
       this.address.update(address.$key,{
         address:data.address,
-        nickname: data.nickname,
-        phone: data.phone,
-        pin:data.pin
+        reference : data.reference
       }).then(data=>{
         console.log("Actualizado");
       }, error => {
@@ -182,22 +160,19 @@ import * as firebase from 'firebase/app';
     NewRecord(data){
       this.address.push({
         address:data.address,
-        nickname: data.nickname,
-        phone: data.phone,
-        pin:data.pin
+        reference : data.reference
       }).then(data=>{
         console.log("Registrado");
       }, error => {
         console.log(error);
       });      
-    };
-    nuevodato(){
-      this.afd.database.ref('/users/').once("value", function(snapshot) {    
-        if( snapshot.hasChild(firebase.auth().currentUser.uid) == true){
-        }
-        else{
-          snapshot.child(firebase.auth().currentUser.uid).ref.set({email:firebase.auth().currentUser.email,telephone:""})
-        }
-      })
+    }
+    
+    updateData(nombre,apellido,telefono,email,pin){
+      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {nombres:nombre});      
+      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {apellidos:apellido});      
+      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {telephone:telefono});      
+      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {email:email});      
+      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {pin:pin});      
     }
 }

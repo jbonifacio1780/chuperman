@@ -29,6 +29,8 @@ import 'rxjs/add/operator/map';
 
     constructor
     (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public actionSheetCtrl: ActionSheetController,public platform: Platform, ) {
+      try{
+        this.afAuth.authState.subscribe(auth => {
       this.userid= afAuth.auth.currentUser.uid;
       this.carts = this.afd.list('/cart/'+this.userid+'/');
       this.carts.subscribe(nuevo =>{
@@ -38,6 +40,8 @@ import 'rxjs/add/operator/map';
           this.currentPrice += nuevo[i].item_price;            
         }
       });
+    })    
+  }catch (e){}
     }
 
     inc(id){

@@ -12,30 +12,24 @@
 
 </ion-header>
 
-
+ 
 <ion-content padding>
-   <!--Address Header-->
-   <label ng-click="addManipulation()" class="item item-input  item ic-selected" >
-      <a class="icon icon-right ion-ios-location" style="margin-right: 10px;" ></a>
-      Address
-      <i  class="icon icon-right ion-android-add-circle" style="font-size: larger ;margin-left: 10px;"></i>
-    </label>
-
 
     <!-- Address -->
-    <!-- <ion-list ng-repeat="item in addresses" > 
-        <ion-radio name="addr_group" ng-value="item.$id" ng-model="$parent.address_choice">
-          <a class="icon icon-right ion-ios-location"></a>
-          {{item.nickname}} <br/>
-          {{item.address}} <br/>
-          Pin : {{item.pin}}<br/>
-          Phone : {{item.phone}}
-        </ion-radio>
-    </ion-list>
- -->
+    <ion-list radio-group [(ngModel)]="dir">
+      <ion-list-header>
+        Direcciones
+      </ion-list-header>      
+      <ion-item *ngFor="let direc of direcciones | async">
+        <ion-label>{{direc.address}}<br>
+        
+        {{direc.reference}}</ion-label>
+        <ion-radio value="{{direc.$key}}"></ion-radio>
+      </ion-item>              
+    </ion-list>    
 
     <!-- Payment Options -->
-    <ion-list radio-group>
+    <ion-list radio-group [(ngModel)]="pago">
         <ion-list-header>
           Payments
         </ion-list-header>      
@@ -45,8 +39,8 @@
         </ion-item>              
       </ion-list>
 
-    <button ion-button large full color="secondary" round>
-      PAY
+    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,dir)">
+      PAGAR
     </button>
 
 </ion-content>
