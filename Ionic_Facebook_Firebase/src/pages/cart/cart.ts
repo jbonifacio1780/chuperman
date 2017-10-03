@@ -36,7 +36,6 @@ import 'rxjs/add/operator/map';
 
     inc(id){
       console.log(id.$key);
-    
       this.afd.database.ref('/cart').child(this.userid).once("value", function(snapshot) {
         if( snapshot.hasChild(id.$key) == true ){
 
@@ -62,7 +61,9 @@ import 'rxjs/add/operator/map';
         console.log("Else Loop");
       }, error => {
         console.log(error);
-      });}
+      });
+      navigator.vibrate(50);
+    }
     }
 
     incrementQty(carrito) {      
@@ -74,6 +75,7 @@ import 'rxjs/add/operator/map';
       }, error => {
         console.log(error);
       });
+      navigator.vibrate(50);
     };
 
     DeleteItem(carrito) {      
@@ -83,6 +85,7 @@ import 'rxjs/add/operator/map';
       }, error => {
         console.log(error);
       });
+      navigator.vibrate(50);
     };
 
     presentActionSheet(carrito) {

@@ -35,23 +35,19 @@
         
         <ion-list  *ngFor="let item of listado; let i = index" no-lines no-padding>
                 
-          <!--<button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">            
-           <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
-            <ion-icon item-right name="ios-remove-circle-outline" *ngIf="item.open"></ion-icon>
-          </button>-->
 
 
-          <ion-card ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-              <img src="{{item.image_cat}}"/>
-              <div class="card-title">{{ item.categoria }}</div>
-          </ion-card>
+        <ion-card ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+            <img src="{{item.image_cat}}"/>
+            <div class="card-title">{{ item.categoria }}</div>
+        </ion-card>
 
 
         <!--Lista Hijos-->
           <ion-list *ngIf="item.children && item.open" no-lines>
             <ion-list *ngFor="let child of item.children; let j = index" no-padding>
               <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
-                  <ion-thumbnail item-start>
+              <ion-thumbnail item-start>
                       <img src="{{child.image}}" (click)="cartadd(child, i,j)" class="image" onerror="this.src='assets/img/champagne.png'" />   
               </ion-thumbnail>
                  

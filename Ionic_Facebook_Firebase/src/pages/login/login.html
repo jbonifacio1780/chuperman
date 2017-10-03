@@ -32,13 +32,13 @@
              <ion-col>
         
                  <ion-item>
-                    <ion-input type="text" placeholder="Usuario"></ion-input>
+                    <ion-input type="text" placeholder="Usuario" [(ngModel)]="loginData.email"></ion-input>
                  </ion-item>
         
                  <ion-item>
-                    <ion-input type="password" placeholder="Clave"></ion-input>
+                    <ion-input type="password" placeholder="Clave"  [(ngModel)]="loginData.password"></ion-input>
                  </ion-item>
-  
+                 
              </ion-col>
            </ion-row>
         
