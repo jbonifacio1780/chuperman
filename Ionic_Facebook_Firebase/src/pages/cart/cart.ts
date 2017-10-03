@@ -3,7 +3,7 @@ import { NavController, NavParams, AlertController, ActionSheetController, Platf
 
 import { Facebook } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login'
-import {CheckOutPage} from '../checkout/checkout'
+import { CheckoutPage} from '../checkout/checkout'
 
 /* import * as firebase from 'firebase/app'; */
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -154,6 +154,6 @@ import 'rxjs/add/operator/map';
     };
 
     gotoCheckOut(){
-      this.navCtrl.push(CheckOutPage,{});
+      this.navCtrl.push(CheckoutPage,{});
     }; 
   }
