@@ -113,7 +113,4 @@ public carrito: FirebaseListObservable<any>;
             navigator.vibrate(50);
           });
         };
-
-
-    
 }

@@ -15,14 +15,10 @@
  
 <ion-content padding>
 
-  
     <!-- Address -->
-    <ion-list radio-group [(ngModel)]="dir">       
+    <ion-list radio-group [(ngModel)]="dir">
       <ion-list-header>
-          Direcciones
-              <button ion-button color="primary" round style="width: 20%; padding: 2px; text-align:right;" (click)="Nuevo()">
-                  <ion-icon ios="ios-add" md="md-add"></ion-icon>
-                </button>       
+        Direcciones
       </ion-list-header>      
       <ion-item *ngFor="let direc of direcciones | async">
         <ion-label>{{direc.address}}<br>
