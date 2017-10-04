@@ -19,12 +19,7 @@ import * as firebase from 'firebase/app';
             this.afd.database.ref('/orders/').orderByChild('UserId').startAt(firebase.auth().currentUser.uid).endAt(firebase.auth().currentUser.uid)
             .once('value', function (snapshot) {             
              console.log(snapshot);
-            });
-
-          /* this.ordenes = this.afd.list('/users/'+firebase.auth().currentUser.uid+'/xaddress/'); 
-          this.ordenes.subscribe(lista =>{
-            console.log(lista);                    
-          });  */                  
+            });                          
         })       
 
       }catch (e){}   
