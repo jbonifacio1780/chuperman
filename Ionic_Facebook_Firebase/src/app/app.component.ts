@@ -9,9 +9,11 @@ import { CartPage } from '../pages/cart/cart';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { OrdersPage } from '../pages/orders/orders';
+import { CheckoutPage } from '../pages/checkout/checkout';
 import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
 import { Vibration } from '@ionic-native/vibration';
+
 
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';

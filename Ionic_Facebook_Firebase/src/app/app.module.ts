@@ -11,7 +11,7 @@ import { CartPage } from '../pages/cart/cart';
 import { OrdersPage } from '../pages/orders/orders';
 import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
-import { CheckOutPage } from '../pages/checkout/checkout'
+import { CheckoutPage } from '../pages/checkout/checkout'
 
 
 
@@ -47,7 +47,7 @@ var config = {
     OrdersPage,
     SettingsPage,
     SupportPage,
-    CheckOutPage
+    CheckoutPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +68,7 @@ var config = {
     OrdersPage,
     SettingsPage,
     SupportPage,
-    CheckOutPage
+    CheckoutPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
