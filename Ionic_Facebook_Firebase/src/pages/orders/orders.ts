@@ -12,24 +12,19 @@ import * as firebase from 'firebase/app';
   export class OrdersPage {
     public ordenes: FirebaseListObservable<any>;
     public hijo: FirebaseListObservable<any>;
-
+   // public valores : any[];
     constructor(public navCtrl: NavController, public NavParams: NavParams,public afd: AngularFireDatabase, public afAuth: AngularFireAuth ) {
         try{
           this.afAuth.authState.subscribe(auth => {      
-            this.ordenes = this.afd.list('/orders/'+firebase.auth().currentUser.uid)
+           /*   this.ordenes = this.afd.list('/orders/')
             this.ordenes.subscribe(orden => {
               console.log("1"+orden);                            
-            })    
-            this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).once("value", function(snapshot) {
-              console.log(snapshot.val());              
-              console.log(snapshot.numChildren());
-            });        
-            /* this.afd.database.ref('/orders/'+firebase.auth().currentUser.uid+'/1/')
-            .once('value', function (snapshot) {             
+            }) */     
+            firebase.database().ref('/orders/').once("child_added", function(snapshot) {
+             /* snapshot.ref.once("child_added", function(snapshot2) { */
              console.log(snapshot.val());             
-             this.ordenes = snapshot.val();
-             console.log(this.ordenes);             
-            }); */                          
+           /*  }) */              
+            });                                
         })       
       }catch (e){}   
     }

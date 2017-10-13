@@ -12,7 +12,7 @@ import { OrdersPage } from '../pages/orders/orders';
 import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
 import { CheckoutPage } from '../pages/checkout/checkout'
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -75,7 +75,8 @@ var config = {
     StatusBar,
     SplashScreen,
     Vibration,
-    Facebook    
+    Facebook,
+    ScreenOrientation    
     ],
 })
 export class AppModule {}
