@@ -14,6 +14,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
 import { Vibration } from '@ionic-native/vibration';
 
+import { GooglemapPage } from '../pages/Googlemap/Googlemap';
+import { MapComponent } from '../components/map/map';
 
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -45,9 +47,14 @@ export class MyApp {
       if (!auth)
         this.rootPage = LoginPage;        
       else
-        this.rootPage = HomePage;
-        this.imagen = auth.photoURL;
-        this.usuario = auth.displayName;
+
+      this.rootPage = GooglemapPage;
+      
+        //this.rootPage = HomePage;
+        //this.imagen = auth.photoURL;
+        //this.usuario = auth.displayName;
+
+
         /* this.carrito = this.afd.list('/cart/'+auth.uid);
         this.carrito.subscribe(carrrr =>{
           this.total_qty=0;
