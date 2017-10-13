@@ -11,7 +11,7 @@ import { CartPage } from '../pages/cart/cart';
 import { OrdersPage } from '../pages/orders/orders';
 import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
-import { CheckOutPage} from '../pages/checkout/checkout'
+import { CheckOutPage } from '../pages/checkout/checkout'
 
 
 
@@ -28,7 +28,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Vibration } from '@ionic-native/vibration';
 
 var config = {
-      apiKey: "AIzaSyDvrNV62q0xw3s10ugSzHxJ5rF3FMxRnZQ",
+      apiKey: "AIzaSyBro1XKpMh30r2ApCnXiLMKbVmMQlWtaBo",
       authDomain: "chuperman-81140.firebaseapp.com",
       databaseURL: "https://chuperman-81140.firebaseio.com",
       projectId: "chuperman-81140",
