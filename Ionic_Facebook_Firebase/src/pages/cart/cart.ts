@@ -89,7 +89,7 @@ import 'rxjs/add/operator/map';
     DeleteItem(carrito) {      
       this.key = carrito.$key;                  
       this.afd.database.ref('/cart').child(this.userid).child(this.key).remove().then(data=>{
-        console.log("eliinado");
+        console.log("eliminado");
       }, error => {
         console.log(error);
       });

@@ -11,17 +11,26 @@ import * as firebase from 'firebase/app';
   })
   export class OrdersPage {
     public ordenes: FirebaseListObservable<any>;
+    public hijo: FirebaseListObservable<any>;
 
     constructor(public navCtrl: NavController, public NavParams: NavParams,public afd: AngularFireDatabase, public afAuth: AngularFireAuth ) {
         try{
           this.afAuth.authState.subscribe(auth => {      
-          
-            this.afd.database.ref('/orders/').orderByChild('UserId').startAt(firebase.auth().currentUser.uid).endAt(firebase.auth().currentUser.uid)
+            this.ordenes = this.afd.list('/orders/'+firebase.auth().currentUser.uid)
+            this.ordenes.subscribe(orden => {
+              console.log("1"+orden);                            
+            })    
+            this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).once("value", function(snapshot) {
+              console.log(snapshot.val());              
+              console.log(snapshot.numChildren());
+            });        
+            /* this.afd.database.ref('/orders/'+firebase.auth().currentUser.uid+'/1/')
             .once('value', function (snapshot) {             
-             console.log(snapshot);
-            });                          
+             console.log(snapshot.val());             
+             this.ordenes = snapshot.val();
+             console.log(this.ordenes);             
+            }); */                          
         })       
-
       }catch (e){}   
     }
 }

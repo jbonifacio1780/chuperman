@@ -23,4 +23,11 @@
     </ion-header>
     <ion-content padding> 
         <p>Mi historial ordenes</p>
+
+        <ion-list *ngFor="let orden of ordenes | async">         
+          <ion-item>                             
+              <p><span>Address :</span>&nbsp;{{orden.userId}}</p>              
+          </ion-item>
+        </ion-list>
+
     </ion-content>
