@@ -13,7 +13,13 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
 import { CheckoutPage } from '../pages/checkout/checkout'
 
+import { GooglemapPage } from '../pages/Googlemap/Googlemap'
 
+import { GeocoderService } from '../providers/map/geocoder.service';
+import { MapService } from '../providers/map/map.service';
+
+
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,6 +28,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 
+import { MapComponent } from '../components/map/map';
 
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -47,7 +54,9 @@ var config = {
     OrdersPage,
     SettingsPage,
     SupportPage,
-    CheckoutPage
+    CheckoutPage,
+    GooglemapPage,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -68,14 +77,18 @@ var config = {
     OrdersPage,
     SettingsPage,
     SupportPage,
-    CheckoutPage
+    CheckoutPage,
+    GooglemapPage
   ],
   providers: [
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     StatusBar,
     SplashScreen,
     Vibration,
-    Facebook    
+    Facebook,
+    Geolocation,
+    GeocoderService,
+    MapService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
     ],
 })
 export class AppModule {}
