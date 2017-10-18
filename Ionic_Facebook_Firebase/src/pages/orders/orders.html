@@ -6,7 +6,7 @@
                         </button>
                       </ion-buttons>
                         <ion-title>
-                          My Orders
+                          Mis Pedidos
                         </ion-title>
                         
                        <!--  <ion-buttons right>    
@@ -19,9 +19,8 @@
         </ion-navbar>
     </ion-header>
     <ion-content padding> 
-        <p>Mi historial ordenes</p>
-
-        <ion-list *ngFor="let orden of ordenes | async">         
+        
+        <ion-list *ngFor="let orden of (ordenes | async)?.slice().reverse()">         
           <ion-item>                             
               <p><span>Orden de Compra :</span>&nbsp;{{orden.$key}}</p>              
               <p><span>Fecha Pedido :</span>&nbsp;{{orden.Fecha}}</p>
