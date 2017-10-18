@@ -102,6 +102,34 @@ import 'rxjs/add/operator/map';
       });
     };
 
+    RemoveAll() {
+      const alert = this.alertCtrl.create({
+        title: 'Eliminar todo',
+        message: '¿Está usted seguro(a) de eliminar el carrito?',
+        buttons: [
+          {
+            text: 'No',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Si',
+            handler: () => {
+              this.afd.database.ref('/cart').child(this.userid).remove().then(data=>{
+                console.log("eliminado");
+              }, error => {
+                console.log(error);
+              });
+              console.log('Buy clicked');
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
     presentActionSheet(carrito) {
       let actionSheet = this.actionSheetCtrl.create({
         title: 'Confirmar Eliminar',

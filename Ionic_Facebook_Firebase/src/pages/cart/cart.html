@@ -1,14 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Mi Carrito</ion-title>
-    <ion-buttons right>
-      <button ion-button>
-      <!-- <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
-      <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
-      </ion-icon>-->
-      Checkout
-      </button>
-    </ion-buttons>
+
+
+    <ion-buttons right>        
+        <button ion-button (click)="RemoveAll()">
+          <ion-icon name="ios-trash-outline" style="position: relative; font-size: 2em;" color="white">
+            
+          </ion-icon>
+        </button>       
+      </ion-buttons> 
+
+
     </ion-navbar>
 </ion-header>
 <ion-content>

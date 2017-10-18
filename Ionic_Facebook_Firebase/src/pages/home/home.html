@@ -32,9 +32,9 @@
 </p>-->
 
 
-       <ion-list class="accordion-list">
+       <ion-list class="accordion-list" no-lines>
         
-        <ion-list  *ngFor="let item of listado; let i = index" no-padding>
+        <ion-list  *ngFor="let item of listado; let i = index" no-padding no-lines>
                 
           <!--<button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">            
            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
