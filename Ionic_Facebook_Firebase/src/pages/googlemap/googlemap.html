@@ -7,7 +7,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>googlemap</ion-title>
+
+    <ion-title>@Chuperman Delivery</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -21,10 +22,25 @@
  <!--<div id="map" (onMapReady)="onMapReady();" (onMapIdle)="onMapIdle()" (onDragStart)="onDragStart()"> </div> -->
 
   <div id="centerMarker" *ngIf="localized"></div>
-  <ion-fab left bottom>
-    <button ion-fab color="primary" (click)="goToConfirmation()"><ion-icon name="ios-call"></ion-icon></button>
-  </ion-fab>
-  <ion-fab right bottom>
+  
+
+  <!--<button ion-button large full color="secondary" round (click)="goToConfirmation()">Seleccionar Dirección</button> -->
+
+  <!--<ion-fab right bottom>
     <button ion-fab color="primary" (click)="openModal()"><ion-icon name="search"></ion-icon></button>
-  </ion-fab>
+  </ion-fab>-->
 </ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+
+      <button ion-button full icon-right color="primary" class="BotonSinBorde" (click)="goToConfirmation()">
+        Seleccionar Ubicación
+        <ion-icon name="send"></ion-icon>
+      </button>
+
+  
+
+  </ion-toolbar>
+</ion-footer>

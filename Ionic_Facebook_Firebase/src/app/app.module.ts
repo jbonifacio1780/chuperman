@@ -17,7 +17,7 @@ import { GooglemapPage } from '../pages/Googlemap/Googlemap'
 
 import { GeocoderService } from '../providers/map/geocoder.service';
 import { MapService } from '../providers/map/map.service';
-
+ 
 
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -78,7 +78,8 @@ var config = {
     SettingsPage,
     SupportPage,
     CheckoutPage,
-    GooglemapPage
+    GooglemapPage,
+    MapComponent
   ],
   providers: [
     StatusBar,

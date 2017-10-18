@@ -14,3 +14,21 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+ion-menu{
+    ion-content{
+     //background-color:#FCD100 !important;
+     background-color:#FCD100 !important;
+    }
+    .botonmenu{
+        //background-color: #FCD100 !important;
+        background-color:#FCD100 !important;
+        //color: #FCD100!important;
+    }
+    .ion-item-header{
+        //background-color: #FCD100 !important;
+        background-color:#004F9E !important;
+        color: white!important;
+        //color: #FCD100!important;
+    }
+
+   }

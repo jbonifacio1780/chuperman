@@ -1,5 +1,6 @@
 <ion-header>
-  <ion-navbar >
+  <ion-navbar>
+      <ion-label color="light" (click)="GotoMap()">{{direccion}}</ion-label>
     <ion-buttons start left>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -33,7 +34,7 @@
 
        <ion-list class="accordion-list">
         
-        <ion-list  *ngFor="let item of listado; let i = index" no-lines no-padding>
+        <ion-list  *ngFor="let item of listado; let i = index" no-padding>
                 
           <!--<button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">            
            <ion-icon item-right name="ios-add-circle-outline" *ngIf="!item.open"></ion-icon>
@@ -48,16 +49,18 @@
 
 
         <!--Lista Hijos-->
-          <ion-list *ngIf="item.children && item.open" no-lines>
+          <ion-list *ngIf="item.children && item.open" >
             <ion-list *ngFor="let child of item.children; let j = index" no-padding>
               <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
                   <ion-thumbnail item-start>
                       <img src="{{child.image}}" (click)="cartadd(child, i,j)" class="image" onerror="this.src='assets/img/champagne.png'" />   
-              </ion-thumbnail>
+                  </ion-thumbnail>
                  
-                <h2 text-wrap>{{ child.nombre }}</h2>
-                <p text-lowercase>{{ child.descripcion }}</p>
-                 <button ion-button outline item-end (click)="cartadd(child, i,j)">S/. {{ child.precio }}</button>
+                  <h2 text-wrap (click)="cartadd(child, i,j)">{{ child.nombre }}</h2>
+                  <p text-lowercase (click)="cartadd(child, i,j)">{{ child.descripcion }}</p>
+                  <button ion-button outline item-end (click)="cartadd(child, i,j)">S/. {{ child.precio }}</button>
+
+                  
               </ion-item>
             </ion-list>
           </ion-list>
@@ -68,20 +71,22 @@
   
 <div id="ListBackdrop" *ngIf="fabButtonOpened==true" ></div>
 </ion-content>
- <!--<ion-fab top right #fab>
-    <button ion-fab (click)="goCart()">
-        <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">
-            <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
-        </ion-icon>
-     </button>
-    <ion-fab-list side="top">
-      <button ion-fab (click)="goCart()">
-          <img src="assets/friend_add.png"> 
-      </button>
-      <ion-label class="fablabelfriend">Friend</ion-label>
-      <button ion-fab>
-              <img src="assets/family_add.png">
-      </button>
-      <ion-label class="fablabelfamily">Family</ion-label>
-    </ion-fab-list>
-  </ion-fab> -->
+ 
+<!--<ion-footer class="pieCart">
+  
+          <ion-item class="resumen" no-lines no-border>
+            <ion-row>
+              <ion-col >Costo por Delivery:</ion-col>
+              <ion-col>S/. 0.00</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col >Costo total:</ion-col>
+              <ion-col>{{ currentPrice | currency:'PEN':true:'1.2-2'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <p></p>
+                <button ion-button full color="secondary">CONFIRMAR</button>
+            </ion-row>
+          </ion-item>
+  
+  </ion-footer>-->

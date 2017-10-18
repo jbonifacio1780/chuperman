@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
-import { LoginPage } from '../login/login'
-import { CartPage } from '../cart/cart'
+import { LoginPage } from '../login/login';
+import { CartPage } from '../cart/cart';
 import { NavController , NavParams } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -10,7 +10,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 
 import { DetailsPage } from '../details/details';
-
+import { GooglemapPage } from '../Googlemap/Googlemap';
+import { MapComponent } from '../../components/map/map';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -24,7 +25,7 @@ import { Vibration } from '@ionic-native/vibration';
 })
 export class HomePage {
   fabButtonOpened: Boolean;
-
+public direccion: string="";
 public productos: FirebaseListObservable<any>;
 public image_x="";
 public cart: FirebaseListObservable<any>;
@@ -42,7 +43,10 @@ public carrito: FirebaseListObservable<any>;
     this.productos = this.afd.list('/productos');             
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
-      console.log(queriedItems);       
+      console.log(queriedItems);   
+    this.direccion=navParams.get("direccion");    
+
+    console.log(this.direccion);
    });
    this.carrito = this.afd.list('/cart/'+auth.uid);
    this.carrito.subscribe(carrrr =>{
@@ -84,6 +88,10 @@ public carrito: FirebaseListObservable<any>;
       else{
         alert("Debe seleccionar al menos un producto");
       }
+    }
+
+    GotoMap(){
+      this.navCtrl.setRoot(GooglemapPage,{});
     }
 
     openFabButton(){

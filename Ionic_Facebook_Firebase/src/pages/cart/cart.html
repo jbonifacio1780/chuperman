@@ -13,7 +13,7 @@
 </ion-header>
 <ion-content>
   
-  <ion-list>
+  <ion-list no-padding>
         <ion-item *ngFor="let cart of carts | async">
           <ion-thumbnail item-start>
             <img src="{{cart.item_image}}" onerror="this.src='assets/img/champagne.png'">
@@ -25,7 +25,7 @@
           <p>{{cart.item_description}}</p>
           <p></p>
           <h3>Subtotal:</h3> 
-          {{cart.item_price}}      
+          S/. {{cart.item_price}}.00 
           <p>
           <button ion-button clear item-end style="font-size:26px;" (click)="incrementQty(cart)"><ion-icon name="add-circle" ></ion-icon></button>
           <button ion-button clear item-end><h1>{{cart.item_qty}}</h1></button>
@@ -37,7 +37,7 @@
 
 <ion-footer class="pieCart">
     
-            <ion-item class="resumen">
+            <ion-item class="resumen" no-lines no-border>
               <ion-row>
                 <ion-col >Costo por Delivery:</ion-col>
                 <ion-col>S/. 0.00</ion-col>
@@ -48,7 +48,7 @@
               </ion-row>
               <ion-row>
                 <p></p>
-                  <button ion-button full class="confirmar" (click)="gotoCheckOut()">CONFIRMAR</button>
+                  <button ion-button full color="secondary" (click)="gotoCheckOut()">CONFIRMAR</button>
               </ion-row>
             </ion-item>
     
