@@ -26,6 +26,7 @@ import 'rxjs/add/operator/map';
     carrito: any;
     key: any;
     currentPrice: any;
+    qty : any;
 
     constructor
     (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public actionSheetCtrl: ActionSheetController,public platform: Platform, ) {
@@ -36,8 +37,10 @@ import 'rxjs/add/operator/map';
       this.carts.subscribe(nuevo =>{
         console.log(nuevo);
         this.currentPrice=0;
+        this.qty=0;
         for (var i = 0; i < nuevo.length; i++) {
-          this.currentPrice += nuevo[i].item_price;            
+          this.currentPrice += nuevo[i].item_price;  
+          this.qty += nuevo[i].item_qty;          
         }
       });
     })    
@@ -95,6 +98,34 @@ import 'rxjs/add/operator/map';
       });
     };
 
+    RemoveAll() {
+      const alert = this.alertCtrl.create({
+        title: 'Eliminar todo',
+        message: '¿Está usted seguro(a) de eliminar el carrito?',
+        buttons: [
+          {
+            text: 'No',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Si',
+            handler: () => {
+              this.afd.database.ref('/cart').child(this.userid).remove().then(data=>{
+                console.log("eliminado");
+              }, error => {
+                console.log(error);
+              });
+              console.log('Buy clicked');
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
     presentActionSheet(carrito) {
       let actionSheet = this.actionSheetCtrl.create({
         title: 'Confirmar Eliminar',
@@ -151,6 +182,10 @@ import 'rxjs/add/operator/map';
     };
 
     gotoCheckOut(){
+      if (this.qty>0){
       this.navCtrl.push(CheckoutPage,{});
+      }else{
+        alert("Debe tener al menos un producto en el carrito");
+      }
     }; 
   }
