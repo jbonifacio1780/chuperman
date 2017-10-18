@@ -29,7 +29,14 @@ export class MyApp {
   
   rootPage: any;
   
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{
+    title: string;
+    component: any;
+    icon: string;
+    logsOut?: boolean;
+    index?: number;
+    tabComponent?: any;
+  }>;
   imagen : any;
   usuario: any;
 /*   total_qty : any;
@@ -41,7 +48,7 @@ export class MyApp {
       //this.imagen = "";
       //this.usuario="";
       
-      this.presentLoading();
+      //this.presentLoading();
       try
       {
       if (!auth)
@@ -78,10 +85,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Productos', component: HomePage },
+      { title: 'Productos', component: HomePage, index: 1, icon: 'pricetag' },
       //{ title: 'Carrito', component: CartPage  },      
-      { title: 'Mis Pedidos', component: OrdersPage },
-      { title: 'Configuración', component: SettingsPage }
+      { title: 'Mis Pedidos', component: OrdersPage, index: 2, icon: 'basket'  },
+      { title: 'Configuración', component: SettingsPage, index: 3, icon: 'settings'  }
       //{ title: 'Soporte', component: SupportPage }      
     ];
   }

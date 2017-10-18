@@ -185,11 +185,22 @@ import 'rxjs/add/operator/map';
       prompt.present();
     };
 
+    AlertCart() {
+      const alert = this.alertCtrl.create({
+        title: 'Advertencia',
+        subTitle: 'Debe escoger al menos un producto',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }
+
     gotoCheckOut(){
       if (this.qty>0){
       this.navCtrl.push(CheckoutPage,{direccion: this.direccion});
       }else{
-        alert("Debe tener al menos un producto en el carrito");
+        this.AlertCart();
+        
+        //alert("Debe tener al menos un producto en el carrito");
       }
     }; 
   }

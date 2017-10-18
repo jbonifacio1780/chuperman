@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login';
 import { CartPage } from '../cart/cart';
-import { NavController , NavParams } from 'ionic-angular';
+import { NavController , NavParams, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 /* import { Http } from '@angular/http'; */
@@ -34,7 +34,7 @@ total_qty : any;
 public carrito: FirebaseListObservable<any>;
 
 
-  constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth) 
+  constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth, public alertCtrl:AlertController) 
   {     
     try{
     this.afAuth.authState.subscribe(auth => {
@@ -86,9 +86,21 @@ public carrito: FirebaseListObservable<any>;
       this.navCtrl.push(CartPage,{direccion: this.direccion});
       }
       else{
-        alert("Debe seleccionar al menos un producto");
+        //alert("Debe seleccionar al menos un producto");
+        this.AlertCart();
       }
     }
+
+
+    AlertCart() {
+      const alert = this.alertCtrl.create({
+        title: 'Advertencia',
+        subTitle: 'Debe seleccionar al menos un producto',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }
+
 
     GotoMap(){
       this.navCtrl.setRoot(GooglemapPage,{});
