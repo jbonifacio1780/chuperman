@@ -85,10 +85,12 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Productos', component: HomePage, index: 1, icon: 'pricetag' },
+      { title: 'Ubicación', component: GooglemapPage, index: 1, icon: 'map' },
+      { title: 'Productos', component: HomePage, index: 2, icon: 'pricetag' },
       //{ title: 'Carrito', component: CartPage  },      
-      { title: 'Mis Pedidos', component: OrdersPage, index: 2, icon: 'basket'  },
-      { title: 'Configuración', component: SettingsPage, index: 3, icon: 'settings'  }
+      { title: 'Mis Pedidos', component: OrdersPage, index: 3, icon: 'basket'  },
+      { title: 'Términos y Condiciones', component: SettingsPage, index: 4, icon: 'information-circle'  },
+      { title: 'Configuración', component: SettingsPage, index: 5, icon: 'settings'  }
       //{ title: 'Soporte', component: SupportPage }      
     ];
   }

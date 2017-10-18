@@ -37,6 +37,14 @@ public carrito: FirebaseListObservable<any>;
   constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth, public alertCtrl:AlertController) 
   {     
     try{
+
+      this.direccion=navParams.get("direccion");        
+      if(this.direccion==null||this.direccion=="")
+      {
+        this.AlertMap();
+        
+      }
+      
     this.afAuth.authState.subscribe(auth => {
     this.fabButtonOpened=false;
     this.cart = this.afd.list('/cart/');
@@ -44,7 +52,7 @@ public carrito: FirebaseListObservable<any>;
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
       console.log(queriedItems);   
-    this.direccion=navParams.get("direccion");        
+    
     console.log(this.direccion);
     
    });
@@ -101,6 +109,15 @@ public carrito: FirebaseListObservable<any>;
       alert.present();
     }
 
+    AlertMap() {
+      const alert = this.alertCtrl.create({
+        title: 'Advertencia',
+        subTitle: 'Debe seleccionar una dirección',
+        buttons: ['Ok']
+      });
+      alert.present();
+      this.GotoMap();
+    }
 
     GotoMap(){
       this.navCtrl.setRoot(GooglemapPage,{});
