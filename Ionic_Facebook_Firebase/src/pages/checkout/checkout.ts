@@ -73,11 +73,15 @@ public pais : string="";
           else {
             this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
             this.carts.subscribe(nuevo =>{
-              
+              let total = 0;
+              for (var z = 0; z < nuevo.length; z++) {                 
+                total=total+nuevo[z].item_price;
+              }
               this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
                 Fecha:new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString(),
                 Estado: "Solicitado",
                 Direccion:this.direccion,
+                total: total,
               })
                 for (var i = 0; i < nuevo.length; i++) {                   
                     this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
@@ -94,6 +98,7 @@ public pais : string="";
                         'status':'SOLICITADO'
                     })                   
                 }
+                //Mensaje de confirmacion de # Orden Pedido
                 this.carts.remove();
                 this.gotoHome();
             });
