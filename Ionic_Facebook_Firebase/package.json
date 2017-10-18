@@ -81,8 +81,5 @@
     "platforms": [
       "android"
     ]
-  },
-  "devDependencies": {
-    "ionic": "3.13.1"
   }
 }

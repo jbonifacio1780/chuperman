@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-
+//import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { CartPage } from '../pages/cart/cart';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -36,7 +36,7 @@ export class MyApp {
   public carrito: FirebaseListObservable<any>; */
 
   constructor(public vibration: Vibration,public loadingCtrl: LoadingController,platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, 
-    private splashscreen: SplashScreen, public afd: AngularFireDatabase ) {
+    private splashscreen: SplashScreen, public afd: AngularFireDatabase) {
     this.afAuth.authState.subscribe(auth => {
       //this.imagen = "";
       //this.usuario="";
@@ -71,6 +71,7 @@ export class MyApp {
     });
     platform.ready().then(() => {
       splashscreen.hide();
+      //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     });
 
     

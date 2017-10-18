@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
-import { LoginPage } from '../login/login'
-import { CartPage } from '../cart/cart'
+import { LoginPage } from '../login/login';
+import { CartPage } from '../cart/cart';
 import { NavController , NavParams } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -10,7 +10,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 
 import { DetailsPage } from '../details/details';
-
+import { GooglemapPage } from '../Googlemap/Googlemap';
+import { MapComponent } from '../../components/map/map';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -82,6 +83,10 @@ public carrito: FirebaseListObservable<any>;
 
     goCart(){
       this.navCtrl.push(CartPage,{});
+    }
+
+    GotoMap(){
+      this.navCtrl.setRoot(GooglemapPage,{});
     }
 
     openFabButton(){

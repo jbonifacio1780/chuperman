@@ -12,7 +12,7 @@ import { HomePage } from '../home/home';
   })
 export class CheckoutPage {
       
-
+////
   
 payments : any;
 public direcciones: FirebaseListObservable<any>; 
@@ -67,7 +67,7 @@ public cantidad: any;
             this.carts.subscribe(nuevo =>{
                 for (var i = 0; i < nuevo.length; i++) {
                   //this.afd.database.ref('/orders/').  
-                  this.orders.$ref.ref.child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set({                        
+                  this.orders.$ref.ref.child(this.cantidad+1).child(i.toString()).set({                        
                         product: nuevo[i].item_name,
                         produc_img : nuevo[i].item_image,
                         produc_des : nuevo[i].item_description,
