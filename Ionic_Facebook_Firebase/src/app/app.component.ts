@@ -48,11 +48,11 @@ export class MyApp {
         this.rootPage = LoginPage;        
       else
 
-      this.rootPage = GooglemapPage;
+        this.rootPage = GooglemapPage;
       
         //this.rootPage = HomePage;
-        //this.imagen = auth.photoURL;
-        //this.usuario = auth.displayName;
+        this.imagen = auth.photoURL;
+        this.usuario = auth.displayName;
 
 
         /* this.carrito = this.afd.list('/cart/'+auth.uid);
@@ -88,7 +88,7 @@ export class MyApp {
   presentLoading() {
     let loader = this.loadingCtrl.create({
       content: "¡Espere por favor!",
-      duration: 500
+      duration: 200
     });
     loader.present();
   }

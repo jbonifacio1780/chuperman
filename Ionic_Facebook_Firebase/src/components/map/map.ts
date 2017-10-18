@@ -9,7 +9,7 @@ import { MapService } from '../../providers/map/map.service';
 
 @Component({
   selector: 'it-map',
-  template: `<div #map id="gmaps" data-tap-disabled="true"></div>`
+  template: '<div #map id="gmaps" data-tap-disabled="true"></div>'
 })
 
 export class MapComponent implements AfterViewInit {

@@ -78,7 +78,8 @@ var config = {
     SettingsPage,
     SupportPage,
     CheckoutPage,
-    GooglemapPage
+    GooglemapPage,
+    MapComponent
   ],
   providers: [
     StatusBar,

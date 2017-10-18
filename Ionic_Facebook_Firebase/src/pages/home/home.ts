@@ -24,7 +24,7 @@ import { Vibration } from '@ionic-native/vibration';
 })
 export class HomePage {
   fabButtonOpened: Boolean;
-
+public direccion: string="";
 public productos: FirebaseListObservable<any>;
 public image_x="";
 public cart: FirebaseListObservable<any>;
@@ -42,7 +42,10 @@ public carrito: FirebaseListObservable<any>;
     this.productos = this.afd.list('/productos');             
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
-      console.log(queriedItems);       
+      console.log(queriedItems);   
+    this.direccion=navParams.get("direccion");    
+
+    console.log(this.direccion);
    });
    this.carrito = this.afd.list('/cart/'+auth.uid);
    this.carrito.subscribe(carrrr =>{

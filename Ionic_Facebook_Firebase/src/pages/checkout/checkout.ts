@@ -88,7 +88,8 @@ public cantidad: any;
     }
 
     gotoHome(){
-        this.navCtrl.push(HomePage);
+        //this.navCtrl.push(HomePage);
+        this.navCtrl.setRoot(HomePage);
         location.reload();               
       }; 
       
