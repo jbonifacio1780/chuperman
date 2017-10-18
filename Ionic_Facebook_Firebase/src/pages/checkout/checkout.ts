@@ -35,7 +35,7 @@ public cantidad: any;
               console.log(lista);                    
             });                    
           })
-          this.orders = this.afd.list('/orders/');
+          this.orders = this.afd.list('/orders/'+firebase.auth().currentUser.uid);
           this.orders.subscribe(total =>{
             console.log('orders',total);
             console.log(total.length);
@@ -65,20 +65,24 @@ public cantidad: any;
           else {
             this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
             this.carts.subscribe(nuevo =>{
-                for (var i = 0; i < nuevo.length; i++) {
-                  //this.afd.database.ref('/orders/').  
-                  this.orders.$ref.ref.child(this.cantidad+1).child(i.toString()).set({                        
-                        product: nuevo[i].item_name,
-                        produc_img : nuevo[i].item_image,
-                        produc_des : nuevo[i].item_description,
-                        price:nuevo[i].item_price,
-                        qty : nuevo[i].item_qty,
-                        payment : payment,
-                        adress_id: address,
-                        cliente: firebase.auth().currentUser.displayName,
-                        userId: firebase.auth().currentUser.uid,
-                        status:'SOLICITADO'
-                    })
+              this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
+                Fecha:new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString(),
+                Estado: "Solicitado"
+              })
+                for (var i = 0; i < nuevo.length; i++) {                   
+                    this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
+                      {                                            
+                        'product': nuevo[i].item_name,
+                        'produc_img' : nuevo[i].item_image,
+                        'produc_des' : nuevo[i].item_description,
+                        'price':nuevo[i].item_price,
+                        'qty' : nuevo[i].item_qty,
+                        'payment' : payment,
+                        'adress_id': address,
+                        'cliente': firebase.auth().currentUser.displayName,
+                        'userId': firebase.auth().currentUser.uid,
+                        'status':'SOLICITADO'
+                    })                   
                 }
                 this.carts.remove();
                 this.gotoHome();

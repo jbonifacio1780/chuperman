@@ -9,16 +9,13 @@
                           My Orders
                         </ion-title>
                         
-                        <ion-buttons right>
-                         <!--  <button (click)="logout()" clear ion-button>
-                            Logout
-                          </button>  -->     
+                       <!--  <ion-buttons right>    
                           <button ion-button>
                             <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
                               <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
                             </ion-icon>
                           </button>       
-                        </ion-buttons>
+                        </ion-buttons> -->
         </ion-navbar>
     </ion-header>
     <ion-content padding> 
@@ -26,7 +23,10 @@
 
         <ion-list *ngFor="let orden of ordenes | async">         
           <ion-item>                             
-              <p><span>Address :</span>&nbsp;{{orden.price}}</p>              
+              <p><span>Orden de Compra :</span>&nbsp;{{orden.$key}}</p>              
+              <p><span>Fecha Pedido :</span>&nbsp;{{orden.Fecha}}</p>
+              <p><span>Estado :</span>&nbsp;{{orden.Estado}}</p>
+
           </ion-item>
         </ion-list>
 

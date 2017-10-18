@@ -78,7 +78,12 @@ public carrito: FirebaseListObservable<any>;
     }
 
     goCart(){
+      if (this.total_qty>0){
       this.navCtrl.push(CartPage,{});
+      }
+      else{
+        alert("Debe seleccionar al menos un producto");
+      }
     }
 
     openFabButton(){
