@@ -38,7 +38,7 @@ public carrito: FirebaseListObservable<any>;
   {     
     try{
 
-      this.direccion=navParams.get("direccion");        
+      this.direccion=navParams.get("direccion");
       if(this.direccion==null||this.direccion=="")
       {
         this.AlertMap();
@@ -112,11 +112,18 @@ public carrito: FirebaseListObservable<any>;
     AlertMap() {
       const alert = this.alertCtrl.create({
         title: 'Advertencia',
-        subTitle: 'Debe seleccionar una dirección',
-        buttons: ['Ok']
+        message: 'Debe seleccionar una ubicación',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+             this.GotoMap();
+            }
+          }
+        ]
       });
       alert.present();
-      this.GotoMap();
+      
     }
 
     GotoMap(){

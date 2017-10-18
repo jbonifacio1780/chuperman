@@ -98,18 +98,39 @@ public pais : string="";
                         'status':'SOLICITADO'
                     })                   
                 }
-                //Mensaje de confirmacion de # Orden Pedido
+
                 this.carts.remove();
-                this.gotoHome();
+                
+
+                //Mensaje de confirmacion de # Orden Pedido
+                this.AlertNewOrder(this.cantidad+1);
+                
             });
           }
 
     }
 
+    AlertNewOrder(qty) {
+      const alert = this.alertCtrl.create({
+        title: 'Pedido Exitoso' ,
+        message: 'Se generó el N° de Pedido '+ qty,
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              this.gotoHome();
+            }
+          }
+        ]
+      });
+      alert.present();
+      
+    }
+
     gotoHome(){
         //this.navCtrl.push(HomePage);
-        this.navCtrl.setRoot(HomePage);
-        location.reload();               
+        this.navCtrl.setRoot(HomePage,{direccion:this.direccion});
+        //location.reload();               
       }; 
       
       Nuevo() {

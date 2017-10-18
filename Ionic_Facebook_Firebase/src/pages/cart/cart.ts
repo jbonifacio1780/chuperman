@@ -77,6 +77,7 @@ import 'rxjs/add/operator/map';
       if (currentQty > 0){
       this.afd.database.ref('/cart').child(this.userid).child(this.key).update({item_qty : currentQty,item_price:currentPrecio*currentQty}).then(data=>{
         console.log("Else Loop");
+        navigator.vibrate(50);
       }, error => {
         console.log(error);
       });}
@@ -88,6 +89,7 @@ import 'rxjs/add/operator/map';
       var currentPrecio = carrito.item_price/carrito.item_qty;  
       this.afd.database.ref('/cart').child(this.userid).child(this.key).update({item_qty : currentQty,item_price:currentPrecio*currentQty}).then(data=>{
         console.log("Else Loop");
+        navigator.vibrate(50);
       }, error => {
         console.log(error);
       });
