@@ -81,8 +81,8 @@ export class MyApp {
       { title: 'Productos', component: HomePage },
       //{ title: 'Carrito', component: CartPage  },      
       { title: 'Mis Pedidos', component: OrdersPage },
-      { title: 'Configuración', component: SettingsPage },
-      { title: 'Soporte', component: SupportPage }      
+      { title: 'Configuración', component: SettingsPage }
+      //{ title: 'Soporte', component: SupportPage }      
     ];
   }
 
