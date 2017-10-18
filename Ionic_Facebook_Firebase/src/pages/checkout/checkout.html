@@ -19,17 +19,22 @@
     <!-- Address -->
     <ion-list radio-group [(ngModel)]="dir">       
       <ion-list-header>
-          Direcciones
-              <button ion-button color="primary" round style="width: 20%; padding: 2px; text-align:right;" (click)="Nuevo()">
+          Dirección
+            <!--   <button ion-button color="primary" round style="width: 20%; padding: 2px; text-align:right;" (click)="Nuevo()">
                   <ion-icon ios="ios-add" md="md-add"></ion-icon>
-                </button>       
+                </button>  -->      
       </ion-list-header>      
-      <ion-item *ngFor="let direc of direcciones | async">
+     <!--  <ion-item *ngFor="let direc of direcciones | async">
         <ion-label>{{direc.address}}<br>
         
         {{direc.reference}}</ion-label>
         <ion-radio value="{{direc.$key}}"></ion-radio>
-      </ion-item>              
+      </ion-item>  -->   
+      <ion-item>
+        <ion-label>{{direccion}}</ion-label>               
+        <ion-radio value="{{direccion}}"></ion-radio>
+      </ion-item> 
+
     </ion-list>    
 
     <!-- Payment Options -->

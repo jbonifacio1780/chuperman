@@ -27,16 +27,20 @@ import 'rxjs/add/operator/map';
     key: any;
     currentPrice: any;
     qty : any;
+    direccion : string = "";
 
     constructor
-    (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public actionSheetCtrl: ActionSheetController,public platform: Platform, ) {
+    (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public navParams: NavParams,public actionSheetCtrl: ActionSheetController,public platform: Platform ) {
       try{
-        this.afAuth.authState.subscribe(auth => {
-      this.userid= afAuth.auth.currentUser.uid;
+
+      
+       this.afAuth.authState.subscribe(auth => {
+      this.userid= afAuth.auth.currentUser.uid;      
       this.carts = this.afd.list('/cart/'+this.userid+'/');
       this.carts.subscribe(nuevo =>{
         console.log(nuevo);
         this.currentPrice=0;
+        this.direccion=navParams.get("direccion"); 
         this.qty=0;
         for (var i = 0; i < nuevo.length; i++) {
           this.currentPrice += nuevo[i].item_price;  
@@ -155,7 +159,7 @@ import 'rxjs/add/operator/map';
 
     gotoCheckOut(){
       if (this.qty>0){
-      this.navCtrl.push(CheckoutPage,{});
+      this.navCtrl.push(CheckoutPage,{direccion: this.direccion});
       }else{
         alert("Debe tener al menos un producto en el carrito");
       }

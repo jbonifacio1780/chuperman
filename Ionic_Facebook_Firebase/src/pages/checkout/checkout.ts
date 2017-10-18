@@ -19,7 +19,10 @@ public direcciones: FirebaseListObservable<any>;
 public carts: FirebaseListObservable<any>;
 public orders: FirebaseListObservable<any>;
 public cantidad: any;
-
+public direccion : string = "";
+public direc: string = "";
+public zona: string ="";
+public pais : string="";
 
     constructor(public navCtrl: NavController, public NavParams: NavParams, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController ) {
         try{
@@ -35,6 +38,11 @@ public cantidad: any;
               console.log(lista);                    
             });                    
           })
+          this.direccion = NavParams.get("direccion");
+          [this.direc,this.zona,this.pais] = this.direccion.split(',');
+          console.log(this.direccion);
+          console.log(this.direc,this.zona,this.pais);
+
           this.orders = this.afd.list('/orders/'+firebase.auth().currentUser.uid);
           this.orders.subscribe(total =>{
             console.log('orders',total);
@@ -65,9 +73,11 @@ public cantidad: any;
           else {
             this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
             this.carts.subscribe(nuevo =>{
+              
               this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
                 Fecha:new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString(),
-                Estado: "Solicitado"
+                Estado: "Solicitado",
+                Direccion:this.direccion,
               })
                 for (var i = 0; i < nuevo.length; i++) {                   
                     this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(

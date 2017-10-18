@@ -44,9 +44,9 @@ public carrito: FirebaseListObservable<any>;
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
       console.log(queriedItems);   
-    this.direccion=navParams.get("direccion");    
-
+    this.direccion=navParams.get("direccion");        
     console.log(this.direccion);
+    
    });
    this.carrito = this.afd.list('/cart/'+auth.uid);
    this.carrito.subscribe(carrrr =>{
@@ -83,7 +83,7 @@ public carrito: FirebaseListObservable<any>;
 
     goCart(){
       if (this.total_qty>0){
-      this.navCtrl.push(CartPage,{});
+      this.navCtrl.push(CartPage,{direccion: this.direccion});
       }
       else{
         alert("Debe seleccionar al menos un producto");
