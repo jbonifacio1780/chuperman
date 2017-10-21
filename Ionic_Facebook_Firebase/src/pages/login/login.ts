@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, Platform,AlertController, MenuController } from 'ionic-angular';
+import { NavController, ToastController, Platform,AlertController, MenuController,LoadingController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -27,6 +27,7 @@ export class LoginPage {
     private callNumber: CallNumber,
     private alertCtrl: AlertController,
     private menuCtrl: MenuController,
+    public loadingCtrl : LoadingController
   ) { 
     this.menuCtrl.enable(false);
   }
@@ -38,6 +39,8 @@ export class LoginPage {
     .then(() => console.log('Launched dialer!'))
     .catch(() => console.log('Error launching dialer'));
   }
+    
+  
 
   login() {
     this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
@@ -98,29 +101,55 @@ export class LoginPage {
     return firebase.auth().signOut();    
   }
 
-
-  showConfirm(numberconfirm) {
-    let confirm = this.alertCtrl.create({
-      //title: 'Use this lightsaber?',
-      message: '986 612 683',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Call',
-          handler: () => {
-            this.CallNumero(numberconfirm);
-            console.log('Agree clicked');
-          }
+  resetpass(){
+    let promp = this.alertCtrl.create({
+      title : 'Enter Your E-mail',
+      message : 'A new password will be sent to your email',
+      inputs : [{
+        name: 'recoveremail',
+        placeholder:'you@example.com',
+      },],
+      buttons: [{
+        text : 'Cancel',
+        handler: data => {
+          console.log('cancel click');
         }
-      ]
-    });
-    confirm.present();
+      },
+    {
+      text : 'Submit',
+      handler: data =>{
+
+        let loading =  this.loadingCtrl.create({
+          dismissOnPageChange : true,
+          content : 'reseting your password'
+        });
+        loading.present();
+        
+        firebase.auth().sendPasswordResetEmail(data.recoveremail).then(()=>{
+          loading.dismiss().then(()=>{
+            let alert = this.alertCtrl.create({
+              title:'check your email',
+              subTitle : 'Password reset succesfull',
+              buttons: ['OK']
+            });
+            alert.present();
+          })
+        },Error=>{
+          let alert1 = this.alertCtrl.create({
+            title:'Error reseting password',
+            subTitle : Error.message,
+            buttons: ['OK']
+          });
+          alert1.present();
+        });
+      }
+    }]
+    })
+    promp.present();
+    
   }
+
+ 
 
 
 

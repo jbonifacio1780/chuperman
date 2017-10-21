@@ -190,19 +190,17 @@ import 'rxjs/add/operator/map';
     AlertCart() {
       const alert = this.alertCtrl.create({
         title: 'Advertencia',
-        subTitle: 'Debe escoger al menos un producto',
+        subTitle: 'Debe escoger al menos un producto, el valor minimo de compra es de S/.35',
         buttons: ['Ok']
       });
       alert.present();
     }
 
     gotoCheckOut(){
-      if (this.qty>0){
+      if (this.qty>0 && this.currentPrice>=35){
       this.navCtrl.push(CheckoutPage,{direccion: this.direccion});
       }else{
         this.AlertCart();
-        
-        //alert("Debe tener al menos un producto en el carrito");
-      }
+      }      
     }; 
   }

@@ -5,7 +5,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import * as firebase from 'firebase/app';
 import { HomePage } from '../home/home';
-//import { OrdersPage } from '../orders/orders';
 import { GooglemapPage } from '../Googlemap/Googlemap';
 import { MapComponent } from '../../components/map/map';
 import { OrderResumenPage } from '../order-resumen/order-resumen';
@@ -48,24 +47,20 @@ public pais : string="";
             this.afAuth.authState.subscribe(auth => {      
             this.direcciones = this.afd.list('/users/'+firebase.auth().currentUser.uid+'/xaddress/'); 
             this.direcciones.subscribe(lista =>{
-              //console.log(lista);                    
+                  
             });                    
           })
           this.direccion = NavParams.get("direccion");
           [this.direc,this.zona,this.pais] = this.direccion.split(',');
-          //console.log(this.direccion);
-          //console.log(this.direc,this.zona,this.pais);
 
           this.orders = this.afd.list('/orders/'+firebase.auth().currentUser.uid);
           this.orders.subscribe(total =>{
-            //console.log('orders',total);
-            //console.log(total.length);
             this.cantidad=total.length;
 
           }) 
           this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
           this.carts.subscribe(nuevo =>{
-            //console.log(nuevo);                        
+                   
           });
 
         }catch (e){}        
@@ -79,14 +74,22 @@ public pais : string="";
         alert.present();
       }
 
-    guardarOrder(payment, address){
+    guardarOrder(payment, address, efec){
         if(address==null || payment==null){
             this.presentAlert();                        
           }
           else {
+            let valor=0
+            if (efec>0){
+              valor=efec              
+            }
+            else{
+              valor=0
+            }
             this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
             this.carts.subscribe(nuevo =>{
               let total = 0;
+              
               for (var z = 0; z < nuevo.length; z++) {                 
                 total=total+nuevo[z].item_price;
               }
@@ -95,6 +98,7 @@ public pais : string="";
                 Estado: "Solicitado",
                 Direccion:this.direccion,
                 total: total,
+                PagaEfectivo:valor,
               })
                 for (var i = 0; i < nuevo.length; i++) {                   
                     this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
@@ -113,12 +117,7 @@ public pais : string="";
                 }
 
                 this.carts.remove();
-                
-
-                //Mensaje de confirmacion de # Orden Pedido
-                //this.AlertNewOrder(this.cantidad+1);
                 this.openModalOrdersPage(this.cantidad+1);
-                //this.gotoHome();
             });
           }
 
@@ -143,14 +142,11 @@ public pais : string="";
     }
 
     gotoHome(){
-        //this.navCtrl.push(HomePage);
-        location.reload();
-        this.navCtrl.setRoot(GooglemapPage);
-        
+        this.navCtrl.setRoot(HomePage,{direccion:this.direccion});
+        location.reload();               
       }; 
 
       openModalOrdersPage(qtity): void {
-        //location.reload();
         const OrdersModal = this.modalCtrl.create(OrderResumenPage,{idOrder: qtity});
         OrdersModal.present();
       }
