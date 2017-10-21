@@ -17,7 +17,8 @@
 
   
     <!-- Address -->
-    <ion-list radio-group [(ngModel)]="dir">       
+    <!-- <ion-list radio-group [(ngModel)]="dir">        -->
+        <ion-list>       
       <ion-list-header>
           Dirección
             <!--   <button ion-button color="primary" round style="width: 20%; padding: 2px; text-align:right;" (click)="Nuevo()">
@@ -31,8 +32,9 @@
         <ion-radio value="{{direc.$key}}"></ion-radio>
       </ion-item>  -->   
       <ion-item>
-        <ion-label>{{direccion}}</ion-label>               
-        <ion-radio value="{{direccion}}"></ion-radio>
+        <!--<ion-label>{{direccion}}</ion-label>               
+         <ion-radio value="{{direccion}}"></ion-radio> -->
+         <ion-input type="text" [(ngModel)]="direccion" name="direccion" value="{{direccion}}"></ion-input>
       </ion-item> 
 
     </ion-list>    
@@ -45,22 +47,29 @@
         <ion-item *ngFor="let item of payments">
           <ion-label>{{item.name}}</ion-label>
           <ion-radio value="{{item.id}}"></ion-radio>
-        </ion-item> 
-        <br>
-        <ion-item *ngIf="pago == 'EFECTIVO'">
-          <ion-label>Cuanto Efectivo:</ion-label>
-          <ion-input type="text" [(ngModel)]="efec" name="efec"></ion-input>
-        </ion-item>
-        <br>
-        <br>
-        <ion-item *ngIf="cantidad == 0">
-          <ion-label>Regalo:</ion-label>
-          <ion-input type="text" [(ngModel)]="regalo" name="regalo"></ion-input>
-        </ion-item>
-
+        </ion-item>         
       </ion-list>
+  <ion-list *ngIf="pago == 'EFECTIVO'">
+      <ion-list-header>
+          Con cuanto efectivo Paga
+      </ion-list-header>
+    <ion-item>        
+        <ion-input type="number" [(ngModel)]="efec" name="efec"></ion-input>
+      </ion-item>
+</ion-list>
 
-    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,dir,efec)">
+<ion-list radio-group *ngIf="cantidad == 0" [(ngModel)]="regalo">    
+    <ion-list-header>
+        Regalo primera Compra          
+    </ion-list-header>    
+  <ion-item *ngFor='let regalo of regalocompra'>
+    <ion-label>{{regalo.name}}</ion-label>
+    <ion-radio value={{regalo.id}}></ion-radio>
+   <!--  <ion-input type="text" [(ngModel)]="regalo" name="regalo"></ion-input> -->    
+  </ion-item>
+</ion-list>
+
+    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,direccion,efec,regalo)">
       PAGAR
     </button>
 

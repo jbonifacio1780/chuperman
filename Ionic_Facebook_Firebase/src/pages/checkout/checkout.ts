@@ -15,6 +15,7 @@ export class CheckoutPage {
 ////
   
 payments : any;
+regalocompra : any;
 public direcciones: FirebaseListObservable<any>; 
 public carts: FirebaseListObservable<any>;
 public orders: FirebaseListObservable<any>;
@@ -30,6 +31,12 @@ public pais : string="";
                 {id: 'EFECTIVO', name: 'EFECTIVO'},
                 {id: 'VISA', name: 'VISA'},
                 {id: 'MASTERCARD', name: 'MASTERCARD'}            
+              ];
+
+              this.regalocompra = [
+                {id: 'CIGARRO', name: 'CIGARRO'},
+                {id: 'HIELO', name: 'HIELO'},
+                {id: 'REGALO 3', name: 'REGALO 3'}            
               ];
 
             this.afAuth.authState.subscribe(auth => {      
@@ -66,11 +73,19 @@ public pais : string="";
         alert.present();
       }
 
-    guardarOrder(payment, address, efec){
+    guardarOrder(payment, address, efec, regalo){
         if(address==null || payment==null){
             this.presentAlert();                        
           }
           else {
+            let regalouno="";
+            if (regalo == undefined){
+              regalouno="";              
+            }
+            else{
+              regalouno=regalo;
+            }
+
             let valor=0
             if (efec>0){
               valor=efec              
@@ -91,6 +106,7 @@ public pais : string="";
                 Direccion:this.direccion,
                 total: total,
                 PagaEfectivo:valor,
+                Regaloprimeracompra:regalouno,
               })
                 for (var i = 0; i < nuevo.length; i++) {                   
                     this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
