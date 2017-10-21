@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { MapComponent } from '../../components/map/map';
-import { IonicPage, NavController, NavParams,AlertController,LoadingController, ModalController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,LoadingController, ModalController, Platform, MenuController } from 'ionic-angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import { Vibration } from '@ionic-native/vibration';
 import { MapService } from '../../providers/map/map.service';
 import { BasePage } from '../base-page';
 import { GeocoderService } from '../../providers/map/geocoder.service';
 import { HomePage } from '../home/home';
+import { SearchPage } from '../search/search';
 
 declare var google;
 
@@ -34,11 +35,14 @@ export class GooglemapPage extends BasePage {
     private mapService: MapService,
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
+    private menuCtrl: MenuController,
     protected alertCtrl: AlertController) {
     super(alertCtrl);
+    this.menuCtrl.enable(true);   
   }
 
   ionViewDidLoad() {
+    
     //console.log('ionViewDidLoad GooglemapPage');
 
     //this.getPosition();
@@ -97,10 +101,10 @@ export class GooglemapPage extends BasePage {
     this.mapService.closeInfoWindow();
   }
 
-  //openModal(): void {
-  //  const searchModal = this.modalCtrl.create(SearchPage);
-  //  searchModal.present();
-  //}
+  openModal(): void {
+    const searchModal = this.modalCtrl.create(SearchPage);
+    searchModal.present();
+  }
 
   goToConfirmation(): void {
     //this.navCtrl.setRoot(HomePage);

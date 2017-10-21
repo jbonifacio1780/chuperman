@@ -12,6 +12,9 @@ import { OrdersPage } from '../pages/orders/orders';
 import { SettingsPage } from '../pages/settings/settings';
 import { SupportPage } from '../pages/support/support';
 import { CheckoutPage } from '../pages/checkout/checkout'
+import { SearchPage } from '../pages/search/search';
+import { OrderResumenPage } from '../pages/order-resumen/order-resumen';
+
 
 import { GooglemapPage } from '../pages/Googlemap/Googlemap'
 
@@ -33,6 +36,7 @@ import { MapComponent } from '../components/map/map';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Vibration } from '@ionic-native/vibration';
+import { CallNumber } from '@ionic-native/call-number';
 
 var config = {
   apiKey: "AIzaSyBro1XKpMh30r2ApCnXiLMKbVmMQlWtaBo",
@@ -56,7 +60,9 @@ var config = {
     SupportPage,
     CheckoutPage,
     GooglemapPage,
-    MapComponent
+    MapComponent,
+    SearchPage,
+    OrderResumenPage
   ],
   imports: [
     BrowserModule,
@@ -79,7 +85,9 @@ var config = {
     SupportPage,
     CheckoutPage,
     GooglemapPage,
-    MapComponent
+    MapComponent,
+    SearchPage,
+    OrderResumenPage
   ],
   providers: [
     StatusBar,
@@ -89,6 +97,7 @@ var config = {
     Geolocation,
     GeocoderService,
     MapService,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
     ],
 })

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+      <button class="CierreCabecera" ion-button icon-left (click)="dismiss()">
+          
+          <ion-icon name="ios-close" showWhen="android,windows"></ion-icon>
+          <label>Buscar Ubicación</label>
+      </button>
+
+    <ion-searchbar #searchbar placeholder="Buscar dirección"></ion-searchbar>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <!--<ion-list>
+   <ion-item>
+      Direcciones guardadas
+
+      <button ><ion-icon name="ios-heart">Mi Casa</ion-icon></button>
+
+    </ion-item>
+  </ion-list>-->
+
+
+  <ion-list>
+    <ion-item *ngFor="let place of nearbyPlaces" (click)="selectPlace(place)">
+      <ion-avatar item-left>
+        <img [src]="place.icon">
+      </ion-avatar>
+      <h3>{{ place.name }}</h3>
+      <p>{{ place.vicinity }}</p>
+      <p>Distance: {{ place.distance }} meters</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

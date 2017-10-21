@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import * as firebase from 'firebase/app';
 import { HomePage } from '../home/home';
+//import { OrdersPage } from '../orders/orders';
+import { GooglemapPage } from '../Googlemap/Googlemap';
+import { MapComponent } from '../../components/map/map';
+import { OrderResumenPage } from '../order-resumen/order-resumen';
 
 @Component({
     selector: 'page-checkout',
@@ -15,6 +19,7 @@ export class CheckoutPage {
 ////
   
 payments : any;
+
 public direcciones: FirebaseListObservable<any>; 
 public carts: FirebaseListObservable<any>;
 public orders: FirebaseListObservable<any>;
@@ -24,35 +29,43 @@ public direc: string = "";
 public zona: string ="";
 public pais : string="";
 
-    constructor(public navCtrl: NavController, public NavParams: NavParams, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController ) {
+    constructor(
+      public navCtrl: NavController, 
+      public NavParams: NavParams, 
+      public afd: AngularFireDatabase, 
+      public afAuth: AngularFireAuth, 
+      public alertCtrl: AlertController,
+      public modalCtrl: ModalController ) {
         try{
             this.payments = [
-                {id: 'EFECTIVO', name: 'EFECTIVO'},
-                {id: 'VISA', name: 'VISA'},
-                {id: 'MASTERCARD', name: 'MASTERCARD'}            
+                {id: 'EFECTIVO', name: 'EFECTIVO', icons:'assets/img/payment/cash.png'},
+                {id: 'VISA', name: 'POS VISA', icons:'assets/img/payment/visa.png'},
+                {id: 'MASTERCARD', name: 'POS MASTERCARD', icons:'assets/img/payment/mastercard.png'},
+                {id: 'DINNERS', name: 'POS DINNERS', icons:'assets/img/payment/dinners.png'},
+                {id: 'AMERICAN', name: 'POS AMERICAN EXPRESS', icons:'assets/img/payment/amex.png'}
               ];
 
             this.afAuth.authState.subscribe(auth => {      
             this.direcciones = this.afd.list('/users/'+firebase.auth().currentUser.uid+'/xaddress/'); 
             this.direcciones.subscribe(lista =>{
-              console.log(lista);                    
+              //console.log(lista);                    
             });                    
           })
           this.direccion = NavParams.get("direccion");
           [this.direc,this.zona,this.pais] = this.direccion.split(',');
-          console.log(this.direccion);
-          console.log(this.direc,this.zona,this.pais);
+          //console.log(this.direccion);
+          //console.log(this.direc,this.zona,this.pais);
 
           this.orders = this.afd.list('/orders/'+firebase.auth().currentUser.uid);
           this.orders.subscribe(total =>{
-            console.log('orders',total);
-            console.log(total.length);
+            //console.log('orders',total);
+            //console.log(total.length);
             this.cantidad=total.length;
 
           }) 
           this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
           this.carts.subscribe(nuevo =>{
-            console.log(nuevo);                        
+            //console.log(nuevo);                        
           });
 
         }catch (e){}        
@@ -103,8 +116,9 @@ public pais : string="";
                 
 
                 //Mensaje de confirmacion de # Orden Pedido
-                this.AlertNewOrder(this.cantidad+1);
-                
+                //this.AlertNewOrder(this.cantidad+1);
+                this.openModalOrdersPage(this.cantidad+1);
+                //this.gotoHome();
             });
           }
 
@@ -118,7 +132,8 @@ public pais : string="";
           {
             text: 'OK',
             handler: () => {
-              this.gotoHome();
+              //this.gotoHome();
+              //this.openModalOrdersPage();
             }
           }
         ]
@@ -129,9 +144,17 @@ public pais : string="";
 
     gotoHome(){
         //this.navCtrl.push(HomePage);
-        this.navCtrl.setRoot(HomePage,{direccion:this.direccion});
-        //location.reload();               
+        location.reload();
+        this.navCtrl.setRoot(GooglemapPage);
+        
       }; 
+
+      openModalOrdersPage(qtity): void {
+        //location.reload();
+        const OrdersModal = this.modalCtrl.create(OrderResumenPage,{idOrder: qtity});
+        OrdersModal.present();
+      }
+
       
       Nuevo() {
         let prompt = this.alertCtrl.create({

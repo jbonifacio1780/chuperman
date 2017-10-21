@@ -13,40 +13,47 @@
 </ion-header>
 
  
-<ion-content padding>
+<ion-content padding class="background">
 
   
     <!-- Address -->
-    <ion-list radio-group [(ngModel)]="dir">       
-      <ion-list-header>
-          Dirección
-            <!--   <button ion-button color="primary" round style="width: 20%; padding: 2px; text-align:right;" (click)="Nuevo()">
-                  <ion-icon ios="ios-add" md="md-add"></ion-icon>
-                </button>  -->      
-      </ion-list-header>      
-     <!--  <ion-item *ngFor="let direc of direcciones | async">
-        <ion-label>{{direc.address}}<br>
-        
-        {{direc.reference}}</ion-label>
-        <ion-radio value="{{direc.$key}}"></ion-radio>
-      </ion-item>  -->   
-      <ion-item>
-        <ion-label>{{direccion}}</ion-label>               
-        <ion-radio value="{{direccion}}"></ion-radio>
-      </ion-item> 
 
-    </ion-list>    
+    <ion-card>
+        <ion-card-header>
+            <h1>Elige una dirección</h1>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list radio-group [(ngModel)]="dir">       
+                <ion-item text-wrap>
+                  <ion-label>{{direccion}}</ion-label>               
+                  <ion-radio value="{{direccion}}"></ion-radio>
+                </ion-item> 
+              </ion-list>  
+        </ion-card-content>
+      </ion-card>
+
+      
 
     <!-- Payment Options -->
-    <ion-list radio-group [(ngModel)]="pago">
-        <ion-list-header>
-          Payments
-        </ion-list-header>      
-        <ion-item *ngFor="let item of payments">
-          <ion-label>{{item.name}}</ion-label>
-          <ion-radio value="{{item.id}}"></ion-radio>
-        </ion-item>              
-      </ion-list>
+    
+    <ion-card class="full-card">
+      <ion-card-header>
+          <h1>Elige tu medio de pago</h1>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-list radio-group [(ngModel)]="pago">      
+              <ion-item text-wrap *ngFor="let item of payments">
+                  <ion-avatar item-start>
+                      <img src="{{item.icons}}">
+                  </ion-avatar>
+      
+                <ion-label>{{item.name}}</ion-label>
+                <ion-radio value="{{item.id}}"></ion-radio>
+              </ion-item>              
+            </ion-list>
+      </ion-card-content>
+    </ion-card>
+    
 
     <button ion-button large full color="secondary" round (click)="guardarOrder(pago,dir)">
       PAGAR

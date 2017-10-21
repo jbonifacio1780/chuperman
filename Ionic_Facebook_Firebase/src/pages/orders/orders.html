@@ -1,34 +1,42 @@
 <ion-header>
-        <ion-navbar>
-                <ion-buttons start left>
-                        <button ion-button menuToggle>
-                          <ion-icon name="menu"></ion-icon>
-                        </button>
-                      </ion-buttons>
-                        <ion-title>
-                          Mis Pedidos
-                        </ion-title>
-                        
-                       <!--  <ion-buttons right>    
-                          <button ion-button>
-                            <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">          
-                              <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:9px;" color="danger">5</ion-badge> 
-                            </ion-icon>
-                          </button>       
-                        </ion-buttons> -->
-        </ion-navbar>
-    </ion-header>
+  <ion-navbar>
+    <ion-buttons start left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Mis Pedidos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
     <ion-content padding> 
+        <ion-card>
+            <ion-card-header>
+                  LISTA PEDIDOS
+            </ion-card-header>
+            
+            <ion-card-content>
+                  <ion-item *ngFor="let orden of (ordenes | async)?.slice().reverse()">         
+                      <ion-item>     
+                          {{orden.Fecha}}
+                          <ion-row>
+                            <ion-col>Orden de Compra:</ion-col>  
+                            <ion-col>{{orden.$key}}</ion-col>
+                          </ion-row>       
+                          <ion-row>
+                            <ion-col>Estado:</ion-col>  
+                            <ion-col>{{orden.Estado}}</ion-col>
+                          </ion-row>                
+                          <ion-row>
+                              <ion-col>Total Pedido:</ion-col>  
+                              <ion-col>S/. {{orden.total}}.00</ion-col>
+                          </ion-row>
+                      </ion-item>
+                    </ion-item>
+
+            </ion-card-content>
+        </ion-card>
         
-        <ion-list *ngFor="let orden of (ordenes | async)?.slice().reverse()">         
-          <ion-item>                             
-              <p><span>Orden de Compra :</span>&nbsp;{{orden.$key}}</p>              
-              <p><span>Fecha Pedido :</span>&nbsp;{{orden.Fecha}}</p>
-              <p><span>Estado :</span>&nbsp;{{orden.Estado}}</p>
-              <p><span>Total Pedido :</span>&nbsp;S/. {{orden.total}}.00</p>
-
-
-          </ion-item>
-        </ion-list>
 
     </ion-content>

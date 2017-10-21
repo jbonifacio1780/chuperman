@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, Platform } from 'ionic-angular';
+import { NavController, ToastController, Platform,AlertController, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Facebook } from '@ionic-native/facebook';
+import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-login',
@@ -22,12 +23,26 @@ export class LoginPage {
     private afAuth: AngularFireAuth,
     private toastCtrl: ToastController,
     private facebook: Facebook,
-    private platform: Platform
-  ) { }
+    private platform: Platform,
+    private callNumber: CallNumber,
+    private alertCtrl: AlertController,
+    private menuCtrl: MenuController,
+  ) { 
+    this.menuCtrl.enable(false);
+  }
+
+ 
+
+  CallNumero(number){
+    this.callNumber.callNumber(number, true)
+    .then(() => console.log('Launched dialer!'))
+    .catch(() => console.log('Error launching dialer'));
+  }
 
   login() {
     this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
       .then(auth => {
+        this.menuCtrl.enable(true);   
         // Do custom things with auth
       })
       .catch(err => {
@@ -48,7 +63,9 @@ export class LoginPage {
     if (this.platform.is('cordova')) {
       return this.facebook.login(['email', 'public_profile']).then(res => {
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);        
-        return firebase.auth().signInWithCredential(facebookCredential);        
+        this.menuCtrl.enable(true);   
+        return firebase.auth().signInWithCredential(facebookCredential); 
+        
       })
     }
     else {
@@ -80,6 +97,31 @@ export class LoginPage {
   logout(){
     return firebase.auth().signOut();    
   }
+
+
+  showConfirm(numberconfirm) {
+    let confirm = this.alertCtrl.create({
+      //title: 'Use this lightsaber?',
+      message: '986 612 683',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Call',
+          handler: () => {
+            this.CallNumero(numberconfirm);
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
 
 
 }

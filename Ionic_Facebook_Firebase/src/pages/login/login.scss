@@ -1,7 +1,12 @@
 page-login {
 	.background {
-        //background-image: url('../../assets/bg-login.jpg');
-        background-color: black;
+		width: 100%;
+		height: 100%;
+		//background: linear-gradient(10deg,#00aced,#004F9E)!important;
+		//background-image: url('/assets/img/background-login.jpg');
+		background-image: url('https://firebasestorage.googleapis.com/v0/b/chuperman-81140.appspot.com/o/App%2Fbackground-3.jpg?alt=media&token=9f3c05b9-ee4d-4c03-aac9-53bb334f64d4');
+		//opacity: 0.6;
+        //background-color: black;
 	}
 
 	.scroll-content {
@@ -11,7 +16,92 @@ page-login {
 		justify-content: center;
 		text-align: center;
 	}
+	ion-card.card{
+		background: rgba(232,230,230,0.6px);
+		border-radius: 10px;
+		
+	}
+	.item{
+		background: rgba(232,230,230,0px);
+		
+	}
+	ion-input{
+		//border-bottom:#FD4D73, solid 1px;
+	}
+	h1{
+		color:#fff;
+		font-size: 3em;
+		font-family: 'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;
+		font-weight: lighter;
+	}
 
+	.button-md{
+		text-transform: none;
+	}
+
+	.image {
+        height:auto;
+        width: 200px;
+        //border: 1px solid #004F9E;
+        //border-radius: 50%;
+        //box-shadow: 0 0 2px gray;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+   }
+
+
+   div{
+	color:#fff;}
+
+	.fab-md.BotonCall{
+		background: linear-gradient(10deg,#161404,rgb(139, 17, 17))!important;
+	}
+
+	ion-fab[left]
+	{
+		left:20px;
+	}
+	ion-fab[top]{
+		top:30px;
+	}
+
+	ion-fab[top].TextoFab{
+		top:10px;
+	}
+	ion-fab[left].TextoFab{
+		left:10px;
+	}
+
+	.text-input {
+		color: #004F9E;
+	}
+
+	.fab-md-in-list.Claro{
+		color: red;
+	}
+	.fab-md-in-list.Movistar{
+		color: green;
+	}
+
+	*::-webkit-input-placeholder {
+		color: #004F9E !important;
+	  }
+	  *:-moz-placeholder {
+		color: #004F9E !important;
+	  }
+	  *:-ms-input-placeholder { /* IE10+ */
+		color: #004F9E !important;
+	  }
+	/*.scroll-content {
+		align-content: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}*/
+
+	/*
 	ion-card.card {
 		box-shadow: none;
         //background: rgba(99, 94, 94, 0.5);
@@ -125,6 +215,6 @@ page-login {
 	
 	 }
 	
-   }
+   }*/
 
 }

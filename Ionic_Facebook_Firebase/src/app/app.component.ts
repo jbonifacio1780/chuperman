@@ -44,6 +44,9 @@ export class MyApp {
 
   constructor(public vibration: Vibration,public loadingCtrl: LoadingController,platform: Platform, private afAuth: AngularFireAuth, private statusBar: StatusBar, 
     private splashscreen: SplashScreen, public afd: AngularFireDatabase) {
+
+    splashscreen.hide();
+
     this.afAuth.authState.subscribe(auth => {
       //this.imagen = "";
       //this.usuario="";
@@ -77,7 +80,7 @@ export class MyApp {
 
     });
     platform.ready().then(() => {
-      splashscreen.hide();
+      
       //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     });
 

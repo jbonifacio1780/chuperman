@@ -1,8 +1,10 @@
 page-googlemap {
     ion-content{
-        background: rgb(229, 227, 223);
+        //background: rgb(229, 227, 223);
+        //background-image: url('https://images.pexels.com/photos/107958/pexels-photo-107958.jpeg?w=940&h=650&auto=compress&cs=tinysrgb');
+        background-size: cover;
+        background-position-x: 50%;
       }
-
 
       #gmaps {
         width: 100%;
@@ -24,17 +26,37 @@ page-googlemap {
           top: 50%;
           left: 50%;
           margin: -40px 0 0 -11px;
-          background: url('https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png');
+          //background: url('https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png');
+          background: url('https://firebasestorage.googleapis.com/v0/b/chuperman-81140.appspot.com/o/App%2Fspotlight-poi_hdp-beer.png?alt=media&token=98c8b59b-0b98-4c47-8619-9fe155f497ac');
           background-size: 22px 40px; /* Since I used the HiDPI marker version this compensates for the 2x size */
-          pointer-events: none; /* This disables clicks on the marker. Not fully supported by all major browsers, though */
+          //pointer-events: none; /* This disables clicks on the marker. Not fully supported by all major browsers, though */
         }
         .BotonSinBorde{
           -webkit-box-shadow: none!important;
           -moz-box-shadow: none!important;
           box-shadow: none!important;
-            
+          //background: linear-gradient(10deg,#161404,rgb(139, 17, 17))!important;
         }
 
+        .navbar{
+          background: transparent!important;
+        }
+
+        .scroll-content{
+          padding-top: 0 !important;
+        }
+        
+
+
+        .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default
+        {
+          //color: black;
+          background: linear-gradient(10deg,#00aced,#004F9E)!important;
+        }
+        
+
+        
+      
         
 
 }
