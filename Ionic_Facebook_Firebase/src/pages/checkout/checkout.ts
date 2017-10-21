@@ -66,14 +66,22 @@ public pais : string="";
         alert.present();
       }
 
-    guardarOrder(payment, address){
+    guardarOrder(payment, address, efec){
         if(address==null || payment==null){
             this.presentAlert();                        
           }
           else {
+            let valor=0
+            if (efec>0){
+              valor=efec              
+            }
+            else{
+              valor=0
+            }
             this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
             this.carts.subscribe(nuevo =>{
               let total = 0;
+              
               for (var z = 0; z < nuevo.length; z++) {                 
                 total=total+nuevo[z].item_price;
               }
@@ -82,6 +90,7 @@ public pais : string="";
                 Estado: "Solicitado",
                 Direccion:this.direccion,
                 total: total,
+                PagaEfectivo:valor,
               })
                 for (var i = 0; i < nuevo.length; i++) {                   
                     this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
@@ -130,7 +139,7 @@ public pais : string="";
     gotoHome(){
         //this.navCtrl.push(HomePage);
         this.navCtrl.setRoot(HomePage,{direccion:this.direccion});
-        //location.reload();               
+        location.reload();               
       }; 
       
       Nuevo() {

@@ -45,10 +45,22 @@
         <ion-item *ngFor="let item of payments">
           <ion-label>{{item.name}}</ion-label>
           <ion-radio value="{{item.id}}"></ion-radio>
-        </ion-item>              
+        </ion-item> 
+        <br>
+        <ion-item *ngIf="pago == 'EFECTIVO'">
+          <ion-label>Cuanto Efectivo:</ion-label>
+          <ion-input type="text" [(ngModel)]="efec" name="efec"></ion-input>
+        </ion-item>
+        <br>
+        <br>
+        <ion-item *ngIf="cantidad == 0">
+          <ion-label>Regalo:</ion-label>
+          <ion-input type="text" [(ngModel)]="regalo" name="regalo"></ion-input>
+        </ion-item>
+
       </ion-list>
 
-    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,dir)">
+    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,dir,efec)">
       PAGAR
     </button>
 
