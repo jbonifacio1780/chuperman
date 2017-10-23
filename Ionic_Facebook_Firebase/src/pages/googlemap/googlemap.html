@@ -34,23 +34,57 @@
   <div id="centerMarker" *ngIf="localized"></div>
   
 
-  <!--<button ion-button large full color="secondary" round (click)="goToConfirmation()">Seleccionar Dirección</button> -->
+  <!--<button ion-button large full color="secondary" round (click)="goToConfirmation()">Seleccionar Dirección</button>
 
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="openModal()"><ion-icon name="search"></ion-icon></button>
   </ion-fab>
-</ion-content>
+ -->
 
+  <!--
+  <button ion-button full icon-right color="primary" class="BotonSinBorde" (click)="goToConfirmation()">
+    Seleccionar una ChuperUbicación
 
-<ion-footer>
-  <ion-toolbar>
+  </button>-->
 
-      <button ion-button full icon-right color="primary" class="BotonSinBorde" (click)="goToConfirmation()">
-        Seleccionar Ubicación
-        <ion-icon name="send"></ion-icon>
-      </button>
 
   
 
-  </ion-toolbar>
-</ion-footer>
+
+  <ion-footer>
+      
+   
+              <!--  <ion-item>
+                    <h1>CHUPER UBICACIÓN</h1>
+                    <button ion-button icon-only color="secondary"> <ion-icon name="navigate"></ion-icon> </button>
+                </ion-item>-->
+<ion-grid>
+  <ion-row align-items-center>
+    <ion-col col-auto>
+      <div>CHUPER UBICACIÓN</div>
+    </ion-col>
+    <ion-col>
+        <button ion-button icon-only clear style="float: right;"> <ion-icon name="locate" color="secondary"></ion-icon> </button>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
+        
+        
+  
+        <div>
+          <button ion-button block outline color="primary" icon-right text-wrap (click)="openModal()"> {{ubicacion}}  <ion-icon name="search"></ion-icon> </button>
+        </div>
+        <ion-row>
+  
+            <button ion-button block color="secondary" (click)="goToConfirmation()">Continuar </button>
+    
+        </ion-row>
+      </ion-footer>
+
+
+</ion-content>
+
+
+   
+  

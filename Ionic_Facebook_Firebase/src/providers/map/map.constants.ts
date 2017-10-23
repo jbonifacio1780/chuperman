@@ -14,7 +14,7 @@ export class MapConst {
   }
 
   public static get DEFAULT_ZOOM(): number {
-    return 5;
+    return 2;
   }
 
   public static get MAX_ZOOM(): number {

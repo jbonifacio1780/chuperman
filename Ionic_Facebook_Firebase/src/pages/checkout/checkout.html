@@ -43,34 +43,63 @@
       
 
     <!-- Payment Options -->
-    <ion-list radio-group [(ngModel)]="pago">
-        <ion-list-header>
-          Payments
-        </ion-list-header>      
-        <ion-item *ngFor="let item of payments">
-          <ion-label>{{item.name}}</ion-label>
-          <ion-radio value="{{item.id}}"></ion-radio>
-        </ion-item>         
-      </ion-list>
-  <ion-list *ngIf="pago == 'EFECTIVO'">
-      <ion-list-header>
-          Con cuanto efectivo Paga
-      </ion-list-header>
-    <ion-item>        
-        <ion-input type="number" [(ngModel)]="efec" name="efec"></ion-input>
-      </ion-item>
-</ion-list>
 
-<ion-list radio-group *ngIf="cantidad == 0" [(ngModel)]="regalo">    
-    <ion-list-header>
-        Regalo primera Compra          
-    </ion-list-header>    
-  <ion-item *ngFor='let regalo of regalocompra'>
-    <ion-label>{{regalo.name}}</ion-label>
-    <ion-radio value={{regalo.id}}></ion-radio>
-   <!--  <ion-input type="text" [(ngModel)]="regalo" name="regalo"></ion-input> -->    
-  </ion-item>
-</ion-list>
+    <ion-card class="full-card">
+        <ion-card-header>
+            <h1>Elige tu medio de pago</h1>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list radio-group [(ngModel)]="pago">      
+                <ion-item text-wrap *ngFor="let item of payments">
+                    <ion-avatar item-start>
+                        <img src="{{item.icons}}">
+                    </ion-avatar>
+        
+                  <ion-label>{{item.name}}</ion-label>
+                  <ion-radio value="{{item.id}}"></ion-radio>
+                </ion-item>              
+              </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <!--
+    <ion-card>
+        <ion-card-header>
+              <h1>Elige una forma de pago</h1>
+          </ion-card-header>
+          <ion-card-content>
+          <ion-list radio-group>
+            <ion-item text-wrap *ngFor="let item of payments">
+    
+              <ion-label>{{item.name}}</ion-label>
+              <ion-radio value="{{item.id}}"></ion-radio>
+            </ion-item>         
+          </ion-list>
+
+          
+
+          </ion-card-content>
+        </ion-card>-->
+
+        <ion-list *ngIf="pago == 'EFECTIVO'">
+            <ion-list-header>
+                Con cuanto efectivo Paga
+            </ion-list-header>
+          <ion-item>        
+              <ion-input type="number" placeholder="S/0.00" [(ngModel)]="efec" name="efec"></ion-input>
+            </ion-item>
+      </ion-list>
+      
+      <ion-list radio-group *ngIf="cantidad == 0" [(ngModel)]="regalo">    
+          <ion-list-header>
+              Regalo primera Compra          
+          </ion-list-header>    
+        <ion-item *ngFor='let regalo of regalocompra'>
+          <ion-label>{{regalo.name}}</ion-label>
+          <ion-radio value={{regalo.id}}></ion-radio>
+        </ion-item>
+      </ion-list>
+        
+  
 
     <button ion-button large full color="secondary" round (click)="guardarOrder(pago,direccion,efec,regalo)">
       PAGAR

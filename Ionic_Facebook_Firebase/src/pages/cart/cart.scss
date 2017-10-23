@@ -14,14 +14,7 @@ cart-home {
           color: #757575;
         }
       }
-      
-    .alertDanger{
-        background-color: white;
-        color: red;
-        button{
-        color: red;
-        }
-    }
+    
 
     .h2 {  
         color: #111; 
@@ -39,9 +32,36 @@ cart-home {
 
     }
 
+    .accordion-list {
+        //background: color($colors, light);
+        //background: white;
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+    }
+
+
+    .scroll-content{
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+    }
+    .item-md.item-block .item-inner
+    {
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+    }
+
     .content{
         padding-top:0px !important;
         padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+        
     }
 
     .card-header-ios{
@@ -51,13 +71,17 @@ cart-home {
 
     .item.resumen {
         color: white!important;
-        //background-color: #004F9E!important;
-        background: linear-gradient(10deg,#00aced,#004F9E)!important;
+        background-color: color($colors,secondary)!important;
+        //background: linear-gradient(10deg,#00aced,#004F9E)!important;
         //background: linear-gradient(to bottom,  #000 0%, #fff 100%);
     }
-    .button.confirmar {
-        background-color:#1789F3!important;
+
+    .button-md{
+        font-size: 1.6rem;
+        font-weight: 700;
+        color:color($colors,secondary)
     }
+   
 
     .pieCart{
         //background-color: #004F9E!important;
@@ -67,4 +91,42 @@ cart-home {
         
     }
 
+    .child {
+        background: #e8e7e6;
+        color: #FFFFFF;
+
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+    }
+    .child-item {
+        //background: rgba(0, 0, 0, 0.10);
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+        padding-right:0px !important;
+        padding-left:0px !important;
+    }
+
+
+    .mh-widget-title {
+        font-size: 16px;
+        font-size: 1rem;
+        padding-bottom: 5px;
+        border-bottom: 3px solid #e64946;
+    }
+
+   
+    .button-md-third{
+        font-size: 1.6rem;
+        font-weight: 700;
+        color:color($colors,primary)
+    }
+
+      
 }
+ion-alert{
+    color:color($colors,primary)!important;
+        
+
+    }

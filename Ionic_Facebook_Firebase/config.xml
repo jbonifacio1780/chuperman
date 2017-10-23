@@ -44,6 +44,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="50" />
     <engine name="android" spec="^6.3.0" />
+    <engine name="browser" spec="~5.0.1" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="360783344372227" />
         <variable name="APP_NAME" value="chuperman" />

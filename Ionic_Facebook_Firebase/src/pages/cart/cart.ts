@@ -107,7 +107,7 @@ import 'rxjs/add/operator/map';
     RemoveAll() {
       const alert = this.alertCtrl.create({
         title: 'Eliminar todo',
-        message: '¿Está usted seguro(a) de eliminar el carrito?',
+        subTitle:'¿Está usted seguro(a) de eliminar el carrito?',
         buttons: [
           {
             text: 'No',
@@ -191,7 +191,8 @@ import 'rxjs/add/operator/map';
       const alert = this.alertCtrl.create({
         title: 'Advertencia',
         subTitle: 'Debe escoger al menos un producto, el valor minimo de compra es de S/.35',
-        buttons: ['Ok']
+        buttons: ['Ok'],
+        cssClass:'alertCustomCss'
       });
       alert.present();
     }

@@ -42,21 +42,76 @@ page-googlemap {
           background: transparent!important;
         }
 
-        .scroll-content{
-          padding-top: 0 !important;
-        }
         
 
 
         .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default
         {
-          //color: black;
-          background: linear-gradient(10deg,#00aced,#004F9E)!important;
+          color: color($colors,dark);
+          //background: linear-gradient(10deg,#cc0000,#1e73be)!important;
         }
         
 
         
+        ion-footer {
+         
+        }
+
+        .button-outline-md-primary{
+          background-color: white!important;
+        }
+        
       
+        padding: 0 !important;
+        .scroll-content {
+          padding: 0 !important;
+        }
+      
+        #map {
+              height: 100%;
+          }
+        
+        .footer-md {
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-bottom: 10px;
+          
+          
+          &:before{
+            background-image: none;
+          }
+        }
+      
+        .button-md{
+          height: 5rem;
+          text-transform: none;
+          word-wrap: normal;
+        }
+
+        
+        .button-outline-md-primary {
+          border-color: #1e73be!important;
+          color: #1e73be!important;
+        }
+
+        h1{
+          color: color($colors,primary);
+          //background: linear-gradient(blue,red,yellow);
+          //-webkit-background-clip: text;
+          //color: transparent;  
+
+          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+          //font-size: 100%;
+          font-weight: bold;
+        }
+
+        ion-col{
+          font-size: 2.5rem!important;
+          color: color($colors,dark);
+          font-weight: bold;
+          //width: 200px;
+        }
+        
         
 
 }

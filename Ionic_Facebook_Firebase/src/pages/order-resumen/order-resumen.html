@@ -1,16 +1,46 @@
   
-  <ion-content class="card-background-page">
-    <div>
-          <img src="assets/img/header-chuperman-2.jpg"/>
-    </div>
-   
+  <ion-content color="dark">
+  <ion-list text-wrap>
+    <ion-item color="dark">
+      <img src="assets/img/black_hader.jpg"/>
+    </ion-item>
+  
+        <ion-item color="dark">
+        <ion-label center text-wrap>
+          <h1>Chuperpedido</h1>
+          <h3>El tiempo promedio de entrega es de </h3>
+          <h2>20 a 30 min.</h2>
+        </ion-label>
+      </ion-item>
 
-        <div class="card-title">Nro Pedido: {{idOrden}}</div>
-        <div class="card-subtitle">En breve le enviamos su delivery</div>
-        
-        <button ion-button full icon-right color="secondary" class="BotonSinBorde" (click)="Gotohome()">
-            CONTINUAR
-          </button>
+
+      <ion-item color="dark" class="lblLeft">
+        <ion-icon name="pin" item-start  color="light" ></ion-icon>
+        <p>El pedido se entregará en</p>
+        <h4>{{direccion}}</h4>
+      </ion-item>
+      
+      <ion-item color="dark" text-wrap>
+        <ion-icon name="logo-usd" item-start  color="light" ></ion-icon>
+        <p>Método de pago</p>
+        <h4>{{formapago}}</h4>
+      </ion-item>
+
+      <ion-item color="dark" text-wrap>
+        <ion-icon name="logo-buffer" item-start  color="light" ></ion-icon>
+        <p>Número de pedido</p>
+        <h4>#{{idOrden}}</h4>
+      </ion-item>
+
+      <ion-item color="dark" >
+          <!--<button ion-button icon-right full color="secondary" class="BotonSinBorde" (click)="Gotohome()">
+              Finalizar
+          </button>-->
+
+          <button ion-button block color="secondary" (click)="Gotohome()">Finalizar </button>
+      </ion-item>
+
+    </ion-list>
   </ion-content>
 
  

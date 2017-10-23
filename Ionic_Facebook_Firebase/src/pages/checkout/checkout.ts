@@ -39,16 +39,16 @@ public pais : string="";
         try{
             this.payments = [
                 {id: 'EFECTIVO', name: 'EFECTIVO', icons:'assets/img/payment/cash.png'},
-                {id: 'VISA', name: 'POS VISA', icons:'assets/img/payment/visa.png'},
-                {id: 'MASTERCARD', name: 'POS MASTERCARD', icons:'assets/img/payment/mastercard.png'},
-                {id: 'DINNERS', name: 'POS DINNERS', icons:'assets/img/payment/dinners.png'},
-                {id: 'AMERICAN', name: 'POS AMERICAN EXPRESS', icons:'assets/img/payment/amex.png'}
+                {id: 'POS VISA', name: 'POS VISA', icons:'assets/img/payment/visa.png'},
+                {id: 'POS MASTERCARD', name: 'POS MASTERCARD', icons:'assets/img/payment/mastercard.png'},
+                {id: 'POS DINNERS', name: 'POS DINNERS', icons:'assets/img/payment/dinners.png'},
+                {id: 'POS AMERICAN EXPRESS', name: 'POS AMERICAN EXPRESS', icons:'assets/img/payment/amex.png'}
               ];
 
               this.regalocompra = [
                 {id: 'CIGARRO', name: 'CIGARRO'},
                 {id: 'HIELO', name: 'HIELO'},
-                {id: 'REGALO 3', name: 'REGALO 3'}            
+                {id: 'GASEOSA', name: 'REGALO 3'}            
               ];
 
             this.afAuth.authState.subscribe(auth => {      
@@ -133,7 +133,7 @@ public pais : string="";
                 }
 
                 this.carts.remove();
-                this.openModalOrdersPage(this.cantidad+1);
+                this.openModalOrdersPage(this.cantidad+1,address,payment);
             });
           }
 
@@ -162,8 +162,8 @@ public pais : string="";
         location.reload();               
       }; 
 
-      openModalOrdersPage(qtity): void {
-        const OrdersModal = this.modalCtrl.create(OrderResumenPage,{idOrder: qtity});
+      openModalOrdersPage(qtity,dire,formapago): void {
+        const OrdersModal = this.modalCtrl.create(OrderResumenPage,{idOrder: qtity,textdire:dire,metodo:formapago});
         OrdersModal.present();
       }
 
