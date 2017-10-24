@@ -13,7 +13,7 @@
 </ion-header>
 
  
-<ion-content padding class="background">
+<ion-content padding class="background" padding>
 
   
     <!-- Address 
@@ -80,28 +80,39 @@
           </ion-card-content>
         </ion-card>-->
 
-        <ion-list *ngIf="pago == 'EFECTIVO'">
-            <ion-list-header>
-                Con cuanto efectivo Paga
-            </ion-list-header>
-          <ion-item>        
-              <ion-input type="number" placeholder="S/0.00" [(ngModel)]="efec" name="efec"></ion-input>
-            </ion-item>
-      </ion-list>
-      
-      <ion-list radio-group *ngIf="cantidad == 0" [(ngModel)]="regalo">    
-          <ion-list-header>
-              Regalo primera Compra          
-          </ion-list-header>    
-        <ion-item *ngFor='let regalo of regalocompra'>
-          <ion-label>{{regalo.name}}</ion-label>
-          <ion-radio value={{regalo.id}}></ion-radio>
-        </ion-item>
-      </ion-list>
         
+              <ion-list *ngIf="pago == 'EFECTIVO'">
+                  <ion-list-header>
+                      Con cuanto efectivo Paga
+                  </ion-list-header>
+                <ion-item>        
+                    <ion-input type="number" placeholder="S/0.00" [(ngModel)]="efec" name="efec"></ion-input>
+                  </ion-item>
+            </ion-list>
+            
+            <ion-list radio-group *ngIf="cantidad == 0" [(ngModel)]="regalo">    
+                <ion-list-header>
+                    Regalo primera Compra          
+                </ion-list-header>    
+              <ion-item *ngFor='let regalo of regalocompra'>
+                <ion-label>{{regalo.name}}</ion-label>
+                <ion-radio value={{regalo.id}}></ion-radio>
+              </ion-item>
+            </ion-list>
+
+            <ion-card>
+                <ion-card-header>
+                    <h1>Ingesa un comentario</h1>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-item>
+                      <ion-textarea type="text" placeholder="Ingrese un comentario adicional o referencia" [(ngModel)]="observacion"></ion-textarea>
+                  </ion-item>
+                </ion-card-content>
+            </ion-card>
   
 
-    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,direccion,efec,regalo)">
+    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,direccion,efec,regalo,observacion)">
       PAGAR
     </button>
 

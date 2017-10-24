@@ -14,6 +14,9 @@ interface IMapOptions {
   lat: number;
   lon: number;
   zoom: number;
+  disableDefaultUI:boolean;
+  //defui:boolean;
+  mapTypeControl:false;
 }
 
 @Injectable()
@@ -28,7 +31,9 @@ export class MapService {
   public createMap(mapEl: Element, opts: IMapOptions = {
     lat: MapConst.DEFAULT_LAT,
     lon: MapConst.DEFAULT_LNG,
-    zoom: MapConst.DEFAULT_ZOOM
+    zoom: MapConst.DEFAULT_ZOOM,
+    disableDefaultUI: true,
+    mapTypeControl: false
   }): Promise<google.maps.Map> {
 
     return this.loadMap().then(() => {
