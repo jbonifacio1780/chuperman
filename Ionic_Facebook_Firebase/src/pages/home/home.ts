@@ -51,9 +51,9 @@ public carrito: FirebaseListObservable<any>;
     this.productos = this.afd.list('/productos');             
     this.productos.subscribe(queriedItems => {
       this.listado= queriedItems;
-      console.log(queriedItems);   
+      //console.log(queriedItems);   
     
-    console.log(this.direccion);
+    //console.log(this.direccion);
     
    });
    this.carrito = this.afd.list('/cart/'+auth.uid);

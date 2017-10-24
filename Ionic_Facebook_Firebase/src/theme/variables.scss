@@ -24,21 +24,27 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #004F9E,
-  secondary:  #FCD100,
-  danger:     #FD0507,
+  //primary:    #004F9E,
+  primary: #cc0000,
+  secondary: #1e73be,
+  third: #FCD100,
+  fourth:  #004F9E,
+  //danger:     #FD0507,
   light:      #FFFFFF,
-  dark:       #222,
+  dark:       #0c0c0c,
   facebook:   #004F9E,
   twitter:    #00aced,
   instagram:  #fbad50,
-
+  botones:    #3ba1da,
+  textomenu:    #555555,
+  success:#23ab50,
+  warning: #f56800,
 );
 
-$toolbar-md-background:                   color($colors, primary);
-$tabbar-md-background:                    #f8f8f8;
-$tab-button-md-active-color:              color($colors, primary);
-$tab-button-md-inactive-color:            #8c8c8c;
+$toolbar-md-background:                   color($colors, secondary);
+$tabbar-md-background:                    color($colors, light);
+//$tab-button-md-active-color:              color($colors, botones);
+//$tab-button-md-inactive-color:            #8c8c8c;
 
 
 $toolbar-md-active-color:                 #fff;
@@ -49,9 +55,45 @@ $modal-inset-height-large: 100%;
 $modal-inset-height-small: $modal-inset-height-large;
 $modal-inset-width: 100%;
 
+$button-md-border-radius: 10px;
+
+
+// Variables
+$font-stack: Helvetica, sans-serif;
+$primary-color: color($colors,botones);
+
+// Styles
+.button {
+  font-family: $font-stack;
+  background-color: $primary-color;
+}
+
+.button {
+  font-family: Helvetica, sans-serif;
+  background-color: #2ba6cb;
+}
+
+// Google Fonts
+//@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
 
 
 
+//@import "../assets/fonts/Homer_Simpson.ttf";
+
+//$roboto-slab: 'Roboto Slab', serif;   
+//$open-sans: 'Open Sans', sans-serif;
+//$simpsons:'Simpsonfont';
+
+// Styles
+
+//div {
+  //font-family: $simpsons;
+  //font-weight: normal;
+//}
+
+//.button {
+ // font-family: $simpsons;
+//}
 
 // App iOS Variables
 // --------------------------------------------------
@@ -95,5 +137,18 @@ $modal-inset-width: 100%;
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+//@import "roboto";
+//@import "noto-sans";
+/*
+@font-face {
+  font-family: 'Simpsonfont';
+  src: url('../assets/fonts/Homer_Simpson.ttf');
+}
+
+$font-family-base: "Simpsonfont";
+body{
+  font-family: 'Simpsonfont';
+}
+.button {
+ font-family: 'Simpsonfont';
+}*/

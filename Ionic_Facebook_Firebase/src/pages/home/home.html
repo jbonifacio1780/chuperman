@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-      <ion-label color="light" (click)="GotoMap()">{{direccion}}</ion-label>
+    <ion-label color="light" (click)="GotoMap()">{{direccion}}</ion-label>
     <ion-buttons start left>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -17,22 +17,32 @@
 </ion-header>
 
 <ion-content padding> 
-<!--<p>
-    <ion-slides autoplay="1000" loop="true" speed="1000">
-        <ion-slide >
-          <img src="assets/img/fk/slide_1.jpg">
-        </ion-slide>
-        <ion-slide >
-          <img src="assets/img/fk/slide_2.jpg">
-        </ion-slide>
-        <ion-slide >
-          <img src="assets/img/fk/slide_3.jpg">
-        </ion-slide>
-      </ion-slides>
-</p>-->
+<!--
+<ion-slides pager autoplay="1000" loop="true" speed="1000">
+  
+</ion-slides>
+-->
+<div class="slides-div">
+<ion-slides pager autoplay="1000" loop="true" speed="1000">
+    <ion-slide >
+        <img src="assets/img/champagne.png">
+      </ion-slide>
+      <ion-slide >
+        <img src="assets/img/arjunsk.jpg">
+      </ion-slide>
+      <ion-slide >
+        <img src="assets/img/no-user.png">
+      </ion-slide>
+  </ion-slides>
+</div>
+  
+
+      
+         
+ 
 
 
-       <ion-list class="accordion-list" no-lines>
+    <ion-list class="accordion-list" no-lines>
         <ion-list  *ngFor="let item of listado; let i = index" no-padding no-lines>
           <ion-card ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
               <img src="{{item.image_cat}}"/>
@@ -62,4 +72,12 @@
       </ion-list>
   
 <div id="ListBackdrop" *ngIf="fabButtonOpened==true" ></div>
+
+
+
 </ion-content>
+
+<!--
+<ion-footer>
+    <ion-label color="third" (click)="GotoMap()">{{direccion}}</ion-label>
+</ion-footer>-->

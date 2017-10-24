@@ -51,7 +51,9 @@
     "promise-polyfill": "^6.0.2",
     "rxjs": "5.4.0",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.12"
+    "zone.js": "0.8.12",
+    "mx.ferreyra.callnumber": "~0.0.2",
+    "cordova-browser": "~5.0.1"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
@@ -84,10 +86,12 @@
       "mx.ferreyra.callnumber": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   },
   "devDependencies": {
+    "@angular/cli": "^1.4.9",
     "ionic": "3.13.2"
   }
 }

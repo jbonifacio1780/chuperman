@@ -1,3 +1,5 @@
+
+
 <ion-content class="background">
 
   <ion-card>
@@ -30,9 +32,8 @@
                    
                    <ion-input type="password" placeholder="Contraseña" [(ngModel)]="loginData.password"></ion-input>
                 </ion-item>
-                <ion-item>
-                 <p (click)="resetpass()" style=" text-align:center">Olvidé mi contraseña</p>
-                 
+                <ion-item (click)="resetpass()">
+                  <p>Olvidé mi contraseña</p>
                 </ion-item>
                 <button ion-button block outline (click)="login()">LOGIN</button>
                   </ion-col>
@@ -62,7 +63,7 @@
   </ion-card>
 
   <ion-fab class="TextoFab" left top>
-      <div >Aló Chuperfono?</div>
+      <div class="AloChuper">  Aló Chuperfono?</div>
     </ion-fab>
     
   <ion-fab left top>

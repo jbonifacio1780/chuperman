@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-order-resumen',
   templateUrl: 'order-resumen.html',
@@ -16,12 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class OrderResumenPage {
 
   public idOrden: string="";
+  public direccion: string="";
+  public formapago: string="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //this.idOrden=navParams.get("qtity");
-    console.log(navParams.get('idOrder'));
+    //console.log(navParams.get('idOrder'));
 
     this.idOrden=navParams.get('idOrder');
+    this.direccion=navParams.get('textdire');
+    this.formapago=navParams.get('metodo');
+    
   }
 
   ionViewDidLoad() {

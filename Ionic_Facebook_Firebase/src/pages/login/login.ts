@@ -103,8 +103,8 @@ export class LoginPage {
 
   resetpass(){
     let promp = this.alertCtrl.create({
-      title : 'Enter Your E-mail',
-      message : 'A new password will be sent to your email',
+      title : 'Ingresa tu E-mail',
+      message : 'Un nuevo password se enviará a tu correo',
       inputs : [{
         name: 'recoveremail',
         placeholder:'you@example.com',
@@ -112,7 +112,7 @@ export class LoginPage {
       buttons: [{
         text : 'Cancel',
         handler: data => {
-          console.log('cancel click');
+          //console.log('cancel click');
         }
       },
     {
@@ -128,15 +128,15 @@ export class LoginPage {
         firebase.auth().sendPasswordResetEmail(data.recoveremail).then(()=>{
           loading.dismiss().then(()=>{
             let alert = this.alertCtrl.create({
-              title:'check your email',
-              subTitle : 'Password reset succesfull',
+              title:'Revisa tu correo',
+              subTitle : 'Contraseña restaurada correctamente',
               buttons: ['OK']
             });
             alert.present();
           })
         },Error=>{
           let alert1 = this.alertCtrl.create({
-            title:'Error reseting password',
+            title:'Error al intentar restaurar tu contraseña',
             subTitle : Error.message,
             buttons: ['OK']
           });

@@ -35,7 +35,7 @@ export class SearchPage extends BasePage {
   }
 
   ionViewDidLoad() {
-    console.log(this.searchbar);
+    //console.log(this.searchbar);
     this.initAutocomplete();
     this.loadNearbyPlaces();
   }

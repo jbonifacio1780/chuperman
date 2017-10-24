@@ -2,33 +2,12 @@ page-home {
     
     .accordion-list {
         background: color($colors, light);
-        //background: white;
         padding-top:0px !important;
         padding-bottom:0px !important;
         padding-right:0px !important;
         padding-left:0px !important;
     }
-
-     /* 
-    .section {
-        //background: darkgrey;
-        color: black;
-        margin-bottom: 4px;
-        font-weight: bold!important;
-        font-size: 2.1rem!important;
-        margin: 0px 0px;
-        padding-top:0px !important;
-        padding-bottom:0px !important;
-    }
-    .section-active {
-        background: #004F9E;
-        color: white;
-        font-weight: bold!important;
-        font-size: 2.1rem!important;
-        margin: 0px 0px;
-        padding-top:0px !important;
-        padding-bottom:0px !important;
-    }*/
+    
  
     .scroll-content{
         padding-top:0px !important;
@@ -129,7 +108,40 @@ page-home {
       }
     
 
+      .button-outline-md{
+          color: color($colors,secondary);
+          border-color:color($colors,secondary);
+      }
+
     
     
+
+      /*SLIDER*/
     
+      ion-slides {
+        overflow: visible !important;
+        width: 7.778rem !important;
+        //height: 84% !important;
+      }
+
+
+      .slide-zoom {
+        position: absolute;
+        
+     }
+
+     ion-slide {
+        //align-items: flex-end !important;
+      }
+      
+
+      .slides-div {
+        height: 40%;
+        border-bottom: 1px solid #ccc;
+      }
+
+
+      ion-footer{
+          background-color: color($colors,primary);
+      }
 }

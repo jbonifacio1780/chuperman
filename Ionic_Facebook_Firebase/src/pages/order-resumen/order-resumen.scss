@@ -1,9 +1,13 @@
 page-order-resumen {
+  .content{
+    background-color: color($colors,dark);
+  }
     .card-background-page {
         
           ion-card {
             position: relative;
             text-align: center;
+            background-color: color($colors,secondary)
           }
         
           .card-title {
@@ -22,5 +26,60 @@ page-order-resumen {
             width: 100%;
             color: #fff;
           }
+    }
+
+    .scroll-content {
+      align-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    ion-list{
+      ion-item{
+        background-color: #0c0c0c;
+        color: color($colors,light);
+        vertical-align: middle;
+      }
+
+      .item-md-dark p, .item-divider-md-dark p{
+        color: grey;
+        text-align: left;
+      }
+
+      .item-md h3, .item-md h4, .item-md h5, .item-md h6{
+        text-align: left;
+      }
+
+      .item-md .item-button{
+        height: 50px;
+      }
+
+      ion-label{
+        text-align: center;
+      }
+
+      ion-label {
+        lblLeft{
+          text-align: left;
+        }
+       
+      }
+
+      h1{
+        font-size: 4rem!important;
+      }
+      h2{
+        font-size: 3rem!important;
+      }
+      h3{
+        font-size: 2rem!important;
+      }
+      h4{
+        font-size: 1.6rem!important;
+      }
+      
+      
     }
 }

@@ -70,7 +70,8 @@ var config = {
     AngularFireDatabaseModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule//,
+    //MapComponent
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -14,7 +14,7 @@ export class SignupPage {
   };
 
   constructor(
-    private navCtrl: NavController,
+    //private navCtrl: NavController,
     private navParams: NavParams,
     private alertCtrl: AlertController,
     private afAuth: AngularFireAuth) {

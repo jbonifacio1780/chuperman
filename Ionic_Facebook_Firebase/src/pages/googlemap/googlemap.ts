@@ -80,8 +80,8 @@ export class GooglemapPage extends BasePage {
     this.geocoderService.addressForlatLng(position.lat(), position.lng())
       .subscribe((address: string) => {
 
-        const content = `<div padding><strong>${address}</strong></div>`;
-        this.mapService.createInfoWindow(content, position);
+        //const content = `<div padding><strong>${address}</strong></div>`;
+        //this.mapService.createInfoWindow(content, position);
         this.ubicacion=address;
 
         //console.log(this.ubicacion);

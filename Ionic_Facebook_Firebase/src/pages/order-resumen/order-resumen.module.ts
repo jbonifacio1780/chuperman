@@ -4,10 +4,10 @@ import { OrderResumenPage } from './order-resumen';
 
 @NgModule({
   declarations: [
-    OrderResumenPage,
+    //OrderResumenPage,
   ],
   imports: [
-    IonicPageModule.forChild(OrderResumenPage),
+    //IonicPageModule.forChild(OrderResumenPage),
   ],
 })
 export class OrderResumenPageModule {}
