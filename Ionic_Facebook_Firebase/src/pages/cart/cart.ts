@@ -197,6 +197,8 @@ import 'rxjs/add/operator/map';
     }
 
     gotoCheckOut(){
+      let fecha = new Date().toDateString();
+      console.log(fecha);
       if (this.qty>0 && this.currentPrice>=35){
       this.navCtrl.push(CheckoutPage,{direccion: this.direccion});
       }else{
