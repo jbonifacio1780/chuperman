@@ -14,7 +14,7 @@
       </ion-item>
 
 
-      <ion-item color="dark" class="lblLeft">
+      <ion-item color="dark">
         <ion-icon name="pin" item-start  color="light" ></ion-icon>
         <p>El pedido se entregará en</p>
         <h4>{{direccion}}</h4>
@@ -32,6 +32,12 @@
         <h4>#{{idOrden}}</h4>
       </ion-item>
 
+      <ion-item color="dark" text-wrap>
+          <ion-icon name="eye" item-start  color="light" ></ion-icon>
+          <p>Comentarios</p>
+          <h4>#{{observacion}}</h4>
+        </ion-item>
+        
       <ion-item color="dark" >
           <!--<button ion-button icon-right full color="secondary" class="BotonSinBorde" (click)="Gotohome()">
               Finalizar

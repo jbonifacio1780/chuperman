@@ -81,7 +81,7 @@ public pais : string="";
         alert.present();
       }
 
-    guardarOrder(payment, address, efec, regalo){
+    guardarOrder(payment, address, efec, regalo,observacion){
         if(address==null || payment==null){
             this.presentAlert();                        
           }
@@ -109,12 +109,13 @@ public pais : string="";
                 total=total+nuevo[z].item_price;
               }
               this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
-                Fecha:new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString(),
+                Fecha: new Date().toLocaleString(), //new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString() ,
                 Estado: "Solicitado",
                 Direccion:this.direccion,
                 total: total,
                 PagaEfectivo:valor,
                 Regaloprimeracompra:regalouno,
+                observaciones: observacion,
               })
                 for (var i = 0; i < nuevo.length; i++) {                   
                     this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
@@ -133,7 +134,7 @@ public pais : string="";
                 }
 
                 this.carts.remove();
-                this.openModalOrdersPage(this.cantidad+1,address,payment);
+                this.openModalOrdersPage(this.cantidad+1,address,payment,observacion);
             });
           }
 
@@ -162,12 +163,12 @@ public pais : string="";
         location.reload();               
       }; 
 
-      openModalOrdersPage(qtity,dire,formapago): void {
-        const OrdersModal = this.modalCtrl.create(OrderResumenPage,{idOrder: qtity,textdire:dire,metodo:formapago});
+      openModalOrdersPage(qtity,dire,formapago,observa): void {
+        const OrdersModal = this.modalCtrl.create(OrderResumenPage,{idOrder: qtity,textdire:dire,metodo:formapago,observ:observa});
         OrdersModal.present();
       }
 
-      
+
       Nuevo() {
         let prompt = this.alertCtrl.create({
           title: 'Editar Dirección',

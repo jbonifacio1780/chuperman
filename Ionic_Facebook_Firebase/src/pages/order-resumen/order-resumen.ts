@@ -18,6 +18,7 @@ export class OrderResumenPage {
   public idOrden: string="";
   public direccion: string="";
   public formapago: string="";
+  public observacion: string="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //this.idOrden=navParams.get("qtity");
@@ -26,7 +27,7 @@ export class OrderResumenPage {
     this.idOrden=navParams.get('idOrder');
     this.direccion=navParams.get('textdire');
     this.formapago=navParams.get('metodo');
-    
+    this.observacion=navParams.get('observ');
   }
 
   ionViewDidLoad() {
