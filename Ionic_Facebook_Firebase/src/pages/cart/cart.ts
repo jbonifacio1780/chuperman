@@ -28,16 +28,24 @@ import 'rxjs/add/operator/map';
     currentPrice: any;
     qty : any;
     direccion : string = "";
-
+    public weekday = Array(7);
     constructor
     (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public navParams: NavParams,public actionSheetCtrl: ActionSheetController,public platform: Platform ) {
       try{
 
       
        this.afAuth.authState.subscribe(auth => {
-      this.userid= afAuth.auth.currentUser.uid;      
-      this.carts = this.afd.list('/cart/'+this.userid+'/');
-      this.carts.subscribe(nuevo =>{
+        this.weekday[0] =  "Domingo";
+        this.weekday[1] = "Lunes";
+        this.weekday[2] = "Martes";
+        this.weekday[3] = "Miercoles";
+        this.weekday[4] = "Jueves";
+        this.weekday[5] = "Viernes";
+        this.weekday[6] = "Sabado";
+
+        this.userid= afAuth.auth.currentUser.uid;      
+        this.carts = this.afd.list('/cart/'+this.userid+'/');
+        this.carts.subscribe(nuevo =>{
         console.log(nuevo);
         this.currentPrice=0;
         this.direccion=navParams.get("direccion"); 
@@ -197,13 +205,88 @@ import 'rxjs/add/operator/map';
       alert.present();
     }
 
-    gotoCheckOut(){
-      let fecha = new Date().toDateString();
-      console.log(fecha);
+    gotoCheckOut(){      
       if (this.qty>0 && this.currentPrice>=35){
       this.navCtrl.push(CheckoutPage,{direccion: this.direccion});
       }else{
         this.AlertCart();
       }      
-    }; 
+    }
+    
+    horario(){
+      var d = new Date("July 18, 2017 03:15:00");                
+      var n = this.weekday[d.getDay()];
+      var t = d.toLocaleTimeString()
+      console.log(n);
+      console.log(t);
+      /* if(n =='Martes' && t >= "22:00:00" && t <= "4:00:00"){
+        console.log("OK");
+      } */
+      switch (n) {
+        case 'Domingo':
+          if(t >= "22:00:00" && t <= "4:00:00"){
+            console.log("OK pase a checkout" +' - '+ n);
+            this.gotoCheckOut();
+          }
+          else{
+            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+          }
+        break;
+        case 'Lunes':
+          if(t >= "22:00:00" && t <= "4:00:00"){
+            console.log("OK pase a checkout" +' - '+ n);
+            this.gotoCheckOut();
+          }
+          else{
+            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+          }            
+          break;
+        case 'Martes':
+          if(t >= "22:00:00" && t <= "4:00:00"){
+            console.log("OK pase a checkout" +' - '+ n);
+            this.gotoCheckOut();
+          }
+          else{
+            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+          }
+          break;
+        case 'Miercoles':
+          if(t >= "22:00:00" && t <= "4:00:00"){
+            console.log("OK pase a checkout" +' - '+ n);
+            this.gotoCheckOut();
+          }
+          else{
+            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+          }
+          break;
+        case 'Jueves':
+          if(t >= "22:00:00" && t <= "4:00:00"){
+            console.log("OK pase a checkout" +' - '+ n);
+            this.gotoCheckOut();
+          }
+          else{
+            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+          }
+          break;
+        case 'Viernes':
+          if(t >= "19:00:00" && t <= "5:00:00"){
+            console.log("OK pase a checkout" +' - '+ n);
+            this.gotoCheckOut();
+          }
+          else{
+            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+          }
+          break;
+        case 'Sabado':
+          if(t >= "19:00:00" && t <= "5:00:00"){
+            console.log("OK pase a checkout" +' - '+ n);
+            this.gotoCheckOut();
+          }
+          else{
+            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+          }
+          break;          
+    }
+  }
+
   }
