@@ -214,7 +214,7 @@ import 'rxjs/add/operator/map';
     }
     
     horario(){
-      var d = new Date("July 18, 2017 03:15:00");                
+      var d = new Date();                
       var n = this.weekday[d.getDay()];
       var t = d.toLocaleTimeString()
       console.log(n);
@@ -224,65 +224,72 @@ import 'rxjs/add/operator/map';
       } */
       switch (n) {
         case 'Domingo':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t >= "22:00:00" || t <= "4:00:00"){
             console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
+            alert("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
             console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
           }
         break;
         case 'Lunes':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t >= "22:00:00" || t <= "4:00:00"){
             console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
+            alert("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
             console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
           }            
           break;
         case 'Martes':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t >= "22:00:00" || t <= "4:00:00"){
             console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
+            alert("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
             console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
           }
           break;
         case 'Miercoles':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t >= "22:00:00" || t <= "4:00:00"){
             console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
+            alert("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
             console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
           }
           break;
         case 'Jueves':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t >= "22:00:00" || t <= "4:00:00"){
             console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
+            alert("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
             console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
           }
           break;
         case 'Viernes':
-          if(t >= "19:00:00" && t <= "5:00:00"){
+          if(t >= "19:00:00" || t <= "5:00:00"){
             console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            alert("De domingo a Jueves el Horario de atencioon es de 19 a 05 am");
+            console.log("De domingo a Jueves el Horario de atencioon es de 19 a 05 am");
           }
           break;
         case 'Sabado':
-          if(t >= "19:00:00" && t <= "5:00:00"){
+          if(t >= "19:00:00" || t <= "5:00:00"){
             console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
+            alert("De domingo a Jueves el Horario de atencioon es de 19 a 05 am");
             console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
           }
           break;          
