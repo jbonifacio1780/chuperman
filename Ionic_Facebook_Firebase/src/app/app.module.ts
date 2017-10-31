@@ -30,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
+//import { TwitterConnect } from '@ionic-native/twitter-connect';
 
 import { MapComponent } from '../components/map/map';
 
@@ -37,6 +38,9 @@ import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Vibration } from '@ionic-native/vibration';
 import { CallNumber } from '@ionic-native/call-number';
+
+//import { AccordionComponent } from '../components/accordion/accordion';
+
 
 var config = {
   apiKey: "AIzaSyBro1XKpMh30r2ApCnXiLMKbVmMQlWtaBo",
@@ -63,6 +67,8 @@ var config = {
     MapComponent,
     SearchPage,
     OrderResumenPage
+    //,
+    //AccordionComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +101,7 @@ var config = {
     SplashScreen,
     Vibration,
     Facebook,
+    //TwitterConnect,
     Geolocation,
     GeocoderService,
     MapService,

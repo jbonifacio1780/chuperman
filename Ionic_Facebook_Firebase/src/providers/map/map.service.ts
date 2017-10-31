@@ -57,7 +57,10 @@ export class MapService {
         disableDefaultUI: true,
         scaleControl: false,
         //styles: styleArray,
-        zoomControl: false,
+        
+        //fullscreenControlOptions:true,
+        //mapTypeControlOptions:true,
+        zoomControl: true,
         zoomControlOptions: {
           position: google.maps.ControlPosition.BOTTOM_CENTER
         },

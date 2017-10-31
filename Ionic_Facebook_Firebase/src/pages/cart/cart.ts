@@ -28,6 +28,8 @@ import 'rxjs/add/operator/map';
     currentPrice: any;
     qty : any;
     direccion : string = "";
+    hLongitud : string ="";
+    hlatitud : string ="";
     public weekday = Array(7);
     constructor
     (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public navParams: NavParams,public actionSheetCtrl: ActionSheetController,public platform: Platform ) {
@@ -49,6 +51,9 @@ import 'rxjs/add/operator/map';
         console.log(nuevo);
         this.currentPrice=0;
         this.direccion=navParams.get("direccion"); 
+        this.hLongitud = navParams.get("hLongitud"); 
+        this.hlatitud  = navParams.get("hlatitud"); 
+        console.log('Card :' +this.hLongitud, this.hlatitud);
         this.qty=0;
         for (var i = 0; i < nuevo.length; i++) {
           this.currentPrice += nuevo[i].item_price;  
@@ -217,7 +222,7 @@ import 'rxjs/add/operator/map';
 
     gotoCheckOut(){      
       if (this.qty>0 && this.currentPrice>=35){
-      this.navCtrl.push(CheckoutPage,{direccion: this.direccion});
+      this.navCtrl.push(CheckoutPage,{direccion: this.direccion, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
       }else{
         this.AlertCart();
       }      
@@ -225,10 +230,12 @@ import 'rxjs/add/operator/map';
     
     horario(){
       //var d = new Date();     
-      var d = new Date("July 18, 2017 03:15:00"); //----->> Con este valor funciona a cualquier hora
+      var d = new Date("July 18, 2017 22:15:00"); //----->> Con este valor funciona a cualquier hora
       console.log(d);           
+      var d = new Date();                
       var n = this.weekday[d.getDay()];
-      var t = d.toLocaleTimeString()
+      //var t = d.toLocaleTimeString();
+      var t = "22:00:00";
       //console.log(n);
       //console.log(t);
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild,Renderer,OnInit } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login';
 import { CartPage } from '../cart/cart';
@@ -24,8 +24,14 @@ import { Vibration } from '@ionic-native/vibration';
   templateUrl: 'home.html'
 })
 export class HomePage {
+@ViewChild("cc") ionList: any;
+accordionExpanded=false;
+
+
 fabButtonOpened: Boolean;
 public direccion: string="";
+public hLongitud: string="";
+public hlatitud : string ="";
 public productos: FirebaseListObservable<any>;
 public image_x="";
 public cart: FirebaseListObservable<any>;
@@ -34,7 +40,9 @@ total_qty : any;
 public carrito: FirebaseListObservable<any>;
 
 
-  constructor(private facebook: Facebook,
+  constructor(
+    public renderer: Renderer,
+    private facebook: Facebook,
     public navCtrl: NavController,
     public loadingCtrl: LoadingController, 
     public afd: AngularFireDatabase,
@@ -47,6 +55,9 @@ public carrito: FirebaseListObservable<any>;
       this.presentLoadingCustom();
 
       this.direccion=navParams.get("direccion");
+      this.hLongitud = navParams.get("hLongitud");
+      this.hlatitud = navParams.get("hlatitud");
+      console.log('Home:'+ this.hlatitud,this.hLongitud);
       if(this.direccion==null||this.direccion=="")
       {
         this.AlertMap();
@@ -83,6 +94,14 @@ public carrito: FirebaseListObservable<any>;
 
 }
 
+ngOnInit(){
+  try
+  {console.log(this.ionList.nativeElement);}
+  catch(e){}
+  
+  //this.renderer.setElementStyle(this.cardContent.nativeElement,"webkitTransition","max-height 500ms, padding 500ms");
+}
+
 presentLoadingCustom() {
   const loading = this.loadingCtrl.create({
     spinner: 'bubbles',
@@ -97,8 +116,19 @@ presentLoadingCustom() {
   loading.present();
 }
 
-  toggleSection(i) {         
-     this.listado[i].open = !this.listado[i].open;
+  toggleSection(i) {    
+    
+    if(this.accordionExpanded){
+      this.renderer.setElementStyle(this.ionList.nativeElement,"max-height","0px");
+      this.renderer.setElementStyle(this.ionList.nativeElement,"padding","0px 16 px");
+    }else{
+      this.renderer.setElementStyle(this.ionList.nativeElement,"max-height","300px");
+      this.renderer.setElementStyle(this.ionList.nativeElement,"padding","13px 16 px");
+    }
+    
+    //this.accordionExpanded=!this.accordionExpanded;
+    this.listado[i].open = !this.listado[i].open;
+
   }
 
     
@@ -110,7 +140,7 @@ presentLoadingCustom() {
 
     goCart(){
       if (this.total_qty>0){
-      this.navCtrl.push(CartPage,{direccion: this.direccion});
+      this.navCtrl.push(CartPage,{direccion: this.direccion,hLongitud:this.hLongitud, hlatitud:this.hlatitud});
       }
       else{
         this.AlertCart();
