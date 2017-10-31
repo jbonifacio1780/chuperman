@@ -116,6 +116,7 @@ export class GooglemapPage extends BasePage {
    */
   private locate(): Promise<any> {
     const loader = this.loadingCtrl.create({
+      spinner:"bubbles",
       content: 'Espere por favor',
     });
     loader.present();

@@ -15,6 +15,9 @@ cart-home {
         }
       }
     
+      .item-md h1 {
+          color: color($colors,dark);
+      }
 
     .h2 {  
         color: #111; 
@@ -33,8 +36,6 @@ cart-home {
     }
 
     .accordion-list {
-        //background: color($colors, light);
-        //background: white;
         padding-top:0px !important;
         padding-bottom:0px !important;
         padding-right:0px !important;
@@ -71,21 +72,23 @@ cart-home {
 
     .item.resumen {
         color: white!important;
-        background-color: color($colors,secondary)!important;
-        //background: linear-gradient(10deg,#00aced,#004F9E)!important;
-        //background: linear-gradient(to bottom,  #000 0%, #fff 100%);
+        background-color: color($colors,primary)!important;
+        
     }
 
     .button-md{
         font-size: 1.6rem;
         font-weight: 700;
-        color:color($colors,secondary)
+        color:color($colors,dark)
     }
+    
    
+   
+    .item-md .item-button {
+        color: color($colors,primary);
+    }
 
-    .pieCart{
-        //background-color: #004F9E!important;
-        
+    .pieCart{      
         padding-top:0px !important;
         padding-bottom:0px !important;
         
@@ -101,7 +104,7 @@ cart-home {
         padding-left:0px !important;
     }
     .child-item {
-        //background: rgba(0, 0, 0, 0.10);
+
         padding-top:0px !important;
         padding-bottom:0px !important;
         padding-right:0px !important;
@@ -120,9 +123,26 @@ cart-home {
     .button-md-third{
         font-size: 1.6rem;
         font-weight: 700;
-        color:color($colors,primary)
+        color:color($colors,light);
+        background: linear-gradient(5deg,#e96262,rgb(218, 19, 19))!important;
+        font-style: italic;
+        // background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Safari 5.1 to 6.0 */
+       // background: -o-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Opera 11.1 to 12.0 */
+       // background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Firefox 3.6 to 15 */
+       // background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /* Standard syntax (must be last) */
     }
 
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+
+        height: 80px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        width: auto;
+        height: 80px;
+    }
       
 }
 ion-alert{

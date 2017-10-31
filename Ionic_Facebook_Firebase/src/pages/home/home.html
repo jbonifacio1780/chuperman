@@ -17,11 +17,8 @@
 </ion-header>
 
 <ion-content padding> 
+
 <!--
-<ion-slides pager autoplay="1000" loop="true" speed="1000">
-  
-</ion-slides>
--->
 <div class="slides-div">
 <ion-slides pager autoplay="1000" loop="true" speed="1000">
     <ion-slide >
@@ -34,7 +31,7 @@
         <img src="assets/img/no-user.png">
       </ion-slide>
   </ion-slides>
-</div>
+</div>-->
   
 
       
@@ -55,8 +52,10 @@
             <ion-list *ngFor="let child of item.children; let j = index" no-padding>
               <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
                   <ion-thumbnail item-start>
-                      <img src="{{child.image}}" (click)="cartadd(child, i,j)" class="image" onerror="this.src='assets/img/champagne.png'" />   
+                      <img src="{{child.image}}" (click)="cartadd(child, i,j)" class="image" onerror="this.src='assets/img/drink-chuperman.png'" />   
                   </ion-thumbnail>
+
+                  
                  
                   <h2 text-wrap (click)="cartadd(child, i,j)">{{ child.nombre }}</h2>
                   <p text-lowercase (click)="cartadd(child, i,j)">{{ child.descripcion }}</p>

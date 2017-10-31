@@ -25,7 +25,9 @@ $font-path: "../assets/fonts";
 
 $colors: (
   //primary:    #004F9E,
-  primary: #cc0000,
+//  primary: #cc0000, //#ff0d0d
+  primary: #ff0d0d,
+  
   secondary: #1e73be,
   third: #FCD100,
   fourth:  #004F9E,
@@ -41,7 +43,7 @@ $colors: (
   warning: #f56800,
 );
 
-$toolbar-md-background:                   color($colors, secondary);
+$toolbar-md-background:                   color($colors, primary);
 $tabbar-md-background:                    color($colors, light);
 //$tab-button-md-active-color:              color($colors, botones);
 //$tab-button-md-inactive-color:            #8c8c8c;
@@ -59,8 +61,8 @@ $button-md-border-radius: 10px;
 
 
 // Variables
-$font-stack: Helvetica, sans-serif;
-$primary-color: color($colors,botones);
+$font-stack: "GT Pressura Bold", "DIN Next W06 Bold", Arial;
+$primary-color: color($colors,primary);
 
 // Styles
 .button {

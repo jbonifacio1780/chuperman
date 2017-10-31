@@ -1,22 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav,LoadingController } from 'ionic-angular';
-//import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
-
-//import { ScreenOrientation } from '@ionic-native/screen-orientation';
-//import { CartPage } from '../pages/cart/cart';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { OrdersPage } from '../pages/orders/orders';
-//import { CheckoutPage } from '../pages/checkout/checkout';
 import { SettingsPage } from '../pages/settings/settings';
-//import { SupportPage } from '../pages/support/support';
 import { Vibration } from '@ionic-native/vibration';
-
 import { GooglemapPage } from '../pages/Googlemap/Googlemap';
-//import { MapComponent } from '../components/map/map';
-
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase } from 'angularfire2/database';
 
@@ -25,9 +16,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class MyApp {
 
-  //tabBarElement: any;
+
   splash = true;
-  //secondPage = LoginPage;
+
 
   @ViewChild(Nav) nav: Nav;
   
@@ -46,29 +37,30 @@ export class MyApp {
 /*   total_qty : any;
   public carrito: FirebaseListObservable<any>; */
 
-  constructor(public vibration: Vibration,public loadingCtrl: LoadingController,platform: Platform, private afAuth: AngularFireAuth, 
+  constructor(public vibration: Vibration,
+    public loadingCtrl: LoadingController,
+    public platform: Platform, 
+    public afAuth: AngularFireAuth, 
     public SplashScreen:SplashScreen,
     public afd: AngularFireDatabase) {
 
-      SplashScreen.hide();
+    //this.SplashScreen.hide();
       
     //this.tabBarElement = document.querySelector('.tabbar');
 
     
-/*PARA MOSTRAR EL SPLASHCREEN NUEO ANIMADO
+    /*PARA MOSTRAR EL SPLASHCREEN NUEO ANIMADO*/
     setTimeout(() => {
       this.splash = false;
     }, 6000);
-*/
+   
     this.afAuth.authState.subscribe(auth => {
       try
       {
       if (!auth)
         this.rootPage = LoginPage;        
       else
-
         this.rootPage = GooglemapPage;
-      
         this.imagen = auth.photoURL;
         this.usuario = auth.displayName;
 
@@ -96,16 +88,13 @@ export class MyApp {
   }
 
 
+ onViewDidLoad(){
+
+
+ }
+
+
  
-
-
-  presentLoading() {
-    let loader = this.loadingCtrl.create({
-      content: "¡Espere por favor!",
-      duration: 200
-    });
-    loader.present();
-  }
 
   openPage(page) {
     // Reset the content nav to have just this page
@@ -116,9 +105,6 @@ export class MyApp {
   async logout(){
     firebase.auth().signOut();
     this.nav.push(LoginPage);
-    //window.location.reload();
   };
-  /* goCart(){
-    this.nav.push(CartPage);
-  }; */
+
 }

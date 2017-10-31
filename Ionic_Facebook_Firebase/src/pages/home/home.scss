@@ -49,22 +49,19 @@ page-home {
     .list {
         margin-bottom: 0px;
     }
-    .image{
-        height: auto; 
-        width: auto; 
-        //border: 1px solid #004F9E;
-        //border-radius: 50%;
-        //box-shadow: 0 0 2px gray;
-    }
     
-    .image_header{
-        height: 100%; 
-        width: 100%; 
-        //border: 1px solid #004F9E;
-        //border-radius: 50%;
-        //box-shadow: 0 0 2px gray;
+
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        //width: 0px!important;
+        height: 80px;
+        display: block;
+        margin: 0 auto;
     }
-    
+
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        width: auto;
+        height: 80px;
+    }
 
     h2 {  
         color: #111; 
@@ -109,10 +106,14 @@ page-home {
     
 
       .button-outline-md{
-          color: color($colors,secondary);
-          border-color:color($colors,secondary);
+          color: color($colors,primary);
+          border-color:color($colors,primary);
       }
 
+      .badge-md {
+          color: color($colors,third);
+          background-color: color($colors,dark);
+      }
     
     
 

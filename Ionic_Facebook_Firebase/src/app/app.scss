@@ -51,12 +51,12 @@ ion-menu{
 		z-index: 100000;
 		width:100%;
         //background-color: #002a3e;
-        background-color: #1e73be;
+        background-color: black;
 	  }
 	  
 	  .flb {
         //background-color: #3ebffb;
-        background-color: #3ba1da;
+        background-color: black;
 		height:100%;
 		width:100%;
 		animation: pulse 1s linear forwards;
@@ -91,6 +91,16 @@ ion-menu{
 		}
       }
       
+      ion-menu .ion-item-header{
+       
+        color:color($colors,light);
+        background: linear-gradient(5deg,#e96262,rgb(218, 19, 19))!important;
+      }
+
+      ion-menu .botonmenu {
+        background-color: #FFFFFF !important;
+        color: color($colors,dark) !important;
+    }
 
       
 

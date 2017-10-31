@@ -21,7 +21,7 @@
   <ion-list class="accordion-list" no-padding>
         <ion-item *ngFor="let cart of carts | async" class="child-item">
           <ion-thumbnail item-start>
-            <img src="{{cart.item_image}}" onerror="this.src='assets/img/champagne.png'">
+            <img src="{{cart.item_image}}" onerror="this.src='assets/img/drink-chuperman.png'">
             <button ion-button clear item-end (click)="presentActionSheet(cart)">
               <ion-icon name="ios-trash-outline" style="font-size:25px"></ion-icon>
               &nbsp;Eliminar</button>
@@ -32,19 +32,16 @@
           <h3>Subtotal:</h3> 
           S/. {{cart.item_price}}.00 
           <p>
-          <button ion-button clear item-end style="font-size:26px;" (click)="incrementQty(cart)"><ion-icon name="add-circle" ></ion-icon></button>
-          <button ion-button clear item-end><h1>{{cart.item_qty}}</h1></button>
-          <button ion-button clear item-end style="font-size:26px;" (click)="decrementQty(cart)"><ion-icon name="remove-circle" ></ion-icon></button>
+          <button ion-button clear item-end class="MasMenos" style="font-size:26px;" (click)="incrementQty(cart)"><ion-icon name="add-circle" ></ion-icon></button>
+          <button ion-button clear item-end><h1 class="Cantidad">{{cart.item_qty}}</h1></button>
+          <button ion-button clear item-end class="MasMenos" style="font-size:26px;" (click)="decrementQty(cart)"><ion-icon name="remove-circle" ></ion-icon></button>
           </p>
         </ion-item>               
   </ion-list>
 </ion-content>
 
 <ion-footer class="pieCart">
-  <!-- PARA AGREGAR UNA LINEA ROJA ANTES DEL FOOTER 
-    <h4 class="mh-widget-title">
-        <span class="mh-widget-title-inner"> </span>
-      </h4>-->
+
             <ion-item class="resumen" no-lines no-border>
               <ion-row>
                 <ion-col >Costo por Delivery:</ion-col>
@@ -56,8 +53,10 @@
               </ion-row>
               <ion-row>
                 <p></p>
-                  <button ion-button full color="third" (click)="horario()" class="FormatoBotonPago">Ve a ChuperPago</button>
-              </ion-row>
+
+                  <button ion-button full color="third" (click)="horario()" class="FormatoBotonPago">Ir a ChuperPago</button>
+                  
+                </ion-row>
             </ion-item>
     
     </ion-footer>

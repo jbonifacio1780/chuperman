@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController,LoadingController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
@@ -35,6 +35,7 @@ public pais : string="";
       public afd: AngularFireDatabase, 
       public afAuth: AngularFireAuth, 
       public alertCtrl: AlertController,
+      public loadingCtrl:LoadingController,
       public modalCtrl: ModalController ) {
         try{
             this.payments = [
@@ -46,9 +47,9 @@ public pais : string="";
               ];
 
               this.regalocompra = [
-                {id: 'CIGARRO', name: 'CIGARRO'},
-                {id: 'HIELO', name: 'HIELO'},
-                {id: 'GASEOSA', name: 'REGALO 3'}            
+                {id: 'CIGARRO', name: 'CIGARRO',icons:'assets/img/chuperobsequio/cigarros.png'},
+                {id: 'HIELO', name: 'HIELO',icons:'assets/img/chuperobsequio/hielo.png'},
+                {id: 'GASEOSA', name: 'GASEOSA',icons:'assets/img/chuperobsequio/soda.png'}            
               ];
 
             this.afAuth.authState.subscribe(auth => {      
@@ -72,71 +73,108 @@ public pais : string="";
 
         }catch (e){}        
     }
-    presentAlert() {
+    presentAlert(mensaje) {
         const alert = this.alertCtrl.create({
           title: 'Aviso!',
-          subTitle: 'Debe Seleecionar una dirección y un tipo de pago',
+          subTitle: mensaje,
           buttons: ['Volver']
         });
         alert.present();
       }
 
     guardarOrder(payment, address, efec, regalo,observacion){
+
+
+      const loading = this.loadingCtrl.create({
+        //spinner: 'hide',
+        spinner:"bubbles",
+        content: 'Registrando su pedido'
+      });
+    
+      loading.present();
+    
+      setTimeout(() => {
+        //this.navCtrl.push(Page2); 
         if(address==null || payment==null){
-            this.presentAlert();                        
+          this.presentAlert("Debe Seleecionar una dirección y un tipo de pago");                        
+        }
+        else {
+          if(observacion==null){
+              observacion="";
           }
-          else {
-            let regalouno="";
-            if (regalo == undefined){
-              regalouno="";              
-            }
-            else{
-              regalouno=regalo;
-            }
 
-            let valor=0
-            if (efec>0){
-              valor=efec              
+          let regalouno="";
+          if (regalo == undefined){
+            regalouno="";  
+            //this.presentAlert("Debe seleccionar un ChuperObsequio");   
+            //return; 
+            //regalo="";            
+          }
+          else{
+            regalouno=regalo;
+          }
+
+          /*if(regalo==null){
+            this.presentAlert("Debe seleccionar un ChuperObsequio");   
+            return; 
+          }*/
+
+          let valor=0
+          if (efec>0){
+            valor=efec              
+          }
+          else{
+            valor=0
+          }
+
+          this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
+          this.carts.subscribe(nuevo =>{
+          let total = 0;
+            
+            for (var z = 0; z < nuevo.length; z++) {                 
+              total=total+nuevo[z].item_price;
             }
-            else{
-              valor=0
-            }
-            this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
-            this.carts.subscribe(nuevo =>{
-              let total = 0;
-              
-              for (var z = 0; z < nuevo.length; z++) {                 
-                total=total+nuevo[z].item_price;
+            this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
+              Fecha: new Date().toLocaleString(), //new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString() ,
+              //Estado: "Solicitado",
+              Direccion:this.direccion,
+              total: total,
+              PagaEfectivo:valor,
+              Regaloprimeracompra:regalouno,
+              observaciones: observacion,
+              payment : payment,
+              adress_id : address,
+              cliente: firebase.auth().currentUser.displayName,
+              userId: firebase.auth().currentUser.uid,
+              status:'SOLICITADO'
+            })
+              for (var i = 0; i < nuevo.length; i++) {                   
+                  this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
+                    {                                            
+                      'product': nuevo[i].item_name,
+                      'produc_img' : nuevo[i].item_image,
+                      'produc_des' : nuevo[i].item_description,
+                      'price':nuevo[i].item_price,
+                      'qty' : nuevo[i].item_qty,
+                      userId: firebase.auth().currentUser.uid,
+                      
+                  })                   
               }
-              this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
-                Fecha: new Date().toLocaleString(), //new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString() ,
-                Estado: "Solicitado",
-                Direccion:this.direccion,
-                total: total,
-                PagaEfectivo:valor,
-                Regaloprimeracompra:regalouno,
-                observaciones: observacion,
-              })
-                for (var i = 0; i < nuevo.length; i++) {                   
-                    this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
-                      {                                            
-                        'product': nuevo[i].item_name,
-                        'produc_img' : nuevo[i].item_image,
-                        'produc_des' : nuevo[i].item_description,
-                        'price':nuevo[i].item_price,
-                        'qty' : nuevo[i].item_qty,
-                        'payment' : payment,
-                        'adress_id': address,
-                        'cliente': firebase.auth().currentUser.displayName,
-                        'userId': firebase.auth().currentUser.uid,
-                        'status':'SOLICITADO'
-                    })                   
-                }
 
-                this.carts.remove();
-                this.openModalOrdersPage(this.cantidad+1,address,payment,observacion);
-            });
-          }
+              this.carts.remove();
+              this.openModalOrdersPage(this.cantidad+1,address,payment,observacion);
+          });
+        }
+
+
+      }, 3000);
+    
+      setTimeout(() => {
+        loading.dismiss();
+      }, 5000);
+
+
+        
 
     }
 

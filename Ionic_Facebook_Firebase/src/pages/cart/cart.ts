@@ -187,7 +187,7 @@ import 'rxjs/add/operator/map';
           {
             text: '+',
             handler: data => {              
-              console.log(data);
+             // console.log(data);
             }
           }
         ]
@@ -205,6 +205,16 @@ import 'rxjs/add/operator/map';
       alert.present();
     }
 
+    AlertCartHorario(mensaje) {
+      const alert = this.alertCtrl.create({
+        title: 'Advertencia',
+        subTitle: mensaje,
+        buttons: ['Ok'],
+        cssClass:'alertCustomCss'
+      });
+      alert.present();
+    }
+
     gotoCheckOut(){      
       if (this.qty>0 && this.currentPrice>=35){
       this.navCtrl.push(CheckoutPage,{direccion: this.direccion});
@@ -214,76 +224,69 @@ import 'rxjs/add/operator/map';
     }
     
     horario(){
-      var d = new Date("July 18, 2017 03:15:00");                
+      //var d = new Date();     
+      var d = new Date("July 18, 2017 03:15:00"); //----->> Con este valor funciona a cualquier hora
+      console.log(d);           
       var n = this.weekday[d.getDay()];
       var t = d.toLocaleTimeString()
-      console.log(n);
-      console.log(t);
-      /* if(n =='Martes' && t >= "22:00:00" && t <= "4:00:00"){
-        console.log("OK");
-      } */
+      //console.log(n);
+      //console.log(t);
+
       switch (n) {
         case 'Domingo':
           if(t >= "22:00:00" && t <= "4:00:00"){
-            console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
           }
         break;
         case 'Lunes':
           if(t >= "22:00:00" && t <= "4:00:00"){
-            console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
           }            
           break;
         case 'Martes':
           if(t >= "22:00:00" && t <= "4:00:00"){
-            console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
           }
           break;
         case 'Miercoles':
           if(t >= "22:00:00" && t <= "4:00:00"){
-            console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
           }
           break;
         case 'Jueves':
           if(t >= "22:00:00" && t <= "4:00:00"){
-            console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
           }
           break;
         case 'Viernes':
           if(t >= "19:00:00" && t <= "5:00:00"){
-            console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            this.AlertCartHorario("Viernes y sábados el Horario de atención es de 07 pm a 04 am");
           }
           break;
         case 'Sabado':
           if(t >= "19:00:00" && t <= "5:00:00"){
-            console.log("OK pase a checkout" +' - '+ n);
             this.gotoCheckOut();
           }
           else{
-            console.log("De domingo a Jueves el Horario de atencioon es de 22 a 04 am");
+            this.AlertCartHorario("Viernes y sábados el Horario de atención es de 07 pm a 04 am");
           }
           break;          
     }

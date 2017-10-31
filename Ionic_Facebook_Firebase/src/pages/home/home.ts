@@ -5,7 +5,7 @@ import { CartPage } from '../cart/cart';
 import { NavController , NavParams, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-/* import { Http } from '@angular/http'; */
+import { LoadingController } from 'ionic-angular';
 
 
 
@@ -24,7 +24,7 @@ import { Vibration } from '@ionic-native/vibration';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  fabButtonOpened: Boolean;
+fabButtonOpened: Boolean;
 public direccion: string="";
 public productos: FirebaseListObservable<any>;
 public image_x="";
@@ -34,49 +34,68 @@ total_qty : any;
 public carrito: FirebaseListObservable<any>;
 
 
-  constructor(private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase,public navParams: NavParams, public afAuth: AngularFireAuth, public alertCtrl:AlertController) 
+  constructor(private facebook: Facebook,
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController, 
+    public afd: AngularFireDatabase,
+    public navParams: NavParams, 
+    public afAuth: AngularFireAuth, 
+    public alertCtrl:AlertController) 
   {     
     try{
+
+      this.presentLoadingCustom();
 
       this.direccion=navParams.get("direccion");
       if(this.direccion==null||this.direccion=="")
       {
         this.AlertMap();
-        
       }
       
-    this.afAuth.authState.subscribe(auth => {
-    this.fabButtonOpened=false;
-    this.cart = this.afd.list('/cart/');
-    this.productos = this.afd.list('/productos');             
-    this.productos.subscribe(queriedItems => {
-      this.listado= queriedItems;
-      //console.log(queriedItems);   
-    
-    //console.log(this.direccion);
-    
-   });
-   this.carrito = this.afd.list('/cart/'+auth.uid);
-   this.carrito.subscribe(carrrr =>{
-     this.total_qty=0;
-     for (var i = 0; i < carrrr.length; i++) {
-       this.total_qty += carrrr[i].item_qty;            
-     }
+      this.afAuth.authState.subscribe(auth => {
+      this.fabButtonOpened=false;
+      this.cart = this.afd.list('/cart/');
+      this.productos = this.afd.list('/productos');             
+      this.productos.subscribe(queriedItems => {
+        this.listado= queriedItems;
+        //console.log(queriedItems);   
+      
+      //console.log(this.direccion);
+      
     });
+    this.carrito = this.afd.list('/cart/'+auth.uid);
+    this.carrito.subscribe(carrrr =>{
+      this.total_qty=0;
+      for (var i = 0; i < carrrr.length; i++) {
+        this.total_qty += carrrr[i].item_qty;            
+      }
+      });
 
-    this.afd.database.ref('/users/').once("value", function(snapshot) {    
-      if( snapshot.hasChild(firebase.auth().currentUser.uid) == true){          
-      }
-      else{
-        snapshot.child(firebase.auth().currentUser.uid).ref.set({email:"", telephone:"", nombres:"", apellidos:"", pin:""})
-      }
-    })
-  })    
-  }catch (e){}
-  //this.vibration.vibrate(1000);
+      this.afd.database.ref('/users/').once("value", function(snapshot) {    
+        if( snapshot.hasChild(firebase.auth().currentUser.uid) == true){          
+        }
+        else{
+          snapshot.child(firebase.auth().currentUser.uid).ref.set({email:"", telephone:"", nombres:"", apellidos:"", pin:""})
+        }
+      })
+    })    
+    }catch (e){}
+
 }
 
+presentLoadingCustom() {
+  const loading = this.loadingCtrl.create({
+    spinner: 'bubbles',
+    content: 'Espere por favor',
+    duration: 2000
+  });
 
+  loading.onDidDismiss(() => {
+    //console.log('Dismissed loading');
+  });
+
+  loading.present();
+}
 
   toggleSection(i) {         
      this.listado[i].open = !this.listado[i].open;
@@ -94,7 +113,6 @@ public carrito: FirebaseListObservable<any>;
       this.navCtrl.push(CartPage,{direccion: this.direccion});
       }
       else{
-        //alert("Debe seleccionar al menos un producto");
         this.AlertCart();
       }
     }

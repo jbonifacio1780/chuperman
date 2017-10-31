@@ -18,17 +18,18 @@ page-googlemap {
       }
       
       #centerMarker {
-          width: 22px;
-          height: 40px;
+          width: 45px;
+          height: 48px;
           display: block;
           content: ' ';
           position: absolute;
           top: 50%;
           left: 50%;
           margin: -40px 0 0 -11px;
-          //background: url('https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png');
-          background: url('https://firebasestorage.googleapis.com/v0/b/chuperman-81140.appspot.com/o/App%2Fspotlight-poi_hdp-beer.png?alt=media&token=98c8b59b-0b98-4c47-8619-9fe155f497ac');
-          background-size: 22px 40px; /* Since I used the HiDPI marker version this compensates for the 2x size */
+
+          //background: url('https://firebasestorage.googleapis.com/v0/b/chuperman-81140.appspot.com/o/App%2Fspotlight-poi_hdp-beer.png?alt=media&token=98c8b59b-0b98-4c47-8619-9fe155f497ac');
+          background-image: url('../assets/img/beer-pin-1.png');
+          background-size: 45px 48px; /* Since I used the HiDPI marker version this compensates for the 2x size */
           //pointer-events: none; /* This disables clicks on the marker. Not fully supported by all major browsers, though */
         }
         .BotonSinBorde{
@@ -52,10 +53,6 @@ page-googlemap {
         }
         
 
-        
-        ion-footer {
-         
-        }
 
         .button-outline-md-primary{
           background-color: white!important;
@@ -92,28 +89,32 @@ page-googlemap {
         }
         
         .button-outline-md-primary {
-          border-color: #1e73be!important;
-          color: #1e73be!important;
+          border-color: color($colors,primary)!important;
+          color: color($colors,dark)!important;
         }
 
         h1{
-          color: color($colors,primary);
+          color: color($colors,secondary);
           //background: linear-gradient(blue,red,yellow);
           //-webkit-background-clip: text;
           //color: transparent;  
 
-          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
-          //font-size: 100%;
+          //font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+          font-family: "GT Pressura Bold", "DIN Next W06 Bold", fantasy;
           font-weight: bold;
+          font-size: 5.8vh!important;
         }
 
         ion-col{
           font-size: 2.5rem!important;
           color: color($colors,dark);
           font-weight: bold;
-          //width: 200px;
         }
         
+        .button-md-secondary {
+          color: #fff;
+          background-color: color($colors,primary);
+      }
         
 
 }

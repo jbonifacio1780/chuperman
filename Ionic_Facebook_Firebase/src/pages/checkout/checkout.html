@@ -1,9 +1,3 @@
-<!--
-  Generated template for the CheckoutPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -16,16 +10,6 @@
 <ion-content padding class="background" padding>
 
   
-    <!-- Address 
-      <ion-list-header>
-          Dirección  
-      </ion-list-header>      
-
-      <ion-item>
-
-         <ion-input type="text" [(ngModel)]="direccion" name="direccion" value="{{direccion}}"></ion-input>
-      </ion-item> -->
-
     <ion-card>
       <ion-card-header>
             <h1>Elige una dirección</h1>
@@ -59,29 +43,7 @@
                   <ion-radio value="{{item.id}}"></ion-radio>
                 </ion-item>              
               </ion-list>
-        </ion-card-content>
-      </ion-card>
-      <!--
-    <ion-card>
-        <ion-card-header>
-              <h1>Elige una forma de pago</h1>
-          </ion-card-header>
-          <ion-card-content>
-          <ion-list radio-group>
-            <ion-item text-wrap *ngFor="let item of payments">
-    
-              <ion-label>{{item.name}}</ion-label>
-              <ion-radio value="{{item.id}}"></ion-radio>
-            </ion-item>         
-          </ion-list>
-
-          
-
-          </ion-card-content>
-        </ion-card>-->
-
-
-
+            <p></p>
               <ion-list *ngIf="pago == 'EFECTIVO'">
                   <ion-list-header>
                       Con cuanto efectivo Paga
@@ -90,16 +52,32 @@
                     <ion-input type="number" placeholder="S/0.00" [(ngModel)]="efec" name="efec"></ion-input>
                   </ion-item>
             </ion-list>
+
+        </ion-card-content>
+      </ion-card>
+
+
+
+
+          <ion-card *ngIf="cantidad == 0">
+            <ion-card-header text-wrap>
+                <h1>Escoge tu ChuperObsequio</h1>                
+            </ion-card-header>
             
-            <ion-list radio-group *ngIf="cantidad == 0" [(ngModel)]="regalo">    
-                <ion-list-header>
-                    Regalo primera Compra          
-                </ion-list-header>    
-              <ion-item *ngFor='let regalo of regalocompra'>
-                <ion-label>{{regalo.name}}</ion-label>
-                <ion-radio value={{regalo.id}}></ion-radio>
-              </ion-item>
-            </ion-list>
+            <ion-card-content>
+                <ion-list radio-group [(ngModel)]="regalo">      
+                  <ion-item *ngFor='let regalo of regalocompra'>
+                      <ion-avatar item-start>
+                          <img src="{{regalo.icons}}">
+                      </ion-avatar>
+                    <ion-label>{{regalo.name}}</ion-label>
+                    <ion-radio value={{regalo.id}}></ion-radio>
+                  </ion-item>
+                </ion-list>
+            </ion-card-content>
+          </ion-card>    
+            
+            
 
             <ion-card>
                 <ion-card-header>

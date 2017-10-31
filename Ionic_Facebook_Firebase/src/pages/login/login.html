@@ -12,15 +12,6 @@
     </ion-card-header>
     
     <ion-card-content>
-
-      <!--  <ion-item>
-          <ion-label floating>Usuario</ion-label>
-            <ion-input type="text" ></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
-        </ion-item>-->
         <ion-row>
             <ion-col>
        
@@ -38,25 +29,16 @@
                 <button ion-button block outline (click)="login()">LOGIN</button>
                   </ion-col>
                 </ion-row>
-
-      
       <ion-row>
           <ion-col>
             <button ion-button block color="facebook" (click)="loginFacebook()">
                 <ion-icon name="logo-facebook"></ion-icon> &nbsp;
                 <div>Login con Facebook</div>
             </button>
-
             <button ion-button block color="twitter" (click)="loginFacebook()">
                 <ion-icon name="logo-twitter"></ion-icon> &nbsp;
                 <div> Login con Twitter</div>
             </button>
-
-            <!--<button ion-button block color="instagram" (click)="loginFacebook()">
-                <ion-icon name="logo-instagram"></ion-icon> &nbsp;
-                <div>Login con Instagram</div>
-            </button>-->
-     
         </ion-col>
       </ion-row>
     </ion-card-content>
@@ -69,91 +51,10 @@
   <ion-fab left top>
       <button ion-fab class="BotonCall"><ion-icon name="ios-call"></ion-icon></button>
       <ion-fab-list side="down">
-        <!--<button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>-->
         <button class="Claro" ion-fab (click)="CallNumero(997375355)"><ion-icon name="ios-call" ></ion-icon></button>
         <button class="Movistar" ion-fab (click)="CallNumero(992775996)"><ion-icon name="ios-call"></ion-icon></button>
       </ion-fab-list>
     </ion-fab>
-
-    
-
-<!--
-<div class="background">
-  <ion-fab right bottom>
-    <button ion-fab color="primary"><ion-icon name="arrow-dropleft"></ion-icon></button>
-    <ion-fab-list side="left">
-      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-      <button ion-fab (click)="CallNumero(986612683)"><ion-icon name="ios-call" ></ion-icon></button>
-      <button ion-fab><ion-icon name="ios-call"></ion-icon></button>
-    </ion-fab-list>
-  </ion-fab>
-  
-    <div padding id="cloud-layer">
-           <ion-row>
-             <ion-col>
-                <img src="assets/img/Logo3-sin-fondo.png" class = "image"/>
-             </ion-col>
-           </ion-row>
-        
-           <ion-row>
-             <ion-col>
-        
-                 <ion-item>
-                    <ion-input type="text" placeholder="Usuario"  [(ngModel)]="loginData.email"></ion-input>
-                 </ion-item>
-        
-                 <ion-item>
-                    <ion-input type="password" placeholder="Clave" [(ngModel)]="loginData.password"></ion-input>
-                 </ion-item>
-  
-             </ion-col>
-           </ion-row>
-        
-           <ion-row>
-              <ion-col>
-                  <button ion-button block outline color="light" (click)="login()" >Login</button>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <button ion-button block color="facebook" (click)="loginFacebook()">
-                  <ion-icon name="logo-facebook"></ion-icon> Login con facebook
-                </button>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-                <button ion-button clear full color="light">Olvidé mi contraseña</button>
-           </ion-row>
-            <ion-row>
-                 <button ion-button clear full color="light" (click)="signup()">¿Aún no tienes una cuenta? ¡Registrate!</button>
-            </ion-row>
-            
-         </div>
-         <button class="bottom" ion-button clear full color="light" (click)="signup()">¿Aún no tienes una cuenta? ¡Registrate!</button>
-
-         <div (click)="resetpass()">
-           <button clear color="facebook" full>¿Olvidaste tu Chuperclave?</button>
-         </div>
-  <!--<hr>
-    <img src="assets/img/Logo3-sin-fondo.png" class = "image"/>
-  <hr>
-        
-    <div>
-			<ion-list no-line>
-				<ion-item>
-					<ion-input type="text" placeholder="Usuario"></ion-input>
-				</ion-item>
-				<ion-item>
-					<ion-input type="password" placeholder="Clave"></ion-input>
-				</ion-item>
-
-         </div>
-        
-
-</div>
-
--->
-
 </ion-content>
 
 
