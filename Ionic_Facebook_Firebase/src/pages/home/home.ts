@@ -26,6 +26,8 @@ import { Vibration } from '@ionic-native/vibration';
 export class HomePage {
   fabButtonOpened: Boolean;
 public direccion: string="";
+public hLongitud: string="";
+public hlatitud : string ="";
 public productos: FirebaseListObservable<any>;
 public image_x="";
 public cart: FirebaseListObservable<any>;
@@ -39,6 +41,9 @@ public carrito: FirebaseListObservable<any>;
     try{
 
       this.direccion=navParams.get("direccion");
+      this.hLongitud = navParams.get("hLongitud");
+      this.hlatitud = navParams.get("hlatitud");
+      console.log('Home:'+ this.hlatitud,this.hLongitud);
       if(this.direccion==null||this.direccion=="")
       {
         this.AlertMap();
@@ -91,7 +96,7 @@ public carrito: FirebaseListObservable<any>;
 
     goCart(){
       if (this.total_qty>0){
-      this.navCtrl.push(CartPage,{direccion: this.direccion});
+      this.navCtrl.push(CartPage,{direccion: this.direccion,hLongitud:this.hLongitud, hlatitud:this.hlatitud});
       }
       else{
         //alert("Debe seleccionar al menos un producto");

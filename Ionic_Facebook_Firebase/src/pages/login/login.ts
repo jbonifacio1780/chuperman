@@ -4,6 +4,7 @@ import { SignupPage } from '../signup/signup';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Facebook } from '@ionic-native/facebook';
+import { TwitterConnect } from '@ionic-native/twitter-connect';
 import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginPage {
     private afAuth: AngularFireAuth,
     private toastCtrl: ToastController,
     private facebook: Facebook,
+    private twiter: TwitterConnect,
     private platform: Platform,
     private callNumber: CallNumber,
     private alertCtrl: AlertController,
@@ -79,6 +81,33 @@ export class LoginPage {
   }
 
 
+  logintwiter() {
+    if(this.platform.is('cordova')){
+      //return this.twiter.login('email','public_profile').then(res=>{
+        const twiterCredential = firebase.auth.TwitterAuthProvider.credential(this.onSuccess, this.onError);
+        this.menuCtrl.enable(true);   
+        return firebase.auth().signInWithCredential(twiterCredential);
+     
+      //return this.twiter.login().then(this.onSuccess, this.onError);      
+    }
+    else {
+      return this.afAuth.auth
+        .signInWithPopup(new firebase.auth.TwitterAuthProvider())
+        .then(res => console.log(res));
+    }
+  }
+  
+  onSuccess(response) {
+    console.log('response', response);
+    console.log(response.userName);
+    console.log(response.userId);
+    console.log(response.secret);
+    console.log(response.token);
+  }
+  
+  onError(error) {
+    console.log('error', error);
+  }
 
   facebookLogin(): void {
     this.facebook.login(['email']).then( (response) => {

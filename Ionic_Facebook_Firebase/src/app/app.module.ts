@@ -30,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
+import { TwitterConnect } from '@ionic-native/twitter-connect';
 
 import { MapComponent } from '../components/map/map';
 
@@ -95,6 +96,7 @@ var config = {
     SplashScreen,
     Vibration,
     Facebook,
+    TwitterConnect,
     Geolocation,
     GeocoderService,
     MapService,

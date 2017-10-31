@@ -26,6 +26,8 @@ export class GooglemapPage extends BasePage {
   map: any;
   localized: boolean = false;
   public ubicacion: string = "";
+  public hlatitud: string = "";
+  public hLongitud: string = "";
 
   constructor(private platform: Platform,
     public navCtrl: NavController, 
@@ -83,6 +85,11 @@ export class GooglemapPage extends BasePage {
         //const content = `<div padding><strong>${address}</strong></div>`;
         //this.mapService.createInfoWindow(content, position);
         this.ubicacion=address;
+        this.hlatitud = position.lat().toString();
+        this.hLongitud = position.lng().toString();
+
+        console.log('Latitud '+ this.hlatitud);
+        console.log('Longitud '+ this.hLongitud);
 
         //console.log(this.ubicacion);
         //this.Ubicacion=address;
@@ -108,7 +115,7 @@ export class GooglemapPage extends BasePage {
 
   goToConfirmation(): void {
     //this.navCtrl.setRoot(HomePage);
-    this.navCtrl.setRoot(HomePage,{direccion:this.ubicacion});
+    this.navCtrl.setRoot(HomePage,{direccion:this.ubicacion, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
   }
 
   /**
@@ -149,8 +156,4 @@ export class GooglemapPage extends BasePage {
     });
     alert.present();
   }
-
-
-
-
 }

@@ -25,6 +25,8 @@ public carts: FirebaseListObservable<any>;
 public orders: FirebaseListObservable<any>;
 public cantidad: any;
 public direccion : string = "";
+public hlatitud:string ="";
+public hLongitud:string="";
 public direc: string = "";
 public zona: string ="";
 public pais : string="";
@@ -58,6 +60,10 @@ public pais : string="";
             });                    
           })
           this.direccion = NavParams.get("direccion");
+          this.hLongitud = NavParams.get("hLongitud");
+          this.hlatitud = NavParams.get("hlatitud");
+          console.log("Longitud :"+this.hLongitud);
+          console.log("Latitud : "+this.hlatitud);
           [this.direc,this.zona,this.pais] = this.direccion.split(',');
 
           this.orders = this.afd.list('/orders/'+firebase.auth().currentUser.uid);
@@ -132,7 +138,7 @@ public pais : string="";
                         'status':'SOLICITADO'
                     })                   
                 }
-
+                this.guardarDireccion(this.direccion,this.hlatitud,this.hLongitud);
                 this.carts.remove();
                 this.openModalOrdersPage(this.cantidad+1,address,payment,observacion);
             });
@@ -213,5 +219,14 @@ public pais : string="";
         }, error => {
           console.log(error);
         });      
-      }      
+      }    
+      
+      guardarDireccion(direcc, latit,longit){
+        this.afd.database.ref('/direccion/'+firebase.auth().currentUser.uid).set({
+          direccion: direcc,
+          latitud : latit,
+          longitud : longit
+        })
+
+      }
 }
