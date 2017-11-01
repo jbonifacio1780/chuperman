@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the OrderResumenPage page.
@@ -20,7 +20,7 @@ export class OrderResumenPage {
   public formapago: string="";
   public observacion: string="";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
     //this.idOrden=navParams.get("qtity");
     //console.log(navParams.get('idOrder'));
 
@@ -35,6 +35,21 @@ export class OrderResumenPage {
   }
 
   Gotohome(){
-    location.reload();
+    const loading = this.loadingCtrl.create({
+      //spinner: 'hide',
+      spinner:"bubbles",
+      content: 'Por favor espere...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
+    
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
+
   }
 }

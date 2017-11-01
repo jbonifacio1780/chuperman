@@ -18,6 +18,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import { Vibration } from '@ionic-native/vibration';
 
+import { Sim } from '@ionic-native/sim';
 
 @Component({
   selector: 'page-home',
@@ -48,11 +49,20 @@ public carrito: FirebaseListObservable<any>;
     public afd: AngularFireDatabase,
     public navParams: NavParams, 
     public afAuth: AngularFireAuth, 
-    public alertCtrl:AlertController) 
+    public alertCtrl:AlertController,
+    private sim: Sim
+  ) 
   {     
     try{
 
       this.presentLoadingCustom();
+
+
+      /*try
+      {
+        this.ValidarSIM();
+      }
+      catch(e){}*/
 
       this.direccion=navParams.get("direccion");
       this.hLongitud = navParams.get("hLongitud");
@@ -93,6 +103,40 @@ public carrito: FirebaseListObservable<any>;
     }catch (e){}
 
 }
+
+ValidarSIM(){
+  try{
+    var inform= this.sim.getSimInfo();
+    this.AlertSIM(inform);
+    
+    /*this.sim.getSimInfo().then(
+      (info) => console.log('Sim info: ', info),
+      (err) => console.log('Unable to get sim info: ', err),
+    );
+    
+    this.sim.hasReadPermission().then(
+      (info) => console.log('Has permission: ', info)
+    );
+    
+    this.sim.requestReadPermission().then(
+      () => console.log('Permission granted'),
+      () => console.log('Permission denied')
+    );*/
+
+    
+  }
+catch(e){}
+}
+
+AlertSIM(infor) {
+  const alert = this.alertCtrl.create({
+    title: 'Advertencia',
+    subTitle: infor,
+    buttons: ['Ok']
+  });
+  alert.present();
+}
+
 
 ngOnInit(){
   try
@@ -210,4 +254,7 @@ presentLoadingCustom() {
             navigator.vibrate(50);
           });
         };
+
+
+        
 }

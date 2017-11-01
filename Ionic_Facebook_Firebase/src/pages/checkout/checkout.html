@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Checkout</ion-title>
+    <ion-title>Total: S/. {{totalpago}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -91,7 +91,7 @@
             </ion-card>
 
 
-    <button ion-button large full color="secondary" round (click)="guardarOrder(pago,direccion,efec,regalo,observacion)">
+    <button ion-button large full color="secondary" (click)="guardarOrder(pago,direccion,efec,regalo,observacion)">
       PAGAR
     </button>    
 

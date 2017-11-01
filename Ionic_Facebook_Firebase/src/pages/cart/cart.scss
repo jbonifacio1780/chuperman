@@ -79,7 +79,9 @@ cart-home {
     .button-md{
         font-size: 1.6rem;
         font-weight: 700;
-        color:color($colors,dark)
+        color:color($colors,dark);
+
+        
     }
     
    
@@ -126,6 +128,12 @@ cart-home {
         color:color($colors,light);
         background: linear-gradient(5deg,#e96262,rgb(218, 19, 19))!important;
         font-style: italic;
+
+        border-radius: 10px;
+        height: 5rem;
+        //text-transform: none;
+        word-wrap: normal;
+        
         // background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Safari 5.1 to 6.0 */
        // background: -o-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Opera 11.1 to 12.0 */
        // background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Firefox 3.6 to 15 */
@@ -145,8 +153,7 @@ cart-home {
     }
       
 }
+
 ion-alert{
     color:color($colors,primary)!important;
-        
-
     }

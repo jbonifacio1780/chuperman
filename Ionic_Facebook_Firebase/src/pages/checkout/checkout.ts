@@ -30,6 +30,7 @@ public hLongitud:string="";
 public direc: string = "";
 public zona: string ="";
 public pais : string="";
+public totalpago:string ="";
 
     constructor(
       public navCtrl: NavController, 
@@ -63,6 +64,8 @@ public pais : string="";
           this.direccion = NavParams.get("direccion");
           this.hLongitud = NavParams.get("hLongitud");
           this.hlatitud = NavParams.get("hlatitud");
+          this.totalpago = NavParams.get("Total");
+
           console.log("Longitud :"+this.hLongitud);
           console.log("Latitud : "+this.hlatitud);
           [this.direc,this.zona,this.pais] = this.direccion.split(',');
@@ -90,94 +93,123 @@ public pais : string="";
 
     guardarOrder(payment, address, efec, regalo,observacion){
 
+      
+        if(payment=="EFECTIVO")
+        {
+          if(efec==null || efec==undefined)
+          {
+            this.presentAlert("Debe ingresar un monto efectivo");
+            return;
+          }
+          else if(efec==0)
+          {
+            this.presentAlert("Debe ingresar un monto efectivo");
+            return;
+          }
+          else if(efec<this.totalpago)
+          {
+            this.presentAlert("El monto en efectivo debe ser mayor o igual al total");
+            return;
+          }
+         
 
-      const loading = this.loadingCtrl.create({
-        //spinner: 'hide',
-        spinner:"bubbles",
-        content: 'Registrando su pedido'
-      });
-    
-      loading.present();
-    
-      setTimeout(() => {
-        //this.navCtrl.push(Page2); 
+        }
+
         if(address==null || payment==null){
           this.presentAlert("Debe Seleecionar una dirección y un tipo de pago");                        
         }
         else {
-          if(observacion==null){
-              observacion="";
-          }
-
-          let regalouno="";
-          if (regalo == undefined){
-            regalouno="";  
-            //this.presentAlert("Debe seleccionar un ChuperObsequio");   
-            //return; 
-            //regalo="";            
-          }
-          else{
-            regalouno=regalo;
-          }
-
-          /*if(regalo==null){
-            this.presentAlert("Debe seleccionar un ChuperObsequio");   
-            return; 
-          }*/
-
-          let valor=0
-          if (efec>0){
-            valor=efec              
-          }
-          else{
-            valor=0
-          }
-
-          this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
-          this.carts.subscribe(nuevo =>{
-          let total = 0;
-            
-            for (var z = 0; z < nuevo.length; z++) {                 
-              total=total+nuevo[z].item_price;
-            }
-            this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
-              Fecha: new Date().toLocaleString(), //new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString() ,
-              //Estado: "Solicitado",
-              Direccion:this.direccion,
-              total: total,
-              PagaEfectivo:valor,
-              Regaloprimeracompra:regalouno,
-              observaciones: observacion,
-              payment : payment,
-              adress_id : address,
-              cliente: firebase.auth().currentUser.displayName,
-              userId: firebase.auth().currentUser.uid,
-              status:'SOLICITADO'
-            })
-              for (var i = 0; i < nuevo.length; i++) {                   
-                  this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
-                    {                                            
-                      'product': nuevo[i].item_name,
-                      'produc_img' : nuevo[i].item_image,
-                      'produc_des' : nuevo[i].item_description,
-                      'price':nuevo[i].item_price,
-                      'qty' : nuevo[i].item_qty,
-                      userId: firebase.auth().currentUser.uid,
-                      
-                  })                   
-              }
-              this.guardarDireccion(this.direccion,this.hlatitud,this.hLongitud);
-              this.carts.remove();
-              this.openModalOrdersPage(this.cantidad+1,address,payment,observacion);
+          const loading = this.loadingCtrl.create({
+            //spinner: 'hide',
+            spinner:"bubbles",
+            content: 'Registrando su pedido'
           });
+        
+          loading.present();
+        
+          setTimeout(() => {
+
+              if(observacion==null){
+                  observacion="";
+              }
+
+              let regalouno="";
+              if (regalo == undefined){
+                regalouno="";  
+                //this.presentAlert("Debe seleccionar un ChuperObsequio");   
+                //return; 
+                //regalo="";            
+              }
+              else{
+                regalouno=regalo;
+              }
+
+              /*if(regalo==null){
+                this.presentAlert("Debe seleccionar un ChuperObsequio");   
+                return; 
+              }*/
+
+              let valor=0
+              if (efec>0){
+                valor=efec              
+              }
+              else{
+                valor=0
+              }
+
+
+              
+              
+
+              this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
+              this.carts.subscribe(nuevo =>{
+              let total = 0;
+                
+                for (var z = 0; z < nuevo.length; z++) {                 
+                  total=total+nuevo[z].item_price;
+                }
+                this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
+                  Fecha: new Date().toLocaleString(), //new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString() ,
+                  //Estado: "Solicitado",
+                  Direccion:this.direccion,
+                  total: total,
+                  PagaEfectivo:valor,
+                  Regaloprimeracompra:regalouno,
+                  observaciones: observacion,
+                  payment : payment,
+                  adress_id : address,
+                  cliente: firebase.auth().currentUser.displayName,
+                  userId: firebase.auth().currentUser.uid,
+                  status:'SOLICITADO'
+                })
+                  for (var i = 0; i < nuevo.length; i++) {                   
+                      this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
+                        {                                            
+                          'product': nuevo[i].item_name,
+                          'produc_img' : nuevo[i].item_image,
+                          'produc_des' : nuevo[i].item_description,
+                          'price':nuevo[i].item_price,
+                          'qty' : nuevo[i].item_qty,
+                          userId: firebase.auth().currentUser.uid,
+                          
+                      })                   
+                  }
+                  this.guardarDireccion(this.direccion,this.hlatitud,this.hLongitud);
+                  this.carts.remove();
+                  this.openModalOrdersPage(this.cantidad+1,address,payment,observacion);
+              });
+          }, 3000);
+
+          setTimeout(() => {
+            loading.dismiss();
+          }, 5000);
+
         }
 
 
-      }, 3000);
+     
     
-      setTimeout(() => {
-        loading.dismiss();
-      }, 5000);
+      
 
 
         

@@ -38,7 +38,7 @@ import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Vibration } from '@ionic-native/vibration';
 import { CallNumber } from '@ionic-native/call-number';
-
+import { Sim } from '@ionic-native/sim';
 //import { AccordionComponent } from '../components/accordion/accordion';
 
 
@@ -101,6 +101,7 @@ var config = {
     SplashScreen,
     Vibration,
     Facebook,
+    Sim,
     //TwitterConnect,
     Geolocation,
     GeocoderService,

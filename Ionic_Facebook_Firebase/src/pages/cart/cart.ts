@@ -222,15 +222,15 @@ import 'rxjs/add/operator/map';
 
     gotoCheckOut(){      
       if (this.qty>0 && this.currentPrice>=35){
-      this.navCtrl.push(CheckoutPage,{direccion: this.direccion, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
+      this.navCtrl.push(CheckoutPage,{direccion: this.direccion, hlatitud: this.hlatitud, hLongitud:this.hLongitud,Total:this.currentPrice});
       }else{
         this.AlertCart();
-      }      
+      }
     }
     
     horario(){
-      //var d = new Date();     
-      var d = new Date("July 18, 2017 22:15:00"); //----->> Con este valor funciona a cualquier hora
+      var d = new Date();     
+      //var d = new Date("July 18, 2017 22:15:00"); //----->> Con este valor funciona a cualquier hora
       console.log(d);           
       var d = new Date();                
       var n = this.weekday[d.getDay()];
