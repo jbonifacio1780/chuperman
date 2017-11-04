@@ -1,5 +1,5 @@
 page-home {
-    
+
     .accordion-list {
         background: color($colors, light);
         padding-top:0px !important;
@@ -43,9 +43,7 @@ page-home {
         padding-left:0px !important;
     }
     
-    .label {
-        margin: 0px;
-    }
+    
     .list {
         margin-bottom: 0px;
     }
@@ -143,6 +141,44 @@ page-home {
 
 
       ion-footer{
-          background-color: color($colors,primary);
+          //color: color($colors,third)!important;
+          background: linear-gradient(5deg,#e96262,rgb(218, 19, 19))!important;
+          height: 50px !important;  
+          text-align: center;
+          word-wrap: normal;
+          
       }
+
+      .label {
+        margin: 0px;
+        display:inline-block;
+        color: color($colors,light);
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        
+    }
+    .LabelFooter{
+        margin-top: 15px;
+    }
+    .image {
+        height:auto;
+        width: 70px;
+        display: block;
+        margin: auto auto;
+        //margin-left: 100px;
+        //margin-right: 100px;
+   }
+
+   ion-icon {
+    display: inline-block;
+    font-size: 1.9em;
+}
+[text-wrap] .label-md {
+    font-size: 1.34rem;
+    line-height: 1.5;
+}
+      
 }

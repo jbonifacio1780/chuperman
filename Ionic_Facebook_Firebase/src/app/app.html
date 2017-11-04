@@ -4,7 +4,7 @@
       <img src="assets/img/Logo3-sin-fondo.png">
       <div class="Aligner-item Aligner-item--bottom"></div>
     </div>
-  </div>-
+  </div>
 
 
 <ion-menu [content]="content">
@@ -21,7 +21,7 @@
       </ion-toolbar>
     </ion-header>
    
-    <ion-content>
+    <ion-content no-padding>
       <ion-list no-lines no-border>
         <button class="botonmenu" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
             <ion-icon item-left [name]="p.icon"></ion-icon>
@@ -33,6 +33,14 @@
         
       </ion-list>
     </ion-content>
-   
+    <ion-footer no-border>
+        <div>
+            <img class = "image" src="assets/img/Logo3-sin-fondo-white.png" />
+        </div>
+      <p></p>
+     </ion-footer>
   </ion-menu>
+
+  
+
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

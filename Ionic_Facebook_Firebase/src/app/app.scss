@@ -17,9 +17,9 @@
 ion-menu{
     ion-content{
      //background-color:#FCD100 !important;
-     background-color:color($colors,light)!important;
+     //background-color:color($colors,light)!important;
      color: color($colors,secondary)!important;
-
+     background: linear-gradient(100deg,rgb(218, 19, 19),#e96262)!important;
      
     }
     .botonmenu{
@@ -94,13 +94,37 @@ ion-menu{
       ion-menu .ion-item-header{
        
         color:color($colors,light);
-        background: linear-gradient(5deg,#e96262,rgb(218, 19, 19))!important;
+        background: linear-gradient(100deg,#e96262,rgb(218, 19, 19))!important;
       }
 
       ion-menu .botonmenu {
-        background-color: #FFFFFF !important;
-        color: color($colors,dark) !important;
+        //background-color: #FFFFFF !important;
+        color: color($colors,light) !important;
+
+        background: linear-gradient(100deg,rgb(218, 19, 19),#e96262)!important;
     }
+
+    .image {
+      height:auto;
+      width: 100px;
+      display: block;
+      margin: auto auto;
+      //margin-left: 100px;
+      //margin-right: 100px;
+    }    
+
+    ion-footer{
+      left: 0px;
+      bottom: 0px;
+      //top: 0px;
+      //right: 0px;
+      
+      position: absolute;
+      z-index: 10;
+      display: block;
+      width: 100%;
+      content: none;
+  }
 
       
 

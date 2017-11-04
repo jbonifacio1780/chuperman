@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController,LoadingController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
@@ -22,12 +22,18 @@ import * as firebase from 'firebase/app';
     apellido:any;
     pin:any;
 
-    constructor(public navCtrl: NavController, public NavParams: NavParams,  public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController ) {
+    constructor(
+      public navCtrl: NavController, 
+      public NavParams: NavParams,  
+      public afd: AngularFireDatabase, 
+      public afAuth: AngularFireAuth, 
+      public alertCtrl: AlertController,
+      public loadingCtrl: LoadingController ) {
       try{
       this.afAuth.authState.subscribe(auth => {      
       this.address = this.afd.list('/users/'+firebase.auth().currentUser.uid+'/xaddress/'); 
       this.address.subscribe(lista =>{
-        console.log(lista);
+        //console.log(lista);
       });      
       this.users = this.afd.list('/users/'+firebase.auth().currentUser.uid);     
       this.users.subscribe(lista =>{       
@@ -36,9 +42,16 @@ import * as firebase from 'firebase/app';
         this.nombre = lista[2].$value;
         this.pin = lista[3].$value;
         this.telephone = lista[4].$value;
-      });        
+
+        //console.log(lista);
+      }); 
+
       this.imagen = afAuth.auth.currentUser.photoURL;
-      this.Usuario= afAuth.auth.currentUser.displayName;    
+      try
+      {
+        this.Usuario= afAuth.auth.currentUser.displayName;    
+      }
+      catch (e){this.Usuario = this.apellido+ ' ' + this.nombre;}
     })    
   }catch (e){}
     }
@@ -169,10 +182,30 @@ import * as firebase from 'firebase/app';
     }
     
     updateData(nombre,apellido,telefono,email,pin){
-      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {nombres:nombre});      
-      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {apellidos:apellido});      
-      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {telephone:telefono});      
-      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {email:email});      
-      this.afd.list('/users/').update(firebase.auth().currentUser.uid, {pin:pin});      
+
+      const loading = this.loadingCtrl.create({
+        //spinner: 'hide',
+        spinner:"bubbles",
+        content: 'Actualizando su información'
+      });
+    
+      loading.present();
+    
+      setTimeout(() => {
+        try
+        {
+          this.afd.list('/users/').update(firebase.auth().currentUser.uid, {nombres:nombre});      
+          this.afd.list('/users/').update(firebase.auth().currentUser.uid, {apellidos:apellido});      
+          this.afd.list('/users/').update(firebase.auth().currentUser.uid, {telephone:telefono});      
+          this.afd.list('/users/').update(firebase.auth().currentUser.uid, {email:email});      
+          this.afd.list('/users/').update(firebase.auth().currentUser.uid, {pin:pin});      
+        }
+        catch (e){}
+      }, 3000);
+      
+      setTimeout(() => {
+        loading.dismiss();
+      }, 5000);
+      
     }
 }

@@ -26,7 +26,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+//import { SplashScreen } from '@ionic-native/splash-screen';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
@@ -37,8 +37,10 @@ import { MapComponent } from '../components/map/map';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Vibration } from '@ionic-native/vibration';
-import { CallNumber } from '@ionic-native/call-number';
-import { Sim } from '@ionic-native/sim';
+
+//import { CallNumber } from '@ionic-native/call-number';
+
+//import { Sim } from '@ionic-native/sim';
 //import { AccordionComponent } from '../components/accordion/accordion';
 
 
@@ -98,15 +100,15 @@ var config = {
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    //SplashScreen,
     Vibration,
     Facebook,
-    Sim,
+    //Sim,
     //TwitterConnect,
     Geolocation,
     GeocoderService,
     MapService,
-    CallNumber,
+    //CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
     ],
 })

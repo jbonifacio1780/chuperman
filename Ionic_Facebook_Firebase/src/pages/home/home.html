@@ -1,25 +1,33 @@
 <ion-header>
-  <ion-navbar>
-    <ion-label color="light" (click)="GotoMap()">{{direccion}}</ion-label>
+  <ion-navbar align-title=”center”>
+    <!--<ion-label color="light" (click)="GotoMap()">{{direccion}}</ion-label>-->
+    <div>
+      <img class = "image" src="assets/img/Logo3-sin-fondo-white.png" />
+    </div>
+
     <ion-buttons start left>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-  </ion-buttons>       
+  </ion-buttons>
+
     <ion-buttons right>        
       <button ion-button (click)="goCart()">
         <ion-icon name="ios-cart-outline" style="position: relative; font-weight: bold; font-size: 2em;" color="white">
           <ion-badge id="notifications-badge" style="position: absolute; font-weight: bold; top:-5px; left:9px; font-size:10px;" color="danger">{{total_qty}}</ion-badge> 
         </ion-icon>
       </button>       
-    </ion-buttons> 
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
+
+
 <ion-content padding> 
 
-<!--
-<div class="slides-div">
+
+<!--  <div class="slides-div">
 <ion-slides pager autoplay="1000" loop="true" speed="1000">
     <ion-slide >
         <img src="assets/img/champagne.png">
@@ -40,7 +48,7 @@
 
 
     <ion-list #cc class="accordion-list" no-lines>
-        <ion-list *ngFor="let item of listado; let i = index" no-padding no-lines>
+        <ion-list *ngFor="let item of listado; let i = index " no-padding no-lines>
           <ion-card ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
               <img src="{{item.image_cat}}"/>
               <div class="card-title">{{ item.categoria }}</div>
@@ -73,11 +81,17 @@
 <div id="ListBackdrop" *ngIf="fabButtonOpened==true" ></div>
 
 
-<!--<accordion></accordion>
+<!--<accordion></accordion>-->
 
 </ion-content>
 
 
-<ion-footer>
-    <ion-label color="third" (click)="GotoMap()">{{direccion}}</ion-label>
-</ion-footer>-->
+<ion-footer text-wrap>
+   
+<div>
+    
+    <ion-label  color="light" (click)="GotoMap()"><ion-icon color="light" name="ios-pin-outline"></ion-icon>{{direccion}} </ion-label>
+</div>
+    
+
+</ion-footer>

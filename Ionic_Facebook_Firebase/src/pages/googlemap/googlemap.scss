@@ -1,4 +1,9 @@
 page-googlemap {
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
     ion-content{
         //background: rgb(229, 227, 223);
         //background-image: url('https://images.pexels.com/photos/107958/pexels-photo-107958.jpeg?w=940&h=650&auto=compress&cs=tinysrgb');
@@ -6,19 +11,28 @@ page-googlemap {
         background-position-x: 50%;
       }
 
-      #gmaps {
+      #map {
         width: 100%;
         height: 100%;
+      }
+      #gmaps {
+        //width: 100%;
+        height: 100%;
         opacity: 0;
-        transition: opacity 150ms ease-in
+        //transition: opacity 10ms ease-in;
+        //margin: 0;
+        //padding: 0;
       }
     
       #gmaps.show-map {
         opacity: 1;
       }
+
+
+      
       
       #centerMarker {
-          width: 45px;
+          width: 35px;
           height: 48px;
           display: block;
           content: ' ';
@@ -29,7 +43,7 @@ page-googlemap {
 
           //background: url('https://firebasestorage.googleapis.com/v0/b/chuperman-81140.appspot.com/o/App%2Fspotlight-poi_hdp-beer.png?alt=media&token=98c8b59b-0b98-4c47-8619-9fe155f497ac');
           background-image: url('../assets/img/beer-pin-1.png');
-          background-size: 45px 48px; /* Since I used the HiDPI marker version this compensates for the 2x size */
+          background-size: 35px 48px; /* Since I used the HiDPI marker version this compensates for the 2x size */
           //pointer-events: none; /* This disables clicks on the marker. Not fully supported by all major browsers, though */
         }
         .BotonSinBorde{
@@ -64,9 +78,7 @@ page-googlemap {
           padding: 0 !important;
         }
       
-        #map {
-              height: 100%;
-          }
+        
         
         .footer-md {
           padding-left: 10px;
@@ -115,6 +127,12 @@ page-googlemap {
           color: #fff;
           background-color: color($colors,primary);
       }
+
+      .button-clear-md {
+        background-color: transparent;
+        font-size: xx-large!important;
+        font-weight: bold;
+    }
         
 
 }

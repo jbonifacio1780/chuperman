@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ActionSheetController, Platform  } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ActionSheetController, Platform,ToastController } from 'ionic-angular';
 
 import { Facebook } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login'
@@ -32,7 +32,15 @@ import 'rxjs/add/operator/map';
     hlatitud : string ="";
     public weekday = Array(7);
     constructor
-    (private facebook: Facebook ,public navCtrl: NavController, public afd: AngularFireDatabase, public afAuth: AngularFireAuth, public alertCtrl: AlertController,public navParams: NavParams,public actionSheetCtrl: ActionSheetController,public platform: Platform ) {
+    (private facebook: Facebook,
+      public navCtrl: NavController, 
+      public afd: AngularFireDatabase, 
+      public afAuth: AngularFireAuth, 
+      public alertCtrl: AlertController,
+      public navParams: NavParams,
+      public actionSheetCtrl: ActionSheetController,
+      public platform: Platform,
+      public toastCtrl:ToastController ) {
       try{
 
       
@@ -48,12 +56,12 @@ import 'rxjs/add/operator/map';
         this.userid= afAuth.auth.currentUser.uid;      
         this.carts = this.afd.list('/cart/'+this.userid+'/');
         this.carts.subscribe(nuevo =>{
-        console.log(nuevo);
+        //console.log(nuevo);
         this.currentPrice=0;
         this.direccion=navParams.get("direccion"); 
         this.hLongitud = navParams.get("hLongitud"); 
         this.hlatitud  = navParams.get("hlatitud"); 
-        console.log('Card :' +this.hLongitud, this.hlatitud);
+        //console.log('Card :' +this.hLongitud, this.hlatitud);
         this.qty=0;
         for (var i = 0; i < nuevo.length; i++) {
           this.currentPrice += nuevo[i].item_price;  
@@ -78,7 +86,7 @@ import 'rxjs/add/operator/map';
           });
 
         }else{
-          console.log('Error');
+          //console.log('Error');
         }
       });
     };
@@ -89,10 +97,10 @@ import 'rxjs/add/operator/map';
       var currentPrecio = carrito.item_price/carrito.item_qty;  
       if (currentQty > 0){
       this.afd.database.ref('/cart').child(this.userid).child(this.key).update({item_qty : currentQty,item_price:currentPrecio*currentQty}).then(data=>{
-        console.log("Else Loop");
+        //console.log("Else Loop");
         navigator.vibrate(50);
       }, error => {
-        console.log(error);
+        //console.log(error);
       });}
     }
 
@@ -101,19 +109,19 @@ import 'rxjs/add/operator/map';
       var currentQty = carrito.item_qty+1;
       var currentPrecio = carrito.item_price/carrito.item_qty;  
       this.afd.database.ref('/cart').child(this.userid).child(this.key).update({item_qty : currentQty,item_price:currentPrecio*currentQty}).then(data=>{
-        console.log("Else Loop");
+        //console.log("Else Loop");
         navigator.vibrate(50);
       }, error => {
-        console.log(error);
+        //console.log(error);
       });
     };
 
     DeleteItem(carrito) {      
       this.key = carrito.$key;                  
       this.afd.database.ref('/cart').child(this.userid).child(this.key).remove().then(data=>{
-        console.log("eliminado");
+        //console.log("eliminado");
       }, error => {
-        console.log(error);
+        //console.log(error);
       });
     };
 
@@ -126,18 +134,21 @@ import 'rxjs/add/operator/map';
             text: 'No',
             role: 'cancel',
             handler: () => {
-              console.log('Cancel clicked');
+              //console.log('Cancel clicked');
             }
           },
           {
             text: 'Si',
             handler: () => {
               this.afd.database.ref('/cart').child(this.userid).remove().then(data=>{
-                console.log("eliminado");
+                //console.log("eliminado");
+
+                this.presentToast("Se borraron los datos del carrito","middle");
+              
               }, error => {
-                console.log(error);
+                //console.log(error);
               });
-              console.log('Buy clicked');
+              //console.log('Buy clicked');
             }
           }
         ]
@@ -156,14 +167,14 @@ import 'rxjs/add/operator/map';
             icon: !this.platform.is('ios') ? 'trash' : null,
             handler: () => {
               this.DeleteItem(carrito);
-              console.log('Destructive clicked');
+              //console.log('Destructive clicked');
             }
           },{
             text: 'Cancelar',
             role: 'cancel',            
             icon: !this.platform.is('ios') ? 'close' : null,
             handler: () => {
-              console.log('Cancel clicked');
+              //console.log('Cancel clicked');
             }
           }
         ]
@@ -185,7 +196,7 @@ import 'rxjs/add/operator/map';
           {
             text: '-',
             handler: data => {
-              console.log('Cancel clicked');
+              //console.log('Cancel clicked');
             },
             cssClass: 'alertDanger'
           },
@@ -203,7 +214,7 @@ import 'rxjs/add/operator/map';
     AlertCart() {
       const alert = this.alertCtrl.create({
         title: 'Advertencia',
-        subTitle: 'Debe escoger al menos un producto, el valor minimo de compra es de S/.35',
+        subTitle: 'Debe escoger al menos un producto con valor minimo de compra de S/.35',
         buttons: ['Ok'],
         cssClass:'alertCustomCss'
       });
@@ -234,8 +245,8 @@ import 'rxjs/add/operator/map';
       console.log(d);           
       var d = new Date();                
       var n = this.weekday[d.getDay()];
-      //var t = d.toLocaleTimeString();
-      var t = "22:00:00";
+      var t = d.toLocaleTimeString();
+      //var t = "22:00:00";
       //console.log(n);
       //console.log(t);
 
@@ -245,7 +256,7 @@ import 'rxjs/add/operator/map';
             this.gotoCheckOut();
           }
           else{
-            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
+            this.AlertCartHorario("De domingo a jueves el horario de atención es de 10pm a 4am");
           }
         break;
         case 'Lunes':
@@ -253,7 +264,7 @@ import 'rxjs/add/operator/map';
             this.gotoCheckOut();
           }
           else{
-            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
+            this.AlertCartHorario("De domingo a jueves el horario de atención es de 10pm a 4am");
           }            
           break;
         case 'Martes':
@@ -261,7 +272,7 @@ import 'rxjs/add/operator/map';
             this.gotoCheckOut();
           }
           else{
-            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
+            this.AlertCartHorario("De domingo a jueves el horario de atención es de 10pm a 4am");
           }
           break;
         case 'Miercoles':
@@ -269,7 +280,7 @@ import 'rxjs/add/operator/map';
             this.gotoCheckOut();
           }
           else{
-            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
+            this.AlertCartHorario("De domingo a jueves el horario de atención es de 10pm a 4am");
           }
           break;
         case 'Jueves':
@@ -277,7 +288,7 @@ import 'rxjs/add/operator/map';
             this.gotoCheckOut();
           }
           else{
-            this.AlertCartHorario("De domingo a Jueves el Horario de atención es de 10 pm a 04 am");
+            this.AlertCartHorario("De domingo a jueves el horario de atención es de 10pm a 4am");
           }
           break;
         case 'Viernes':
@@ -285,7 +296,7 @@ import 'rxjs/add/operator/map';
             this.gotoCheckOut();
           }
           else{
-            this.AlertCartHorario("Viernes y sábados el Horario de atención es de 07 pm a 04 am");
+            this.AlertCartHorario("Para los días viernes y sábados, el Horario de atención es de 7pm a 4am");
           }
           break;
         case 'Sabado':
@@ -293,10 +304,20 @@ import 'rxjs/add/operator/map';
             this.gotoCheckOut();
           }
           else{
-            this.AlertCartHorario("Viernes y sábados el Horario de atención es de 07 pm a 04 am");
+            this.AlertCartHorario("Para los días viernes y sábados, el horario de atención es de 7pm a 4am");
           }
           break;          
     }
+  }
+
+
+  presentToast(detalle,tipo) {
+    let toast = this.toastCtrl.create({
+      message: detalle,
+      duration: 2000,
+      position: tipo
+    });
+    toast.present();
   }
 
   }

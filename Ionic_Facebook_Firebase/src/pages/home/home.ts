@@ -2,7 +2,7 @@ import { Component,ViewChild,Renderer,OnInit } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login';
 import { CartPage } from '../cart/cart';
-import { NavController , NavParams, AlertController } from 'ionic-angular';
+import { NavController , NavParams, AlertController,ToastController } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { LoadingController } from 'ionic-angular';
@@ -18,7 +18,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import { Vibration } from '@ionic-native/vibration';
 
-import { Sim } from '@ionic-native/sim';
+//import { Sim } from '@ionic-native/sim';
 
 @Component({
   selector: 'page-home',
@@ -50,8 +50,7 @@ public carrito: FirebaseListObservable<any>;
     public navParams: NavParams, 
     public afAuth: AngularFireAuth, 
     public alertCtrl:AlertController,
-    private sim: Sim
-  ) 
+    public toastCtrl: ToastController) 
   {     
     try{
 
@@ -67,7 +66,7 @@ public carrito: FirebaseListObservable<any>;
       this.direccion=navParams.get("direccion");
       this.hLongitud = navParams.get("hLongitud");
       this.hlatitud = navParams.get("hlatitud");
-      console.log('Home:'+ this.hlatitud,this.hLongitud);
+      //console.log('Home:'+ this.hlatitud,this.hLongitud);
       if(this.direccion==null||this.direccion=="")
       {
         this.AlertMap();
@@ -79,7 +78,7 @@ public carrito: FirebaseListObservable<any>;
       this.productos = this.afd.list('/productos');             
       this.productos.subscribe(queriedItems => {
         this.listado= queriedItems;
-        //console.log(queriedItems);   
+        console.log(queriedItems);   
       
       //console.log(this.direccion);
       
@@ -104,44 +103,10 @@ public carrito: FirebaseListObservable<any>;
 
 }
 
-ValidarSIM(){
-  try{
-    var inform= this.sim.getSimInfo();
-    this.AlertSIM(inform);
-    
-    /*this.sim.getSimInfo().then(
-      (info) => console.log('Sim info: ', info),
-      (err) => console.log('Unable to get sim info: ', err),
-    );
-    
-    this.sim.hasReadPermission().then(
-      (info) => console.log('Has permission: ', info)
-    );
-    
-    this.sim.requestReadPermission().then(
-      () => console.log('Permission granted'),
-      () => console.log('Permission denied')
-    );*/
-
-    
-  }
-catch(e){}
-}
-
-AlertSIM(infor) {
-  const alert = this.alertCtrl.create({
-    title: 'Advertencia',
-    subTitle: infor,
-    buttons: ['Ok']
-  });
-  alert.present();
-}
-
-
 ngOnInit(){
-  try
+ /* try
   {console.log(this.ionList.nativeElement);}
-  catch(e){}
+  catch(e){} */
   
   //this.renderer.setElementStyle(this.cardContent.nativeElement,"webkitTransition","max-height 500ms, padding 500ms");
 }
@@ -231,14 +196,16 @@ presentLoadingCustom() {
     }
 
         //Add to Cart
-        cartadd(item, nivel1, nivel2) {          
+        cartadd(item, nivel1, nivel2) {
+          try
+          {          
           this.afd.database.ref('/cart').child(firebase.auth().currentUser.uid).once("value", function(snapshot) {    
             if( snapshot.hasChild(nivel1+'-'+nivel2) == true){    
               //if item is already in the cart
               //console.log(snapshot.key);            
               var currentQty = snapshot.child(nivel1+'-'+nivel2).val().item_qty;  
               var currentPrice = snapshot.child(nivel1+'-'+nivel2).val().item_price;  
-              console.log(currentQty);  
+              //console.log(currentQty);  
               snapshot.child(nivel1+'-'+nivel2).ref.update({item_qty : currentQty+1, item_price: currentPrice+item.precio }) 
 
             }else{    
@@ -253,7 +220,19 @@ presentLoadingCustom() {
             }
             navigator.vibrate(50);
           });
-        };
+          this.presentToast(item.nombre);
+        }
+        catch(e){}
+      }
+
+        presentToast(detalle) {
+          let toast = this.toastCtrl.create({
+            message: 'Se agregó' +' '+ detalle +' '+ 'al carrito',
+            duration: 2000,
+            position: 'bottom'
+          });
+          toast.present();
+        }
 
 
         

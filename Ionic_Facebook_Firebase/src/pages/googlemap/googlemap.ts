@@ -88,15 +88,15 @@ export class GooglemapPage extends BasePage {
         this.hlatitud = position.lat().toString();
         this.hLongitud = position.lng().toString();
 
-        console.log('Latitud '+ this.hlatitud);
-        console.log('Longitud '+ this.hLongitud);
+        //console.log('Latitud '+ this.hlatitud);
+        //console.log('Longitud '+ this.hLongitud);
 
         //console.log(this.ubicacion);
         //this.Ubicacion=address;
 
       }, (error) => {
-        this.displayErrorAlert();
-        console.error(error);
+        //this.displayErrorAlert();
+        //console.error(error);
       });
   }
 

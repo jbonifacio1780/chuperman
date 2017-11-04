@@ -12,27 +12,33 @@
 
     <ion-content padding> 
         <ion-card>
-            <ion-card-header>
-                  LISTA PEDIDOS
-            </ion-card-header>
             
             <ion-card-content>
-                  <ion-item *ngFor="let orden of (ordenes | async)?.slice().reverse()">         
-                      <ion-item>     
-                          {{orden.Fecha}}
-                          <ion-row>
-                            <ion-col>Orden de Compra:</ion-col>  
-                            <ion-col>{{orden.$key}}</ion-col>
-                          </ion-row>       
-                          <ion-row>
-                            <ion-col>Estado:</ion-col>  
-                            <ion-col>{{orden.Estado}}</ion-col>
-                          </ion-row>                
-                          <ion-row>
-                              <ion-col>Total Pedido:</ion-col>  
-                              <ion-col>S/. {{orden.total}}.00</ion-col>
-                          </ion-row>
-                      </ion-item>
+                  <ion-item *ngFor="let orden of (ordenes | async)?.slice().reverse()">
+                    <h1>Pedido #: {{orden.$key}} </h1>
+                    <p>Fecha: {{orden.Fecha}} </p>
+                    
+                    
+                    <ion-list word-wrap>
+
+                        <ion-item text-wrap>
+                            <ion-icon name="logo-buffer" item-start ></ion-icon>
+                            <p>Estado</p>
+                            {{orden.status}}
+                        </ion-item>
+
+                        <ion-item text-wrap>
+                            <ion-icon name="logo-usd" item-start ></ion-icon>
+                            <p>Total Pedido</p>
+                            S/. {{orden.total}}.00
+                        </ion-item>
+
+                      
+
+                    </ion-list>
+
+
+
                     </ion-item>
 
             </ion-card-content>

@@ -411,7 +411,7 @@ export class MapService {
     const _loadScript = () => {
       const script = document.createElement('script');
       // tslint:disable-next-line
-      script.src = `https://maps.googleapis.com/maps/api/js?libraries=places,geometry&language=it&components=country:IT&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?libraries=places,geometry&language=es&components=country:PE&callback=initMap`;
       script.type = 'text/javascript';
       script.async = true;
       const s = document.getElementsByTagName('script')[0];

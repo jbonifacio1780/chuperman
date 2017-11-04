@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Facebook } from '@ionic-native/facebook';
 //import { TwitterConnect } from '@ionic-native/twitter-connect';
-import { CallNumber } from '@ionic-native/call-number';
+//import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-login',
@@ -26,7 +26,7 @@ export class LoginPage {
     private facebook: Facebook,
     //private twiter: TwitterConnect,
     private platform: Platform,
-    private callNumber: CallNumber,
+    //private callNumber: CallNumber,
     private alertCtrl: AlertController,
     private menuCtrl: MenuController,
     public loadingCtrl : LoadingController
@@ -37,9 +37,9 @@ export class LoginPage {
  
 
   CallNumero(number){
-    this.callNumber.callNumber(number, true)
-    .then(() => console.log('Launched dialer!'))
-    .catch(() => console.log('Error launching dialer'));
+   // this.callNumber.callNumber(number, true)
+   // .then(() => console.log('Launched dialer!'))
+   // .catch(() => console.log('Error launching dialer'));
   }
     
   
@@ -113,18 +113,20 @@ export class LoginPage {
 
       firebase.auth().signInWithCredential(facebookCredential)
         .then((success) => {
-          console.log("Firebase success: " + JSON.stringify(success));
+          //console.log("Firebase success: " + JSON.stringify(success));
           this.userProfile = success;
         })
         .catch((error) => {
-          console.log("Firebase failure: " + JSON.stringify(error));
+          //console.log("Firebase failure: " + JSON.stringify(error));
       });
 
     }).catch((error) => { console.log(error) });
   }
 
   logout(){
+
     return firebase.auth().signOut();    
+  
   }
 
   resetpass(){
@@ -133,16 +135,16 @@ export class LoginPage {
       message : 'Un nuevo password se enviará a tu correo',
       inputs : [{
         name: 'recoveremail',
-        placeholder:'you@example.com',
+        placeholder:'tu-correo@dominio.com',
       },],
       buttons: [{
-        text : 'Cancel',
+        text : 'Cancelar',
         handler: data => {
           //console.log('cancel click');
         }
       },
     {
-      text : 'Submit',
+      text : 'Aceptar',
       handler: data =>{
 
         let loading =  this.loadingCtrl.create({

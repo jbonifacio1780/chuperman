@@ -158,6 +158,7 @@ public totalpago:string ="";
               }
 
 
+              console.log(new Date().toLocaleTimeString());
               
               
 
@@ -170,6 +171,7 @@ public totalpago:string ="";
                 }
                 this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
                   Fecha: new Date().toLocaleString(), //new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString() ,
+                  
                   //Estado: "Solicitado",
                   Direccion:this.direccion,
                   total: total,

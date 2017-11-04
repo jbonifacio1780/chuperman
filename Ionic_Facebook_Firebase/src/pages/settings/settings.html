@@ -6,7 +6,7 @@
         </button>
     </ion-buttons>
     <ion-title>
-       Configuraición
+       Configuración
     </ion-title>                                                
   </ion-navbar>
 </ion-header>
@@ -14,10 +14,10 @@
 
         <ion-item>
             <ion-avatar item-left>
-              <img src="{{imagen}}" onerror="this.src='assets/img/champagne.png'" />
+              <img src="{{imagen}}" onerror="this.src='assets/img/no-user.png'" />
             </ion-avatar>
             <h2>{{Usuario}}</h2>
-            <p>November 5, 1955</p>
+            <!--<p>November 5, 1955</p>-->
           </ion-item>
           <ion-item>
               <ion-label>Nombre: </ion-label>
@@ -36,26 +36,26 @@
               <ion-label>E-mail:</ion-label>
               <ion-input type="text" [(ngModel)]="email" name="email" [readonly]="isReadonly" [value]="email"></ion-input>
             </ion-item>
-            <ion-item>
+            <!--<ion-item>
                 <ion-label>Pin: </ion-label>
                 <ion-input type="text" [(ngModel)]="pin" name="pin" [readonly]="isReadonly" [value]="pin"></ion-input>
-              </ion-item>
+            </ion-item>-->
          
               <ion-row>
                    <ion-col width-50 style="text-align:center">                    
-                      <button ion-button color="secondary" (click)='updateData(nombre,apellido,telephone,email,pin)'>
+                      <button ion-button block color="primary" (click)='updateData(nombre,apellido,telephone,email,pin)'>
                       <ion-icon name="md-refresh" style="font-size:35px"></ion-icon>
                       &nbsp;Actualizar</button>                   
                    </ion-col>
               </ion-row>
            
                 <br>
-                <div>
+              <!--   <div>
                   <button ion-button item-end (click)="Nuevo()">
                       <ion-icon name="md-pin" style="font-size:25px"></ion-icon>
                       &nbsp; Nueva Dirección</button>
                
-              <ion-list *ngFor="let address of address | async">         
+             <ion-list *ngFor="let address of address | async">         
               <ion-item style="border-bottom: 3px solid; color:navy">                             
                   <p><span>Address :</span>&nbsp;{{address.address}}</p>
                   <p><span>Reference :</span>&nbsp;{{address.reference}}</p>                  
@@ -68,5 +68,5 @@
          
               </ion-item>
             </ion-list> 
-          </div>
+          </div>-->
     </ion-content>
