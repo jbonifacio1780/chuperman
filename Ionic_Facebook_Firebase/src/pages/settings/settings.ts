@@ -40,8 +40,8 @@ import * as firebase from 'firebase/app';
         this.apellido = lista[0].$value;
         this.email = lista[1].$value;
         this.nombre = lista[2].$value;
-        this.pin = lista[3].$value;
-        this.telephone = lista[4].$value;
+        this.pin = lista[4].$value;
+        this.telephone = lista[5].$value;
 
         //console.log(lista);
       }); 

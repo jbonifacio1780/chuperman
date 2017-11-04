@@ -95,7 +95,7 @@ public carrito: FirebaseListObservable<any>;
         if( snapshot.hasChild(firebase.auth().currentUser.uid) == true){          
         }
         else{
-          snapshot.child(firebase.auth().currentUser.uid).ref.set({email:"", telephone:"", nombres:"", apellidos:"", pin:""})
+          snapshot.child(firebase.auth().currentUser.uid).ref.set({email:"", telephone:"", nombres:"", apellidos:"", pin:"", nuevousuario:true})
         }
       })
     })    

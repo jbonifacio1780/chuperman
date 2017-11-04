@@ -23,7 +23,10 @@ regalocompra : any;
 public direcciones: FirebaseListObservable<any>; 
 public carts: FirebaseListObservable<any>;
 public orders: FirebaseListObservable<any>;
-public cantidad: any;
+public users: FirebaseListObservable<any>;
+public usuarionuevo: any;
+public telefono: any;
+public llave : any;
 public direccion : string = "";
 public hlatitud:string ="";
 public hLongitud:string="";
@@ -70,11 +73,13 @@ public totalpago:string ="";
           console.log("Latitud : "+this.hlatitud);
           [this.direc,this.zona,this.pais] = this.direccion.split(',');
 
-          this.orders = this.afd.list('/orders/'+firebase.auth().currentUser.uid);
-          this.orders.subscribe(total =>{
-            this.cantidad=total.length;
+          this.users = this.afd.list('/users/'+firebase.auth().currentUser.uid);
+          this.users.subscribe(usuario =>{
+            this.usuarionuevo=usuario[3].$value;
+            this.telefono=usuario[5].$value;
+            console.log(this.usuarionuevo);
 
-          }) 
+          })
           this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
           this.carts.subscribe(nuevo =>{
                    
@@ -92,8 +97,11 @@ public totalpago:string ="";
       }
 
     guardarOrder(payment, address, efec, regalo,observacion){
-
       
+      if (this.telefono==""){
+        alert("Debe completar su número de telefono en menu configuración");
+        return;
+      }
         if(payment=="EFECTIVO")
         {
           if(efec==null || efec==undefined)
@@ -158,10 +166,8 @@ public totalpago:string ="";
               }
 
 
-              console.log(new Date().toLocaleTimeString());
-              
-              
-
+//              console.log(new Date().toLocaleTimeString());
+                            
               this.carts = this.afd.list('/cart/'+firebase.auth().currentUser.uid+'/');
               this.carts.subscribe(nuevo =>{
               let total = 0;
@@ -169,10 +175,32 @@ public totalpago:string ="";
                 for (var z = 0; z < nuevo.length; z++) {                 
                   total=total+nuevo[z].item_price;
                 }
-                this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
-                  Fecha: new Date().toLocaleString(), //new Date().toLocaleDateString() +' '+ new Date().toLocaleTimeString() ,
-                  
-                  //Estado: "Solicitado",
+                var fec = new Date();
+                var fecha = fec.getFullYear();        
+                var hora: string = fec.toString().substring(15,24);
+                let hh,mm,ss
+                [hh,mm,ss] = hora.split(':');                
+                var uidData = firebase.auth().currentUser.displayName.substring(0,3).toUpperCase();
+                this.llave = hh+mm+ss+uidData+fecha;
+                console.log(fecha);
+                console.log(hora);
+                console.log(uidData);
+                this.afd.database.ref('/orders').child(this.llave).set({
+                  userId: firebase.auth().currentUser.uid,
+                  total: total,
+                  adress_id : address,
+                  payment : payment,
+                  cliente: firebase.auth().currentUser.displayName,
+                  observaciones: observacion,
+                  PagaEfectivo:valor,
+                  Regaloprimeracompra:regalouno,
+                  status:'SOLICITADO',
+                  nrotel : this.telefono,
+                  idpedido: this.llave
+                })
+
+                /* this.afd.database.ref('/orders').child(firebase.auth().currentUser.uid).child(this.cantidad+1).set({
+                  Fecha: new Date().toLocaleString(), 
                   Direccion:this.direccion,
                   total: total,
                   PagaEfectivo:valor,
@@ -183,9 +211,17 @@ public totalpago:string ="";
                   cliente: firebase.auth().currentUser.displayName,
                   userId: firebase.auth().currentUser.uid,
                   status:'SOLICITADO'
-                })
+                }) */
                   for (var i = 0; i < nuevo.length; i++) {                   
-                      this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
+                    this.afd.database.ref('/orders-details/').child(this.llave).child(i.toString()).set(
+                      {                                            
+                        'product': nuevo[i].item_name,
+                        'produc_img' : nuevo[i].item_image,
+                        'produc_des' : nuevo[i].item_description,
+                        'price':nuevo[i].item_price,
+                        'qty' : nuevo[i].item_qty                        
+                    })
+                      /* this.afd.database.ref('/orders/').child(firebase.auth().currentUser.uid).child(this.cantidad+1).child(i.toString()).set(
                         {                                            
                           'product': nuevo[i].item_name,
                           'produc_img' : nuevo[i].item_image,
@@ -194,11 +230,14 @@ public totalpago:string ="";
                           'qty' : nuevo[i].item_qty,
                           userId: firebase.auth().currentUser.uid,
                           
-                      })                   
+                      }) */                   
+                  }
+                  if(this.usuarionuevo==true){
+                    this.afd.list('/users/').update(firebase.auth().currentUser.uid, {nuevousuario:false});      
                   }
                   this.guardarDireccion(this.direccion,this.hlatitud,this.hLongitud);
                   this.carts.remove();
-                  this.openModalOrdersPage(this.cantidad+1,address,payment,observacion);
+                  this.openModalOrdersPage(this.llave,address,payment,observacion);
               });
           }, 3000);
 
