@@ -10,12 +10,13 @@ import { Geolocation, Geoposition } from 'ionic-native';
 import { MapConst } from './map.constants';
 import {  } from '@types/googlemaps';
 
+//import { GeolocationMarker } from 'geolocation-marker'
+
 interface IMapOptions {
   lat: number;
   lon: number;
   zoom: number;
   disableDefaultUI:boolean;
-  //defui:boolean;
   mapTypeControl:false;
 }
 
@@ -52,14 +53,10 @@ export class MapService {
         zoom: opts.zoom,
         minZoom: opts.zoom,
         center: myLatLng,
-        //mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: true,
         scaleControl: false,
-        //styles: styleArray,
-        
-        //fullscreenControlOptions:true,
-        //mapTypeControlOptions:true,
+        //gestureHandling: 'auto',
         zoomControl: true,
         zoomControlOptions: {
           position: google.maps.ControlPosition.BOTTOM_CENTER
@@ -234,7 +231,17 @@ export class MapService {
         ]
       };
 
+      //var GeoMarker = new google.maps.Circle(mapOptions);
       this.map = new google.maps.Map(mapEl, mapOptions);
+      //const myLatLng2 = new google.maps.LatLng(opts.lat, opts.lon);
+
+      
+
+      //for (var city in citymap) {
+        // Add the circle for this city to the map.
+        
+      //}
+
       return this.map;
     });
   }
@@ -275,6 +282,24 @@ export class MapService {
     this.infoWindow = new google.maps.InfoWindow(opt);
     setTimeout(() => this.infoWindow.open(this.map), 100);
   }
+
+  public createRadius(position: google.maps.LatLng)
+  {
+    var cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: this.map,
+      //center: citymap[city].center,
+      center: position,
+
+      radius: Math.sqrt(50) * 5
+    });
+  }
+
+  
 
   /***
    * close the current infoWindow

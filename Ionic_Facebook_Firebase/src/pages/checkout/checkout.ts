@@ -179,9 +179,17 @@ public totalpago:string ="";
                 var fecha = fec.getFullYear();        
                 var hora: string = fec.toString().substring(15,24);
                 let hh,mm,ss
-                [hh,mm,ss] = hora.split(':');                
-                var uidData = firebase.auth().currentUser.displayName.substring(0,3).toUpperCase();
-                this.llave = hh+mm+ss+uidData+fecha;
+                [hh,mm,ss] = hora.split(':');       
+                try
+                {         
+                  var uidData = firebase.auth().currentUser.displayName.substring(0,3).toUpperCase();
+                }
+                catch (e){
+                  //uidData = 
+                  uidData= "UDF";
+                }
+
+                  this.llave = hh+mm+ss+uidData+fecha;
                 console.log(fecha);
                 console.log(hora);
                 console.log(uidData);

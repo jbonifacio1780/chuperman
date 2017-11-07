@@ -21,7 +21,7 @@ export class SearchPage extends BasePage {
 
   ngAfterViewInit() {
     var searchInput = this.searchbar.nativeElement.querySelector('.searchbar-input');
-    console.log("Search input", searchInput);
+    //console.log("Search input", searchInput);
   }
 
   private nearbyPlaces: Array<any> = [];
@@ -41,6 +41,7 @@ export class SearchPage extends BasePage {
   }
 
   dismiss(location?: google.maps.LatLng) {
+    try{
     if (location) {
       this.mapService.mapCenter = location;
     }
@@ -49,22 +50,28 @@ export class SearchPage extends BasePage {
     }
     this.viewCtrl.dismiss();
   }
+  catch(e){}
+  }
 
   /***
    * Place item has been selected
    */
   selectPlace(place: any) {
+    try{
     this.dismiss(place.geometry.location);
+    }catch(e){}
   }
 
   private initAutocomplete(): void {
+
+    
     // reference : https://github.com/driftyco/ionic/issues/7223
     this.addressElement = this.searchbar.nativeElement.querySelector('.searchbar-input');
     this.mapService.createAutocomplete(this.addressElement).subscribe((location) => {
       this.dismiss(location);
     }, (error) => {
-      this.displayErrorAlert();
-      console.error(error);
+      //this.displayErrorAlert();
+      //console.error(error);
     });
   }
 

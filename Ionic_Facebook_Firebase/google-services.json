@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "803987007948",
+    "firebase_url": "https://chuperman-81140.firebaseio.com",
+    "project_id": "chuperman-81140",
+    "storage_bucket": "chuperman-81140.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803987007948:android:46583dbc64ee5125",
+        "android_client_info": {
+          "package_name": "com.webatlas.chuperman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803987007948-5nebd6pv74n1pfbenak2fibehrcjcgkk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtdvzF-QDdaWznL9jiKq3yPBww8GI-rmw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -47,7 +47,11 @@ export class LoginPage {
   login() {
     this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
       .then(auth => {
-        this.menuCtrl.enable(true);   
+        this.menuCtrl.enable(true);
+        const Credentialmail = firebase.auth.EmailAuthProvider.credential(this.loginData.email,this.loginData.password) ;// .FacebookAuthProvider.credential(res.authResponse.accessToken); 
+
+      
+        return firebase.auth().signInWithCredential(Credentialmail); 
         // Do custom things with auth
       })
       .catch(err => {

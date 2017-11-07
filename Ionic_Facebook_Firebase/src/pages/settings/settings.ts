@@ -198,7 +198,12 @@ import * as firebase from 'firebase/app';
           this.afd.list('/users/').update(firebase.auth().currentUser.uid, {apellidos:apellido});      
           this.afd.list('/users/').update(firebase.auth().currentUser.uid, {telephone:telefono});      
           this.afd.list('/users/').update(firebase.auth().currentUser.uid, {email:email});      
-          this.afd.list('/users/').update(firebase.auth().currentUser.uid, {pin:pin});      
+          this.afd.list('/users/').update(firebase.auth().currentUser.uid, {pin:pin});
+          
+         firebase.auth().currentUser.displayName = this.nombre+ ' ' + this.apellido;
+
+ 
+
         }
         catch (e){}
       }, 3000);

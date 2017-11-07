@@ -23,7 +23,15 @@ import * as firebase from 'firebase/app';
             /* firebase.database().ref('/orders/').once("child_added", function(snapshot) {             
              console.log(snapshot.val());                
             });  */                                
-        })       
+        })
+
+        // Find all dinosaurs whose height is exactly 25 meters.
+          var ref = firebase.database().ref('/orders/'+firebase.auth().currentUser.uid);
+          ref.orderByChild("height").equalTo(25).on("child_added", function(snapshot) {
+            console.log(snapshot.key);
+          });
+          
+          
       }catch (e){}   
     }
 

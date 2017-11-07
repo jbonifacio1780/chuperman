@@ -65,6 +65,10 @@ export class GooglemapPage extends BasePage {
         if (mapElement) {
           mapElement.classList.add('show-map');
           this.mapService.resizeMap();
+          
+          const positiony = this.mapService.mapCenter;
+          this.geocoderService.addressForlatLng(positiony.lat(), positiony.lng())
+          this.mapService.createRadius(positiony);
           //this.setMarkers(mapElement);
 
         }
@@ -87,12 +91,7 @@ export class GooglemapPage extends BasePage {
         this.ubicacion=address;
         this.hlatitud = position.lat().toString();
         this.hLongitud = position.lng().toString();
-
-        //console.log('Latitud '+ this.hlatitud);
-        //console.log('Longitud '+ this.hLongitud);
-
-        //console.log(this.ubicacion);
-        //this.Ubicacion=address;
+        
 
       }, (error) => {
         //this.displayErrorAlert();
@@ -118,6 +117,12 @@ export class GooglemapPage extends BasePage {
     this.navCtrl.setRoot(HomePage,{direccion:this.ubicacion, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
   }
 
+ 
+  private MiUbicacion(): Promise<any>{
+    return this.mapService.setPosition();
+  }
+
+
   /**
    * Get the current position
    */
@@ -139,7 +144,7 @@ export class GooglemapPage extends BasePage {
       // TODO why dismiss not working without setTimeout ?
       setTimeout(() => {
         loader.dismiss();
-      }, 1000);
+      }, 300);
     });
   }
 
@@ -157,4 +162,6 @@ export class GooglemapPage extends BasePage {
     });
     alert.present();
   }
+
+
 }
