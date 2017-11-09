@@ -90,6 +90,6 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.4.9",
-    "ionic": "3.16.0"
+    "ionic": "3.17.0"
   }
 }

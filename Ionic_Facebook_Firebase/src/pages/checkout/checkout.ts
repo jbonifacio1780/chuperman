@@ -189,7 +189,9 @@ public totalpago:string ="";
                   uidData= "UDF";
                 }
 
-                  this.llave = hh+mm+ss+uidData+fecha;
+                var today_date =fec.getDate().toString() + '/' + (fec.getMonth()+1).toString() +'/'+ fec.getFullYear().toString() + '' + hora;  //fec.getFullYear().toString()+'-'+(fec.getMonth()+1).toString()+'-'+fec.getDate().toString();
+
+                this.llave = hh+mm+ss+uidData+fecha;
                 console.log(fecha);
                 console.log(hora);
                 console.log(uidData);
@@ -204,6 +206,7 @@ public totalpago:string ="";
                   Regaloprimeracompra:regalouno,
                   status:'SOLICITADO',
                   nrotel : this.telefono,
+                  fechaPedido: today_date,
                   idpedido: this.llave
                 })
 
@@ -220,6 +223,7 @@ public totalpago:string ="";
                   userId: firebase.auth().currentUser.uid,
                   status:'SOLICITADO'
                 }) */
+                
                   for (var i = 0; i < nuevo.length; i++) {                   
                     this.afd.database.ref('/orders-details/').child(this.llave).child(i.toString()).set(
                       {                                            
@@ -240,6 +244,8 @@ public totalpago:string ="";
                           
                       }) */                   
                   }
+
+
                   if(this.usuarionuevo==true){
                     this.afd.list('/users/').update(firebase.auth().currentUser.uid, {nuevousuario:false});      
                   }

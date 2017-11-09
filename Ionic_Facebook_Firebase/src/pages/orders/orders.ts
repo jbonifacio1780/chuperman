@@ -16,21 +16,21 @@ import * as firebase from 'firebase/app';
     constructor(public navCtrl: NavController, public NavParams: NavParams,public afd: AngularFireDatabase, public afAuth: AngularFireAuth ) {
         try{
           this.afAuth.authState.subscribe(auth => {    
-            this.ordenes = this.afd.list('/orders/'+firebase.auth().currentUser.uid)
+            this.ordenes = this.afd.list('/orders',{
+              query:{
+                orderByChild:'userId',
+                equalTo:firebase.auth().currentUser.uid
+              }
+            })
+            //console.log(this.ordenes);
+
             this.ordenes.subscribe(listado =>{
-              console.log(listado);
+              //console.log(listado);
             })                        
             /* firebase.database().ref('/orders/').once("child_added", function(snapshot) {             
              console.log(snapshot.val());                
             });  */                                
         })
-
-        // Find all dinosaurs whose height is exactly 25 meters.
-          var ref = firebase.database().ref('/orders/'+firebase.auth().currentUser.uid);
-          ref.orderByChild("height").equalTo(25).on("child_added", function(snapshot) {
-            console.log(snapshot.key);
-          });
-          
           
       }catch (e){}   
     }
