@@ -300,7 +300,8 @@ import 'rxjs/add/operator/map';
           }
           break;
         case 'Sabado':
-          if(t >= "19:00:00" && t <= "5:00:00"){
+        //this.gotoCheckOut();
+           if(t >= "19:00:00" && t <= "5:00:00"){
             this.gotoCheckOut();
           }
           else{

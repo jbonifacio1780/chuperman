@@ -12,6 +12,36 @@
 </ion-header>
 
 <ion-content>
+    <div padding>
+    <ion-segment [(ngModel)]="cat" color="primary">
+        <ion-segment-button value="direcciones">
+          Direcciones
+        </ion-segment-button>
+        <ion-segment-button value="favoritos">
+          Favoritos
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+      <div [ngSwitch]="cat" color="primary" >
+          <ion-list *ngSwitchCase="'direcciones'">
+              <ion-item *ngFor="let place of nearbyPlaces" (click)="selectPlace(place)">
+                <ion-avatar item-left>
+                  <img [src]="place.icon">
+                </ion-avatar>
+                <h3>{{ place.name }}</h3>
+                <p>{{ place.vicinity }}</p>
+                <p>Distance: {{ place.distance }} meters</p>
+              </ion-item>
+            </ion-list>
+            <ion-list *ngSwitchCase="'favoritos'">
+              <ion-item *ngFor="let direc of direcciones | async" (click)="leerDirec(direc.latitud,direc.longitud)">
+                  <ion-avatar item-left>
+                      <img [src]="">
+                    </ion-avatar>
+                <h3>{{direc.direccion}}</h3>                
+              </ion-item>
+            </ion-list>
+      </div>
    <!--<ion-list>
    <ion-item>
       Direcciones guardadas
@@ -22,14 +52,5 @@
   </ion-list>-->
 
 
-  <ion-list>
-    <ion-item *ngFor="let place of nearbyPlaces" (click)="selectPlace(place)">
-      <ion-avatar item-left>
-        <img [src]="place.icon">
-      </ion-avatar>
-      <h3>{{ place.name }}</h3>
-      <p>{{ place.vicinity }}</p>
-      <p>Distance: {{ place.distance }} meters</p>
-    </ion-item>
-  </ion-list>
+  
 </ion-content>

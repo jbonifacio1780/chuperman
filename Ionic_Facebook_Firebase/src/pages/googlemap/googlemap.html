@@ -18,15 +18,15 @@
 
   <ion-footer>
         <div>
-            <button ion-button icon-only color="botones" (click)="MiUbicacion()"> <ion-icon name="locate"></ion-icon> </button>
-
-          <button ion-button block color="secondary" clear text-wrap>CHUPERUBICACIÓN</button>
+            <button ion-button icon-only color="botones" (click)="MiUbicacion()"> <ion-icon name="locate"></ion-icon> </button>            
+          <ion-item style="background: transparent; text-align:center" clear text-wrap><h1>CHUPERUBICACIÓN</h1></ion-item>
           <button ion-button block outline color="primary" icon-right text-wrap (click)="openModal()"> {{ubicacion}}  <ion-icon name="search"></ion-icon> </button>
         </div>
-        <ion-row>
-  
-            <button ion-button block color="secondary" (click)="goToConfirmation()">Continuar </button>
-    
+        <ion-row>          
+        
+          <button ion-button full icon-right color="secondary" (click)="goToConfirmation()">
+              Continuar  <ion-icon name="ios-arrow-dropright"></ion-icon>
+              </button>    
         </ion-row>
       </ion-footer>
 
