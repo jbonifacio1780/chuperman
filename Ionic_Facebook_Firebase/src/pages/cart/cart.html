@@ -18,7 +18,7 @@
   
     
 
-  <ion-list class="accordion-list" no-padding>
+  <ion-list class="accordion-list" no-padding >
         <ion-item *ngFor="let cart of carts | async" class="child-item">
           <ion-thumbnail item-start>
             <img src="{{cart.item_image}}" onerror="this.src='assets/img/drink-chuperman.png'">
@@ -31,11 +31,13 @@
           <p></p>
           <h3>Subtotal:</h3> 
           S/. {{cart.item_price}}.00 
-          <p>
+         <div>
+
           <button ion-button clear item-end class="MasMenos" style="font-size:26px;" (click)="incrementQty(cart)"><ion-icon name="add-circle" ></ion-icon></button>
           <button ion-button clear item-end><h1 class="Cantidad">{{cart.item_qty}}</h1></button>
           <button ion-button clear item-end class="MasMenos" style="font-size:26px;" (click)="decrementQty(cart)"><ion-icon name="remove-circle" ></ion-icon></button>
-          </p>
+        </div>
+
         </ion-item>               
   </ion-list>
 </ion-content>

@@ -10,36 +10,33 @@
 </ion-header>
 
 
-    <ion-content padding> 
-        <ion-card>
+    <ion-content padding class="background"> 
+        <ion-card *ngFor="let orden of (ordenes | async)?.slice().reverse()">
             
             <ion-card-content>
-                  <ion-item *ngFor="let orden of (ordenes | async)?.slice().reverse()">
-                    <h1>Pedido #: {{orden.$key}} </h1>
-                    <p>Fecha: {{orden.Fecha}} </p>
-                    
-                    
-                    <ion-list word-wrap>
+                    <ion-grid>
+                        <ion-row>
 
-                        <ion-item text-wrap>
-                            <ion-icon name="logo-buffer" item-start ></ion-icon>
-                            <p>Estado</p>
-                            {{orden.status}}
-                        </ion-item>
+                            <ion-col>
+                                    <h1>Pedido# {{orden.$key}} </h1>
+                                    <p>Fecha: {{orden.fechaPedido}} </p>
 
-                        <ion-item text-wrap>
-                            <ion-icon name="logo-usd" item-start ></ion-icon>
-                            <p>Total Pedido</p>
-                            S/. {{orden.total}}.00
-                        </ion-item>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row text-wrap>
+                            <ion-col>
+                                <ion-icon name="logo-buffer" item-start ></ion-icon>
+                                {{orden.status}}
+                            </ion-col>
 
-                      
+                            <ion-col>
+                                <ion-icon name="logo-usd" item-start ></ion-icon>
+                                {{orden.total}}.00
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>   
 
-                    </ion-list>
-
-
-
-                    </ion-item>
+                
 
             </ion-card-content>
         </ion-card>

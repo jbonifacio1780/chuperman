@@ -27,7 +27,17 @@ page-order-resumen {
             color: #fff;
           }
     }
+    textarea {
+      resize: both;
+   }
 
+   body {font-size:100%}
+
+    img {
+      max-width: 100%;
+      border: 0;
+      //padding-top: 50px;
+    }
     .scroll-content {
       align-content: center;
       display: flex;
@@ -67,16 +77,17 @@ page-order-resumen {
 
 
       h1{
-        font-size: 4rem!important;
+        //font-size: 4rem!important;
+        font-size:3rem!important;font-weight:500;
       }
       h2{
-        font-size: 3rem!important;
-      }
-      h3{
         font-size: 2rem!important;
       }
-      h4{
+      h3{
         font-size: 1.6rem!important;
+      }
+      h4{
+        font-size: 1.4rem!important;
       }
       
       

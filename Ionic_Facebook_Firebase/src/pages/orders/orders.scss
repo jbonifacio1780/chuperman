@@ -1,18 +1,55 @@
-orders-home{
-    .button-md.CierreCabecera{
-        //webkit-box-shadow:none;
-        box-shadow:none;
-        font-size: 2.5rem;
+orders-home{  
+    .background {
+		width: 100%;
+		height: 100%;
+		//background: linear-gradient(10deg,#00aced,#004F9E)!important;
+		background-image: url('../assets/img/background_index.jpg');
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;
+		//background-image: url('https://firebasestorage.googleapis.com/v0/b/chuperman-81140.appspot.com/o/App%2Fbackground-3.jpg?alt=media&token=9f3c05b9-ee4d-4c03-aac9-53bb334f64d4');
+		//opacity: 0.6;
+        //background-color: black;
+	}
+    //background-color: black;
+
+    .card-md {
+        //margin: 0px;
+        border-radius: 2px;
+        width: calc(100% - auto);
+        font-size: 1.4rem;
+        h1,p{
+            color: color($colors,light);
+        }
     }
 
-    .item-md{
-        padding-left: 0px;
+    .scroll-content {
+		align-content: center;
+		//display: flex;
+		flex-direction: column;
+		justify-content: center;
+        text-align: center;
+        //background-color: color($colors,dark);
+	}
 
+    ion-card.card{
+		//background: color($colors,primary);
+        //background: linear-gradient(180deg,rgb(218, 19, 19),#e96262)!important;
+        background: transparent;
+        color: color($colors,third);
+        border-radius: 10px;
+        border-top: 2px solid color($colors,primary);
+        border-bottom: 2px solid color($colors,primary);
+        border-left: 2px solid color($colors,primary);
+        border-right: 2px solid color($colors,primary);
     }
 
-    .item > ion-icon, .item-inner > ion-icon{
-        font-size: 2.3rem!important;
+    .grid{
+        .ion-row{
+            //text-align: center;
+            
+        }
+        
     }
 
-    
 }
