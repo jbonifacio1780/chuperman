@@ -39,7 +39,7 @@ export class MapService {
 
     return this.loadMap().then(() => {
       const myLatLng = new google.maps.LatLng(opts.lat, opts.lon);
-      const styleArray = [
+      /*const styleArray = [
         {
           featureType: 'poi',
           elementType: 'labels',
@@ -47,7 +47,7 @@ export class MapService {
             {visibility: 'off'}
           ]
         }
-      ];
+      ];*/
 
       const mapOptions: google.maps.MapOptions = {
         zoom: opts.zoom,
@@ -251,7 +251,12 @@ export class MapService {
    * @returns {LatLng}
    */
   public get mapCenter(): google.maps.LatLng {
+  try
+  {
     return this.map.getCenter();
+  }
+  catch (e){}
+
   }
 
   public set mapCenter(location: google.maps.LatLng) {
@@ -263,9 +268,13 @@ export class MapService {
    * @returns {Element}
    */
   public get mapElement(): Element {
-    return this.map.getDiv();
+    try
+    {
+      return this.map.getDiv();
+  
+    }
+    catch(e){}
   }
-
   /***
    * create an infoWindow and display it in the map
    * @param content - the content to display inside the infoWindow
@@ -439,7 +448,7 @@ export class MapService {
       script.src = `https://maps.googleapis.com/maps/api/js?libraries=places,geometry&language=es&components=country:PE&callback=initMap`;
       script.type = 'text/javascript';
       script.async = true;
-      const s = document.getElementsByTagName('script')[0];
+      const s = document.getElementsByTagName('script')[2];
       s.parentNode.insertBefore(script, s);
     };
 

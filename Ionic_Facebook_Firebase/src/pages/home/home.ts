@@ -1,6 +1,6 @@
-import { Component,ViewChild,Renderer,OnInit } from '@angular/core';
+import { Component,ViewChild,Renderer } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
-import { LoginPage } from '../login/login';
+//import { LoginPage } from '../login/login';
 import { CartPage } from '../cart/cart';
 import { NavController , NavParams, AlertController,ToastController } from 'ionic-angular';
 import * as firebase from 'firebase/app';
@@ -9,14 +9,14 @@ import { LoadingController } from 'ionic-angular';
 
 
 
-import { DetailsPage } from '../details/details';
+//import { DetailsPage } from '../details/details';
 import { GooglemapPage } from '../Googlemap/Googlemap';
-import { MapComponent } from '../../components/map/map';
+//import { MapComponent } from '../../components/map/map';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import 'rxjs/add/operator/map';
-import { Vibration } from '@ionic-native/vibration';
+//import { Vibration } from '@ionic-native/vibration';
 
 //import { Sim } from '@ionic-native/sim';
 

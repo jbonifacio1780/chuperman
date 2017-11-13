@@ -13,6 +13,7 @@ import { MapService } from '../../providers/map/map.service';
   template: '<div #map id="gmaps" data-tap-disabled="true"></div>'
 })
 
+
 @NgModule({
   exports: [
     MapComponent

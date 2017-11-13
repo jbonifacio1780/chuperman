@@ -1,11 +1,16 @@
 <ion-header>
   <ion-navbar>
-   
+    <ion-buttons start left>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
     <ion-title>
-       Validar sus datos
+       Configuración
     </ion-title>                                                
   </ion-navbar>
 </ion-header>
+
     <ion-content padding> 
 
         <ion-item>
@@ -13,7 +18,7 @@
               <img src="{{imagen}}" onerror="this.src='assets/img/no-user.png'" />
             </ion-avatar>
             <h2>{{Usuario}}</h2>
-            <!--<p>November 5, 1955</p>-->
+
           </ion-item>
           <ion-item>
               <ion-label>Nombre: </ion-label>
@@ -32,10 +37,7 @@
               <ion-label>E-mail:</ion-label>
               <ion-input type="text" [(ngModel)]="email" name="email" [readonly]="isReadonly" [value]="email"></ion-input>
             </ion-item>
-            <!--<ion-item>
-                <ion-label>Pin: </ion-label>
-                <ion-input type="text" [(ngModel)]="pin" name="pin" [readonly]="isReadonly" [value]="pin"></ion-input>
-            </ion-item>-->
+
          
               <ion-row>
                    <ion-col width-50 style="text-align:center">                    
@@ -44,13 +46,6 @@
                       &nbsp;Actualizar</button>                   
                    </ion-col>
               </ion-row>
-              <ion-row>
-                <ion-col width-50 style="text-align:center">                    
-                   <button ion-button block color="primary" (click)='Continuar()'>
-                   <ion-icon name="arrow-dropright" style="font-size:35px"></ion-icon>
-                   &nbsp;Continuar</button>                   
-                </ion-col>
-           </ion-row>
-                <br>
-            
+
+
     </ion-content>

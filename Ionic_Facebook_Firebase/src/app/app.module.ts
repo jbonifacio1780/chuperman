@@ -6,10 +6,11 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { DetailsPage } from '../pages/details/details';
-
+import { TerminosPage } from '../pages/terminos/terminos';
 import { CartPage } from '../pages/cart/cart';
 import { OrdersPage } from '../pages/orders/orders';
 import { SettingsPage } from '../pages/settings/settings';
+import { ConfiguracionPage } from '../pages/configuracion/configuracion';
 import { SupportPage } from '../pages/support/support';
 import { CheckoutPage } from '../pages/checkout/checkout'
 import { SearchPage } from '../pages/search/search';
@@ -38,7 +39,7 @@ import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Vibration } from '@ionic-native/vibration';
 
-//import { CallNumber } from '@ionic-native/call-number';
+import { CallNumber } from '@ionic-native/call-number';
 
 //import { Sim } from '@ionic-native/sim';
 //import { AccordionComponent } from '../components/accordion/accordion';
@@ -60,9 +61,11 @@ var config = {
     LoginPage,
     SignupPage,
     DetailsPage,
+    TerminosPage,
     CartPage,
     OrdersPage,
     SettingsPage,
+    ConfiguracionPage,
     SupportPage,
     CheckoutPage,
     GooglemapPage,
@@ -88,13 +91,15 @@ var config = {
     LoginPage,
     SignupPage,
     DetailsPage,
+    TerminosPage,
     CartPage,
     OrdersPage,
     SettingsPage,
+    ConfiguracionPage,
     SupportPage,
     CheckoutPage,
     GooglemapPage,
-    MapComponent,
+    //MapComponent,
     SearchPage,
     OrderResumenPage
   ],
@@ -108,8 +113,8 @@ var config = {
     Geolocation,
     GeocoderService,
     MapService,
-    //CallNumber,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-    ],
+    ]
 })
 export class AppModule {}

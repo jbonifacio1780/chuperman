@@ -5,12 +5,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { OrdersPage } from '../pages/orders/orders';
-import { SettingsPage } from '../pages/settings/settings';
+//import { SettingsPage } from '../pages/settings/settings';
 import { Vibration } from '@ionic-native/vibration';
 import { GooglemapPage } from '../pages/Googlemap/Googlemap';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {enableProdMode} from '@angular/core';
+import { TerminosPage } from '../pages/terminos/terminos';
+import { ConfiguracionPage } from '../pages/configuracion/configuracion';
+
 enableProdMode();
 
 @Component({
@@ -46,18 +49,19 @@ export class MyApp {
     //public SplashScreen:SplashScreen,
     public afd: AngularFireDatabase) {
 
-    //this.SplashScreen.hide();
+    
       
     //this.tabBarElement = document.querySelector('.tabbar');
 
     
-    /*PARA MOSTRAR EL SPLASHCREEN NUEO ANIMADO*/
+    /*PARA MOSTRAR EL SPLASHCREEN NUEO ANIMADO;*/
     setTimeout(() => {
       this.splash = false;
-    }, 6000);
+    }, 6000)
    
     
     platform.ready().then(() => {
+      //this.SplashScreen.hide();
       this.afAuth.authState.subscribe(auth => {
         try
         {
@@ -77,11 +81,11 @@ export class MyApp {
        // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Ubicación', component: GooglemapPage, index: 1, icon: 'map' },
-      { title: 'Categorías', component: HomePage, index: 2, icon: 'pricetag' },
+      //{ title: 'Categorías', component: HomePage, index: 2, icon: 'pricetag' },
       //{ title: 'Carrito', component: CartPage  },      
-      { title: 'Mis Pedidos', component: OrdersPage, index: 3, icon: 'basket'  },
-      //{ title: 'Terminos y Condiciones', component: SettingsPage, index: 4, icon: 'information-circle'  },
-      { title: 'Configuración', component: SettingsPage, index: 5, icon: 'settings'  }
+      { title: 'Mis Pedidos', component: OrdersPage, index: 2, icon: 'basket'  },
+      { title: 'Términos y Condiciones', component: TerminosPage, index: 3, icon: 'information-circle'  },
+      { title: 'Configuración', component: ConfiguracionPage, index: 4, icon: 'settings'  }
       //{ title: 'Soporte', component: SupportPage }      
     ];
 

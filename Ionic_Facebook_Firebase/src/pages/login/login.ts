@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Facebook } from '@ionic-native/facebook';
 //import { TwitterConnect } from '@ionic-native/twitter-connect';
-//import { CallNumber } from '@ionic-native/call-number';
+import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-login',
@@ -26,7 +26,7 @@ export class LoginPage {
     private facebook: Facebook,
     //private twiter: TwitterConnect,
     private platform: Platform,
-    //private callNumber: CallNumber,
+    private callNumber: CallNumber,
     private alertCtrl: AlertController,
     private menuCtrl: MenuController,
     public loadingCtrl : LoadingController
@@ -37,7 +37,7 @@ export class LoginPage {
  
 
   CallNumero(number){
-   // this.callNumber.callNumber(number, true)
+    this.callNumber.callNumber(number, true)
    // .then(() => console.log('Launched dialer!'))
    // .catch(() => console.log('Error launching dialer'));
   }
@@ -57,7 +57,7 @@ export class LoginPage {
       .catch(err => {
         // Handle error
         let toast = this.toastCtrl.create({
-          message: err.message,
+          message: "Usuario y/o contraseña incorrecta", //err.message,
           duration: 1000
         });
         toast.present();
@@ -153,7 +153,7 @@ export class LoginPage {
 
         let loading =  this.loadingCtrl.create({
           dismissOnPageChange : true,
-          content : 'reseting your password'
+          content : 'Reseteando su contraseña'
         });
         loading.present();
         

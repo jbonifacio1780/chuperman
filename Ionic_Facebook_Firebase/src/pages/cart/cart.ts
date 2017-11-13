@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ActionSheetController, Platform,ToastController } from 'ionic-angular';
 
-import { Facebook } from '@ionic-native/facebook';
-import { LoginPage } from '../login/login'
+//import { Facebook } from '@ionic-native/facebook';
+//import { LoginPage } from '../login/login'
 import {CheckoutPage} from '../checkout/checkout'
 
 /* import * as firebase from 'firebase/app'; */
@@ -32,7 +32,7 @@ import 'rxjs/add/operator/map';
     hlatitud : string ="";
     public weekday = Array(7);
     constructor
-    (private facebook: Facebook,
+    (
       public navCtrl: NavController, 
       public afd: AngularFireDatabase, 
       public afAuth: AngularFireAuth, 
@@ -242,11 +242,11 @@ import 'rxjs/add/operator/map';
     horario(){
       var d = new Date();     
       //var d = new Date("July 18, 2017 22:15:00"); //----->> Con este valor funciona a cualquier hora
-      console.log(d);           
-      var d = new Date();                
+      //console.log(d);           
+      //var d = new Date();                
       var n = this.weekday[d.getDay()];
-      var t = d.toLocaleTimeString();
-      //var t = "22:00:00";
+      //var t = d.toLocaleTimeString();
+      var t = "22:00:00";
       //console.log(n);
       //console.log(t);
 
