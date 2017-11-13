@@ -8,6 +8,12 @@ import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { ViewController, AlertController } from 'ionic-angular';
 import { MapService } from '../../providers/map/map.service';
 import { BasePage } from '../base-page';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'page-search',
@@ -15,7 +21,7 @@ import { BasePage } from '../base-page';
 })
 
 export class SearchPage extends BasePage {
-
+  cat: string = "direcciones"; // default button
   // reference : https://github.com/driftyco/ionic/issues/7223
   @ViewChild('searchbar', {read: ElementRef}) searchbar: ElementRef;
 
@@ -23,6 +29,7 @@ export class SearchPage extends BasePage {
     var searchInput = this.searchbar.nativeElement.querySelector('.searchbar-input');
     //console.log("Search input", searchInput);
   }
+  public direcciones: FirebaseListObservable<any>;
 
   private nearbyPlaces: Array<any> = [];
   private addressElement: HTMLInputElement = null;
@@ -30,8 +37,14 @@ export class SearchPage extends BasePage {
   constructor(private mapService: MapService,
               private zone: NgZone,
               protected alertCtrl: AlertController,
+              public afd: AngularFireDatabase, 
+              public afAuth: AngularFireAuth, 
               private viewCtrl: ViewController) {
     super(alertCtrl);
+    this.direcciones = this.afd.list('/direccion/'+this.afAuth.auth.currentUser.uid)
+    this.direcciones.subscribe(lista =>{
+      console.log(lista);
+    })
   }
 
   ionViewDidLoad() {

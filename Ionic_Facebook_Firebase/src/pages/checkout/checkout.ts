@@ -370,7 +370,7 @@ public totalpago:string ="";
       }    
       
       guardarDireccion(direcc, latit,longit){
-        this.afd.database.ref('/direccion/'+firebase.auth().currentUser.uid).set({
+        this.afd.database.ref('/direccion/'+firebase.auth().currentUser.uid).push({
           direccion: direcc,
           latitud : latit,
           longitud : longit
