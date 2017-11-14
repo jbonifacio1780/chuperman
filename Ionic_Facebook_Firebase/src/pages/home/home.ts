@@ -75,7 +75,8 @@ public carrito: FirebaseListObservable<any>;
       this.afAuth.authState.subscribe(auth => {
       this.fabButtonOpened=false;
       this.cart = this.afd.list('/cart/');
-      this.productos = this.afd.list('/productos');             
+      this.productos = this.afd.list('/productos');
+
       this.productos.subscribe(queriedItems => {
         this.listado= queriedItems;
         console.log(queriedItems);   
@@ -98,7 +99,7 @@ public carrito: FirebaseListObservable<any>;
           snapshot.child(firebase.auth().currentUser.uid).ref.set({email:"", telephone:"", nombres:"", apellidos:"", pin:"", nuevousuario:true})
         }
       })
-    })    
+    })
     }catch (e){}
 
 }

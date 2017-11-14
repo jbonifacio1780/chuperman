@@ -49,7 +49,7 @@
                       Con cuanto efectivo Paga
                   </ion-list-header>
                 <ion-item>        
-                    <ion-input type="number" placeholder="S/0.00" [(ngModel)]="efec" name="efec" ng-untouched></ion-input>
+                    <ion-input type="number" placeholder="S/0.00" [(ngModel)]="efec" name="efec" ng-untouched clearInput></ion-input>
                   </ion-item>
             </ion-list>
 
@@ -85,7 +85,7 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-item>
-                      <ion-textarea type="text" placeholder="Ingrese un comentario adicional o referencia de su dirección" [(ngModel)]="observacion"></ion-textarea>
+                      <ion-textarea type="text" placeholder="Ingrese un comentario adicional o referencia de su dirección" [(ngModel)]="observacion" clearInput></ion-textarea>
                   </ion-item>
                 </ion-card-content>
             </ion-card>

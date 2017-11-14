@@ -245,8 +245,8 @@ import 'rxjs/add/operator/map';
       //console.log(d);           
       //var d = new Date();                
       var n = this.weekday[d.getDay()];
-      //var t = d.toLocaleTimeString();
-      var t = "22:00:00";
+      var t = d.toLocaleTimeString();
+      //var t = "22:00:00";
       //console.log(n);
       //console.log(t);
 

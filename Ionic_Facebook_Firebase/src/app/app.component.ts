@@ -87,8 +87,7 @@ export class MyApp {
       { title: 'Términos y Condiciones', component: TerminosPage, index: 3, icon: 'information-circle'  },
       { title: 'Configuración', component: ConfiguracionPage, index: 4, icon: 'settings'  }
       //{ title: 'Soporte', component: SupportPage }      
-    ];
-
+        ];
     });
 
     

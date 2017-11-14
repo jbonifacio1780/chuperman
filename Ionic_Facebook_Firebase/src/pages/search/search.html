@@ -15,10 +15,10 @@
     <div padding>
     <ion-segment [(ngModel)]="cat" color="primary">
         <ion-segment-button value="direcciones">
-          Direcciones
+          Lugares
         </ion-segment-button>
         <ion-segment-button value="favoritos">
-          Favoritos
+          Mis Direcciones
         </ion-segment-button>
       </ion-segment>
     </div>
@@ -34,7 +34,9 @@
               </ion-item>
             </ion-list>
             <ion-list *ngSwitchCase="'favoritos'">
-              <ion-item *ngFor="let direc of direcciones | async" (click)="leerDirec(direc.latitud,direc.longitud)">
+              <ion-item *ngFor="let direc of direcciones | async">
+                  <!--<ion-item *ngFor="let direc of direcciones | async" (click)="leerDirec(direc.latitud,direc.longitud)">
+                  -->
                   <ion-avatar item-left>
                       <img [src]="">
                     </ion-avatar>

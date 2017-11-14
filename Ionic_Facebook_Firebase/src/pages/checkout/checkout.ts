@@ -201,25 +201,31 @@ public totalpago:string ="";
                     total=total+nuevo[z].item_price;
                   }
                   var fec = new Date();
-                  var fecha = fec.getFullYear();        
-                  var hora: string = fec.toString().substring(15,24);
+                  var fecha = fec.getFullYear(); 
+                  var day = fec.toDateString().substring(8,10);
+
+                  //var day: string = (fec.getDate()+20).toString().trim();
+                 
+                  //var newday= ('0'+ day).slice(-2);
+
+                  var hora: string = fec.toString().substring(16,24);
                   let hh,mm,ss
                   [hh,mm,ss] = hora.split(':');       
+                  
                   try
                   {         
-                    var uidData = firebase.auth().currentUser.displayName.substring(0,3).toUpperCase();
+                    var uidData = firebase.auth().currentUser.displayName.substring(0,1).toUpperCase();
                   }
                   catch (e){
-                    //uidData = 
-                    uidData= "UDF";
+                    uidData= "N";
                   }
 
-                  var today_date =fec.getDate().toString() + '/' + (fec.getMonth()+1).toString() +'/'+ fec.getFullYear().toString() + '' + hora;  //fec.getFullYear().toString()+'-'+(fec.getMonth()+1).toString()+'-'+fec.getDate().toString();
+                  var today_date =fec.getDate().toString() + '/' + (fec.getMonth()+1).toString() +'/'+ fec.getFullYear().toString() + ' ' + hora;  //fec.getFullYear().toString()+'-'+(fec.getMonth()+1).toString()+'-'+fec.getDate().toString();
 
-                  this.llave = hh+mm+ss+uidData+fecha;
-                  console.log(fecha);
-                  console.log(hora);
-                  console.log(uidData);
+                  this.llave = day+hh+mm+ss+fecha+uidData;
+                  //console.log(fecha);
+                  //console.log(hora);
+                  //console.log(uidData);
                   this.afd.database.ref('/orders').child(this.llave).set({
                     userId: firebase.auth().currentUser.uid,
                     total: total,
