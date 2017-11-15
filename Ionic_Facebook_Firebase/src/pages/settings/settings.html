@@ -37,16 +37,16 @@
                 <ion-input type="text" [(ngModel)]="pin" name="pin" [readonly]="isReadonly" [value]="pin"></ion-input>
             </ion-item>-->
          
-              <ion-row>
+             <!-- <ion-row>
                    <ion-col width-50 style="text-align:center">                    
                       <button ion-button block color="primary" (click)='updateData(nombre,apellido,telephone,email,pin)'>
                       <ion-icon name="md-refresh" style="font-size:35px"></ion-icon>
                       &nbsp;Actualizar</button>                   
                    </ion-col>
-              </ion-row>
+              </ion-row> -->
               <ion-row>
                 <ion-col width-50 style="text-align:center">                    
-                   <button ion-button block color="primary" (click)='Continuar()'>
+                   <button ion-button block color="primary" (click)='updateData(nombre,apellido,telephone,email,pin)'>
                    <ion-icon name="arrow-dropright" style="font-size:35px"></ion-icon>
                    &nbsp;Continuar</button>                   
                 </ion-col>
