@@ -117,9 +117,5 @@ import {CheckoutPage} from '../checkout/checkout'
         position: 'top'
       });
       toast.present();
-    }
-  
-
-   
-
+    }     
 }

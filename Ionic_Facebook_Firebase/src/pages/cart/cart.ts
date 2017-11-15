@@ -22,6 +22,7 @@ import 'rxjs/add/operator/map';
    
     public carts: FirebaseListObservable<any>;
     public cartsdetails: FirebaseListObservable<any>;
+    public horario : FirebaseListObservable<any>;
     public userid:any;
     carrito: any;
     key: any;
@@ -238,8 +239,52 @@ import 'rxjs/add/operator/map';
         this.AlertCart();
       }
     }
-    
-    horario(){
+    atencion(){
+      var dia = new Date();                      
+      var nombredia = this.weekday[dia.getDay()];
+      var hora: string = dia.toString().substring(16,24);
+      let hh,mm,ss
+      [hh,mm,ss] = hora.split(':');
+      let horaactual=hh+''+mm+''+ss
+      this.afd.list('/horario').subscribe(lista =>{
+        console.log(lista);
+        console.log(dia);
+        console.log(nombredia);
+        console.log(hora);
+        console.log(hh+mm+ss);
+
+        for(var i in lista){
+          //console.log(lista[i].$key.toUpperCase());
+          //console.log(nombredia.toUpperCase());
+          if (lista[i].$key.toUpperCase()==nombredia.toUpperCase()){
+            //console.log(parseInt(lista[i].inicio));
+            //console.log(parseInt(lista[i].fin));
+            //console.log(parseInt(horaactual));
+            if(parseInt(horaactual)>=parseInt(lista[i].inicio) && parseInt(horaactual)<=235959){
+              console.log("correcto inicio");
+              this.gotoCheckOut();
+            }else{
+            if(parseInt(horaactual)>=1 && parseInt(horaactual)<=parseInt(lista[i].fin)){
+              console.log("correcto fin");
+              this.gotoCheckOut();
+            }else{
+              this.AlertCartHorario('hoy '+lista[i].$key.toUpperCase()+' el horario de atención es de '+lista[i].inicio+' a '+lista[i].fin);              
+            }
+          }
+            //if(parseInt(horaactual)>=parseInt(lista[i].inicio) && parseInt(horaactual)<=parseInt(lista[i].fin)){
+            //  console.log("correcto");
+            //}else{
+            //  console.log("incorrecto");
+            //}
+          }          
+      }
+      
+      });
+
+
+    }
+
+    controlhorario(){
       var d = new Date();     
       //var d = new Date("July 18, 2017 22:15:00"); //----->> Con este valor funciona a cualquier hora
       //console.log(d);           
