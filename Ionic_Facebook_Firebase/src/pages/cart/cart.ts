@@ -280,14 +280,14 @@ import 'rxjs/add/operator/map';
       //console.log(d);           
       //var d = new Date();                
       var n = this.weekday[d.getDay()];
-      var t = d.toLocaleTimeString();
-      //var t = "22:00:00";
+      //var t = d.toLocaleTimeString();
+      var t = "22:00:00";
       //console.log(n);
       //console.log(t);
 
       switch (n) {
         case 'Domingo':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t <= "4:00:00" && t >= "22:00:00"){
             this.gotoCheckOut();
           }
           else{
@@ -295,7 +295,7 @@ import 'rxjs/add/operator/map';
           }
         break;
         case 'Lunes':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t <= "4:00:00" && t >= "22:00:00"){
             this.gotoCheckOut();
           }
           else{
@@ -303,7 +303,7 @@ import 'rxjs/add/operator/map';
           }            
           break;
         case 'Martes':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t <= "4:00:00" && t >= "22:00:00"){
             this.gotoCheckOut();
           }
           else{
@@ -311,7 +311,7 @@ import 'rxjs/add/operator/map';
           }
           break;
         case 'Miercoles':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t <= "4:00:00" && t >= "22:00:00"){
             this.gotoCheckOut();
           }
           else{
@@ -319,7 +319,7 @@ import 'rxjs/add/operator/map';
           }
           break;
         case 'Jueves':
-          if(t >= "22:00:00" && t <= "4:00:00"){
+          if(t <= "4:00:00" && t >= "22:00:00"){
             this.gotoCheckOut();
           }
           else{
@@ -327,7 +327,7 @@ import 'rxjs/add/operator/map';
           }
           break;
         case 'Viernes':
-          if(t >= "19:00:00" && t <= "5:00:00"){
+          if(t <= "5:00:00" && t >= "19:00:00"){
             this.gotoCheckOut();
           }
           else{
@@ -336,7 +336,7 @@ import 'rxjs/add/operator/map';
           break;
         case 'Sabado':
         //this.gotoCheckOut();
-           if(t >= "19:00:00" && t <= "5:00:00"){
+           if(t <= "5:00:00" && t >= "19:00:00"){
             this.gotoCheckOut();
           }
           else{
