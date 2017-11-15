@@ -170,7 +170,7 @@ presentLoadingCustom() {
     AlertMap() {
       const alert = this.alertCtrl.create({
         title: 'Advertencia',
-        message: 'Debe seleccionar una ubicación',
+        message: 'Debe seleccionar o ingresar una ubicación',
         buttons: [
           {
             text: 'OK',
