@@ -90,7 +90,32 @@ page-googlemap {
             background-image: none;
           }
         }
-      
+        .bar-button-outline-md-primary
+        {
+          //border-color: color($colors,primary)!important;
+          //border-radius: 10px;
+          border: none;
+          color: color($colors,darklight)!important;
+          height: 5rem;
+          text-transform: none;
+          word-wrap: normal;
+          //background-color: color($colors,light)!important;
+          //background-color: #f7f1f1;
+          background-color: rgba(255, 249, 249, 0.781);
+        }
+
+
+        .bordes{
+          //background: transparent;
+          color: color($colors,dark);
+          border-radius: 10px;
+          border-top: 1px solid color($colors,primary);
+          border-bottom: 1px solid color($colors,primary);
+          border-left: 1px solid color($colors,primary);
+          border-right: 1px solid color($colors,primary);
+          //font-weight: bold!important;
+        }
+
         .button-md{
           height: 5rem;
           text-transform: none;
@@ -100,9 +125,11 @@ page-googlemap {
           background-color: beige;
         }
         
+        
         .button-outline-md-primary {
           border-color: color($colors,primary)!important;
           color: color($colors,dark)!important;
+          border-radius: 10px;
         }
 
         h1{
@@ -126,13 +153,29 @@ page-googlemap {
         .button-md-secondary {
           color: #fff;
           background-color: color($colors,primary);
+          border-radius: 10px;
       }
 
       .button-clear-md {
         background-color: transparent;
         font-size: x-large!important;
         font-weight: bold;
+        border-radius: 10px;
     }
-        
+    
+    .MiUbicacion{
+      background: transparent;
+      border-color: color($colors,primary)!important;
+      border-radius: 10px;
+      color: color($colors,darklight)!important;
+      height: 5rem;
+      text-transform: none;
+      word-wrap: normal;
+      //background-color: color($colors,light)!important;
+    }
+
+    .text-input-md{
+      margin: 0px 0px; 
+    }
 
 }

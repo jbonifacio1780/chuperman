@@ -268,7 +268,9 @@ import 'rxjs/add/operator/map';
               console.log("correcto fin");
               this.gotoCheckOut();
             }else{
-              this.AlertCartHorario('hoy '+lista[i].$key.toUpperCase()+' el horario de atención es de '+lista[i].inicio+' a '+lista[i].fin);              
+              //this.AlertCartHorario('hoy '+lista[i].$key.toUpperCase()+' el horario de atención es de '+lista[i].inicio+' a '+lista[i].fin);              
+              this.AlertCartHorario(lista[i].mensaje);              
+              return;
             }
           }
             //if(parseInt(horaactual)>=parseInt(lista[i].inicio) && parseInt(horaactual)<=parseInt(lista[i].fin)){

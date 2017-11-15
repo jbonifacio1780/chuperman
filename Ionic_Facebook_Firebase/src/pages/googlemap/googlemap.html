@@ -1,10 +1,19 @@
 <ion-header no-border>
+    
   <ion-navbar transparent>
+      
+
       <ion-buttons left>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <button ion-button block outline color="primary" icon-right text-wrap (click)="openModal()"> {{ubicacion}}  <ion-icon name="search"></ion-icon> </button>
+        
+          <!--  <ion-item style="background: transparent; text-align:center" clear text-wrap><h1 text-capitalize>CHUPERUBICACIÓN</h1></ion-item> -->
+      </ion-buttons>
+     <!--   <ion-title>CHUPERUBICACIÓN</ion-title>-->
+
+    
   </ion-navbar>
 </ion-header>
 
@@ -17,14 +26,19 @@
   
 
   <ion-footer>
-        <div>
-          <button ion-button icon-only color="botones" (click)="MiUbicacion()"> <ion-icon name="locate"></ion-icon> </button>            
-          <ion-item style="background: transparent; text-align:center" clear text-wrap><h1 text-capitalize>CHUPERUBICACIÓN</h1></ion-item>
-          <button ion-button block outline color="primary" icon-right text-wrap (click)="openModal()"> {{ubicacion}}  <ion-icon name="search"></ion-icon> </button>
-        </div>
+        
+      <button class="MiUbicacion" ion-button icon-only color="botones" (click)="MiUbicacion()"> <ion-icon name="locate"></ion-icon> </button>            
+      
+          <ion-item class="bordes" text-wrap>
+              <ion-textarea type="text" placeholder="¿No encontró su chuperubicación? Ingrese aquí su dirección" [(ngModel)]="nuevadireccion" text-wrap></ion-textarea>
+              <button ion-button item-right icon-right color="secondary" (click)="goToConfirmation(nuevadireccion)"><ion-icon name="md-arrow-dropright"></ion-icon></button>
+          </ion-item>
+        
+             
+
         <ion-row>          
         
-          <button ion-button full icon-right color="secondary" (click)="goToConfirmation()">
+          <button ion-button full icon-right color="secondary" (click)="goToConfirmation(ubicacion)">
               Continuar  <ion-icon name="ios-arrow-dropright"></ion-icon>
               </button>    
         </ion-row>

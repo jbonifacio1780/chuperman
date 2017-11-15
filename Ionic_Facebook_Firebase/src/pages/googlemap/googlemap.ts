@@ -26,6 +26,7 @@ export class GooglemapPage extends BasePage {
   map: any;
   localized: boolean = false;
   public ubicacion: string = "";
+  public nuevaubicacion: string = "";
   public hlatitud: string = "";
   public hLongitud: string = "";
 
@@ -112,9 +113,9 @@ export class GooglemapPage extends BasePage {
     searchModal.present();
   }
 
-  goToConfirmation(): void {
+  goToConfirmation(ubica): void {
     //this.navCtrl.setRoot(HomePage);
-    this.navCtrl.setRoot(HomePage,{direccion:this.ubicacion, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
+    this.navCtrl.setRoot(HomePage,{direccion:ubica, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
   }
 
  
