@@ -253,13 +253,8 @@ import 'rxjs/add/operator/map';
         console.log(hora);
         console.log(hh+mm+ss);
 
-        for(var i in lista){
-          //console.log(lista[i].$key.toUpperCase());
-          //console.log(nombredia.toUpperCase());
-          if (lista[i].$key.toUpperCase()==nombredia.toUpperCase()){
-            //console.log(parseInt(lista[i].inicio));
-            //console.log(parseInt(lista[i].fin));
-            //console.log(parseInt(horaactual));
+        for(var i in lista){          
+          if (lista[i].$key.toUpperCase()==nombredia.toUpperCase()){            
             if(parseInt(horaactual)>=parseInt(lista[i].inicio) && parseInt(horaactual)<=235959){
               console.log("correcto inicio");
               this.gotoCheckOut();
@@ -268,14 +263,9 @@ import 'rxjs/add/operator/map';
               console.log("correcto fin");
               this.gotoCheckOut();
             }else{
-              this.AlertCartHorario('hoy '+lista[i].$key.toUpperCase()+' el horario de atención es de '+lista[i].inicio+' a '+lista[i].fin);              
+              this.AlertCartHorario(lista[i].mensaje);              
             }
-          }
-            //if(parseInt(horaactual)>=parseInt(lista[i].inicio) && parseInt(horaactual)<=parseInt(lista[i].fin)){
-            //  console.log("correcto");
-            //}else{
-            //  console.log("incorrecto");
-            //}
+          }          
           }          
       }
       
