@@ -71,8 +71,8 @@ public totalpago:string ="";
           this.hlatitud = NavParams.get("hlatitud");
           this.totalpago = NavParams.get("Total");
 
-          console.log("Longitud :"+this.hLongitud);
-          console.log("Latitud : "+this.hlatitud);
+          //console.log("Longitud :"+this.hLongitud);
+          //console.log("Latitud : "+this.hlatitud);
           [this.direc,this.zona,this.pais] = this.direccion.split(',');
 
           this.users = this.afd.list('/users/'+firebase.auth().currentUser.uid);

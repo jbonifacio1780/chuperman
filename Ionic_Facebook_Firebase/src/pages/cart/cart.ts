@@ -246,6 +246,7 @@ import 'rxjs/add/operator/map';
       let hh,mm,ss
       [hh,mm,ss] = hora.split(':');
       let horaactual=hh+''+mm+''+ss
+      //let horaactual= "220000";
       this.afd.list('/horario').subscribe(lista =>{
         console.log(lista);
         console.log(dia);

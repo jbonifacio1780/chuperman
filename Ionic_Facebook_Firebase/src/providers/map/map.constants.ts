@@ -6,11 +6,11 @@
 
 export class MapConst {
   public static get DEFAULT_LAT(): number {
-    return 42;
+    return -12.046374;
   }
 
   public static get DEFAULT_LNG(): number {
-    return 12.8;
+    return -77.042793;
   }
 
   public static get DEFAULT_ZOOM(): number {

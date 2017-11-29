@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler,CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -34,6 +34,8 @@ import { Facebook } from '@ionic-native/facebook';
 //import { TwitterConnect } from '@ionic-native/twitter-connect';
 
 import { MapComponent } from '../components/map/map';
+//import { MapComponentModule } from '../components/map/map.module';
+
 
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -77,12 +79,18 @@ var config = {
   ],
   imports: [
     BrowserModule,
+    //MapComponent,
     HttpModule,
     AngularFireDatabaseModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule//,
-    //MapComponent
+    AngularFireAuthModule
+  ],exports:[
+    MapComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ],
   bootstrap: [IonicApp],
   entryComponents: [

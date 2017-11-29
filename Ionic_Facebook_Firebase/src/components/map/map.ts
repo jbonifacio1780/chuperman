@@ -1,24 +1,22 @@
-/**
- * @author    Damien Dell'Amico <damien.dellamico@gmail.com>
- * @copyright Copyright (c) 2016
- * @license   GPL-3.0
- */
-import { NgModule } from '@angular/core';
+
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Component, Output, EventEmitter, AfterViewInit, ViewChild } from '@angular/core';
 import { MapService } from '../../providers/map/map.service';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'it-map',
   template: '<div #map id="gmaps" data-tap-disabled="true"></div>'
 })
 
-
 @NgModule({
-  exports: [
-    MapComponent
-  ]
+  //declarations: [ MapComponent ],
+  //exports: [ MapComponent ],
+  imports: [ CommonModule ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
+
+
 
 export class MapComponent implements AfterViewInit {
 

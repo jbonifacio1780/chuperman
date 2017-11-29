@@ -3,6 +3,9 @@ page-googlemap {
     height: 100%;
     margin: 0;
     padding: 0;
+
+
+
   }
     ion-content{
         //background: rgb(229, 227, 223);
@@ -10,6 +13,9 @@ page-googlemap {
         background-size: cover;
         background-position-x: 50%;
       }
+
+
+      
 
       #map {
         width: 100%;
@@ -28,9 +34,7 @@ page-googlemap {
         opacity: 1;
       }
 
-
-      
-      
+    
       #centerMarker {
           width: 35px;
           height: 48px;
@@ -52,7 +56,7 @@ page-googlemap {
           box-shadow: none!important;
           //background: linear-gradient(10deg,#161404,rgb(139, 17, 17))!important;
         }
-
+        
         .navbar{
           background: transparent!important;
         }
@@ -62,7 +66,7 @@ page-googlemap {
 
         .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default
         {
-          color: color($colors,dark);
+          color: color($colors,light);
           //background: linear-gradient(10deg,#cc0000,#1e73be)!important;
         }
         
@@ -77,7 +81,30 @@ page-googlemap {
         .scroll-content {
           padding: 0 !important;
         }
-      
+
+        .header-md {
+         
+          
+          
+          &:before{
+            background-image: none;
+          }
+
+          .DireccionMapa
+          {
+            //border-color: color($colors,primary)!important;
+            border-radius: 0px;
+            border: none;
+            color: color($colors,darklight)!important;
+            height: 5rem;
+            text-transform: none;
+            word-wrap: normal;
+            //background-color: color($colors,light)!important;
+            //background-color: #f7f1f1;
+            background-color: rgba(255, 249, 249, 0.781)!important;
+          }
+          
+        }
         
         
         .footer-md {
@@ -90,19 +117,9 @@ page-googlemap {
             background-image: none;
           }
         }
-        .bar-button-outline-md-primary
-        {
-          //border-color: color($colors,primary)!important;
-          //border-radius: 10px;
-          border: none;
-          color: color($colors,darklight)!important;
-          height: 5rem;
-          text-transform: none;
-          word-wrap: normal;
-          //background-color: color($colors,light)!important;
-          //background-color: #f7f1f1;
-          background-color: rgba(255, 249, 249, 0.781);
-        }
+
+        //.bar-button-outline-md-primary
+        
 
 
         .bordes{
@@ -126,11 +143,7 @@ page-googlemap {
         }
         
         
-        .button-outline-md-primary {
-          border-color: color($colors,primary)!important;
-          color: color($colors,dark)!important;
-          border-radius: 10px;
-        }
+        
 
         h1{
           color: color($colors,secondary);

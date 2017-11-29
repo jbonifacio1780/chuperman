@@ -115,7 +115,15 @@ export class GooglemapPage extends BasePage {
 
   goToConfirmation(ubica): void {
     //this.navCtrl.setRoot(HomePage);
-    this.navCtrl.setRoot(HomePage,{direccion:ubica, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
+
+    if(this.nuevaubicacion!="")
+    {
+      this.navCtrl.setRoot(HomePage,{direccion:this.nuevaubicacion, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
+    }
+    else{
+      this.navCtrl.setRoot(HomePage,{direccion:ubica, hlatitud: this.hlatitud, hLongitud:this.hLongitud});
+    }
+    
   }
 
  
