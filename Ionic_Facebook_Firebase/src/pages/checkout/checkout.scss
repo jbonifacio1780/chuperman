@@ -41,7 +41,21 @@ page-checkout {
     }
 
     
-    
-    
+    .toolbar-background-ios{
+        color: color($colors,light) !important;
+        background: color($colors,primary) !important;
+    }
+    .toolbar-title-ios{
+        color: color($colors,light) !important;
+    }
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+        color: color($colors,light) !important;
+    }
+    .button-ios-secondary{
+        color: #fff;
+        background-color: #ff0d0d !important;
+        border-radius: 10px;
+        height: 5rem;
+    }
     
 }

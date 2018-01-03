@@ -113,32 +113,6 @@ page-home {
           background-color: color($colors,dark);
       }
     
-    
-
-      /*SLIDER*/
-    
-      ion-slides {
-        overflow: visible !important;
-        width: 7.778rem !important;
-        //height: 84% !important;
-      }
-
-
-      .slide-zoom {
-        position: absolute;
-        
-     }
-
-     ion-slide {
-        //align-items: flex-end !important;
-      }
-      
-
-      .slides-div {
-        height: 40%;
-        border-bottom: 1px solid #ccc;
-      }
-
 
       ion-footer{
           //color: color($colors,third)!important;
@@ -180,5 +154,29 @@ page-home {
     font-size: 1.34rem;
     line-height: 1.5;
 }
-      
+
+
+.toolbar-background-ios{
+    color: color($colors,light) !important;
+    background: color($colors,primary) !important;
+    //background: linear-gradient(100deg,rgb(218, 19, 19),#e96262)!important;
+}
+
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+    color: color($colors,light) !important;
+}
+.badge-ios{
+    color: color($colors,third) !important;
+    background-color:color($colors,dark) !important;
+}
+.item-ios ion-thumbnail{
+    min-width: 80px;
+    min-height: 80px;
+}      
+.item-ios.item-block .item-inner{
+    padding-right: 0px;
+}
+
+
+
 }

@@ -104,6 +104,15 @@ ion-menu{
         background: linear-gradient(100deg,rgb(218, 19, 19),#e96262)!important;
     }
 
+    .toolbar-ios{
+      padding: 4px!important;
+      min-height: 56px;
+    }
+    .toolbar-background-ios{
+      background: none!important;
+    }
+
+
     .image {
       height:auto;
       width: 100px;

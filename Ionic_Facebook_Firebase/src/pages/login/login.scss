@@ -104,8 +104,16 @@ page-login {
 		color: color($colors,secondary)
 	  }	
 
+	  .fab-ios.BotonCall{
+		background: linear-gradient(10deg,#161404,rgb(139, 17, 17))!important;
+	  }
 
-
+	.fab-in-list.Claro{
+		color: red;
+	}
+	.fab-in-list.Movistar{
+		color: green;
+	}
 
 	 
 

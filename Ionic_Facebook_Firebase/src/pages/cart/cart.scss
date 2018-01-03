@@ -157,6 +157,46 @@ cart-home {
         white-space: normal!important;
     }
       
+    .item-ios ion-thumbnail{
+        min-width: 80px;
+        min-height: 80px;
+        align-content: center;
+    }
+    .item-ios ion-thumbnail ion-img, .item-ios ion-thumbnail img{
+        min-width: 80px;
+        min-height: 80px;
+    }
+
+    .button-clear-ios{
+        color: color($colors,dark) !important;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+    .MasMenos{
+        color: color($colors,primary) !important;
+    }
+
+    .toolbar-background-ios{
+        color: color($colors,light) !important;
+        background: color($colors,primary) !important;
+    }
+
+    .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+        color: color($colors,light) !important;
+    }
+    .toolbar-title-ios{
+        color: color($colors,light) !important;
+    }
+    .button-ios-third{
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        background: linear-gradient(5deg, #e96262, #da1313) !important;
+        font-style: italic;
+        border-radius: 10px;
+        height: 5rem;
+        word-wrap: normal;
+    }
 }
 
 ion-alert{

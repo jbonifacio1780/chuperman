@@ -242,18 +242,20 @@ import 'rxjs/add/operator/map';
     atencion(){
       var dia = new Date();                      
       var nombredia = this.weekday[dia.getDay()];
+      //var nombredia = "lunes";
       var hora: string = dia.toString().substring(16,24);
       let hh,mm,ss
       [hh,mm,ss] = hora.split(':');
-      let horaactual=hh+''+mm+''+ss
-      //let horaactual= "220000";
+      //let horaactual=hh+''+mm+''+ss
+      let horaactual= "220000";
       this.afd.list('/horario').subscribe(lista =>{
         console.log(lista);
         console.log(dia);
         console.log(nombredia);
         console.log(hora);
         console.log(hh+mm+ss);
-
+        console.log("Hora Actual " + horaactual);
+        
         for(var i in lista){          
           if (lista[i].$key.toUpperCase()==nombredia.toUpperCase()){            
             if(parseInt(horaactual)>=parseInt(lista[i].inicio) && parseInt(horaactual)<=235959){

@@ -191,4 +191,34 @@ page-googlemap {
       margin: 0px 0px; 
     }
 
+    .toolbar-background-ios{
+      color: color($colors,light) !important;
+      background: linear-gradient(100deg,rgb(218, 19, 19),#e96262)!important;
+    }
+    .toolbar-title-ios{
+      color: color($colors,light) !important;
+    }
+
+    .bar-button-primary-ios, .bar-button-default.bar-button-ios-primary, .bar-button-clear-ios-primary{
+      color: color($colors,light) !important;
+     
+    }
+    .button-ios{
+      height: 5rem;
+      text-transform: none;
+      word-wrap: normal;
+    }
+
+    .button-outline-ios-primary{
+      background-color: white!important;
+      border-color: white;
+      color: color($colors,dark) !important;
+    }
+
+    .button-ios-secondary{
+      color: #fff;
+      background-color: #ff0d0d;
+      border-radius: 10px
+    }
+
 }
