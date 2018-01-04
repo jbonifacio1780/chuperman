@@ -35,7 +35,7 @@ public direc: string = "";
 public zona: string ="";
 public pais : string="";
 public totalpago:string ="";
-
+public monthnro = Array(7);
     constructor(
       public navCtrl: NavController, 
       public NavParams: NavParams, 
@@ -46,6 +46,22 @@ public totalpago:string ="";
       public modalCtrl: ModalController,
       public toastCtrl: ToastController ) {
         try{
+          
+            this.monthnro[0]="01";
+            this.monthnro[1]="02";
+            this.monthnro[2]="03";
+            this.monthnro[3]="04";
+            this.monthnro[4]="05";
+            this.monthnro[5]="06";
+            this.monthnro[6]="07";
+            this.monthnro[7]="08";
+            this.monthnro[8]="09";
+            this.monthnro[9]="10";
+            this.monthnro[10]="11";
+            this.monthnro[11]="12";
+
+           
+            
             this.payments = [
                 {id: 'EFECTIVO', name: 'EFECTIVO', icons:'assets/img/payment/cash.png'},
                 {id: 'POS VISA', name: 'POS VISA', icons:'assets/img/payment/visa.png'},
@@ -203,6 +219,16 @@ public totalpago:string ="";
                   var fec = new Date();
                   var fecha = fec.getFullYear(); 
                   var day = fec.toDateString().substring(8,10);
+                  
+                  
+                  var nromes = this.monthnro[fec.getMonth()];
+      
+                  //console.log("MES " + nromes);
+
+                  //console.log(day);
+
+                  //console.log("MES "+dia.getMonth().toString());
+                 
 
                   //var day: string = (fec.getDate()+20).toString().trim();
                  
@@ -222,7 +248,9 @@ public totalpago:string ="";
 
                   var today_date =fec.getDate().toString() + '/' + (fec.getMonth()+1).toString() +'/'+ fec.getFullYear().toString() + ' ' + hora;  //fec.getFullYear().toString()+'-'+(fec.getMonth()+1).toString()+'-'+fec.getDate().toString();
 
-                  this.llave = day+hh+mm+ss+fecha+uidData;
+                  //this.llave = day+hh+mm+ss+fecha+uidData;
+                  this.llave = fecha+nromes+day+hh+mm+uidData;
+
                   //console.log(fecha);
                   //console.log(hora);
                   //console.log(uidData);

@@ -147,8 +147,8 @@ export class GooglemapPage extends BasePage {
       //Vibration.vibrate(1000);
       //navigator.vibrate(50);
     }).catch(error => {
-      //this.alertNoGps();
-      //console.warn(error);
+      this.alertNoGps();
+      console.warn(error);
     }).then(() => {
       // TODO why dismiss not working without setTimeout ?
       setTimeout(() => {
@@ -160,7 +160,7 @@ export class GooglemapPage extends BasePage {
   private alertNoGps() {
     const alert = this.alertCtrl.create({
       title: 'Chuperman Delivery',
-      subTitle: 'Los GPS y las ubicaciones de red no están disponibles. Haga clic en Aceptar para volver a intentar.',
+      subTitle: 'Los GPS y las ubicaciones de red no están disponibles. Activar su ubicación GPS del dispositivo móvil.',
       enableBackdropDismiss: false,
       buttons: [{
         text: 'OK',

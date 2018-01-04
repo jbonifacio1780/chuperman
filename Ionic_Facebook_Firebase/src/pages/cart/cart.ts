@@ -54,6 +54,9 @@ import 'rxjs/add/operator/map';
         this.weekday[5] = "Viernes";
         this.weekday[6] = "Sabado";
 
+
+        
+
         this.userid= afAuth.auth.currentUser.uid;      
         this.carts = this.afd.list('/cart/'+this.userid+'/');
         this.carts.subscribe(nuevo =>{
@@ -240,14 +243,17 @@ import 'rxjs/add/operator/map';
       }
     }
     atencion(){
-      var dia = new Date();                      
+      var dia = new Date();        
+      
+      //console.log("MES "+dia.getMonth().toString());
+      
       var nombredia = this.weekday[dia.getDay()];
       //var nombredia = "lunes";
       var hora: string = dia.toString().substring(16,24);
       let hh,mm,ss
       [hh,mm,ss] = hora.split(':');
-      //let horaactual=hh+''+mm+''+ss
-      let horaactual= "220000";
+      let horaactual=hh+''+mm+''+ss
+      //let horaactual= "220000";
       this.afd.list('/horario').subscribe(lista =>{
         console.log(lista);
         console.log(dia);
